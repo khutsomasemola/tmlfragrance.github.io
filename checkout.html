@@ -1,0 +1,4428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Checkout | TML Illuminated Candles</title>
+
+    <meta
+        name="description"
+        content="Complete your TML Illuminated Candles order."
+    >
+
+    <!-- =====================================================
+         GOOGLE FONTS
+         ===================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <style>
+
+        /* =====================================================
+           TML CHECKOUT
+           ===================================================== */
+
+        :root {
+
+            --black: #080807;
+            --black-soft: #11100e;
+
+            --cream: #f4f0e9;
+            --cream-dark: #e9e3da;
+
+            --gold: #c9a76a;
+            --gold-light: #e2c58e;
+
+            --text: #171614;
+            --text-soft: #6d6962;
+
+            --border: rgba(0,0,0,.12);
+
+            --serif: "Playfair Display", Georgia, serif;
+            --sans: "DM Sans", Arial, sans-serif;
+
+            --container: 1440px;
+
+        }
+
+
+        * {
+
+            box-sizing: border-box;
+
+            margin: 0;
+            padding: 0;
+
+        }
+
+
+        body {
+
+            background: var(--cream);
+
+            color: var(--text);
+
+            font-family: var(--sans);
+
+        }
+
+
+        a {
+
+            color: inherit;
+
+            text-decoration: none;
+
+        }
+
+
+        button,
+        input,
+        select,
+        textarea {
+
+            font: inherit;
+
+        }
+
+
+        /* =====================================================
+           HEADER
+           ===================================================== */
+
+        .checkout-header {
+
+            height: 90px;
+
+            background: var(--black);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 0 30px;
+
+        }
+
+
+        .checkout-header-inner {
+
+            width: 100%;
+
+            max-width: var(--container);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+        }
+
+
+        .back-shop {
+
+            color: rgba(255,255,255,.75);
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 13px;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+
+            transition: .3s ease;
+
+        }
+
+
+        .back-shop:hover {
+
+            color: var(--gold-light);
+
+        }
+
+
+        .logo {
+
+            width: 90px;
+
+            max-height: 55px;
+
+            object-fit: contain;
+
+        }
+
+
+        .secure-checkout {
+
+            color: rgba(255,255,255,.65);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            font-size: 12px;
+
+        }
+
+
+        .secure-checkout i {
+
+            color: var(--gold);
+
+        }
+
+
+        /* =====================================================
+           PAGE
+           ===================================================== */
+
+        .checkout-page {
+
+            width: 100%;
+
+            max-width: var(--container);
+
+            margin: 0 auto;
+
+            padding: 70px 30px 110px;
+
+        }
+
+
+        .checkout-heading {
+
+            margin-bottom: 55px;
+
+        }
+
+
+        .checkout-heading span {
+
+            display: block;
+
+            color: var(--gold);
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: .2em;
+
+            text-transform: uppercase;
+
+            margin-bottom: 14px;
+
+        }
+
+
+        .checkout-heading h1 {
+
+            font-family: var(--serif);
+
+            font-size: clamp(42px, 6vw, 76px);
+
+            font-weight: 400;
+
+            line-height: 1.05;
+
+        }
+
+
+        .checkout-heading p {
+
+            max-width: 600px;
+
+            color: var(--text-soft);
+
+            line-height: 1.8;
+
+            margin-top: 18px;
+
+        }
+
+
+        /* =====================================================
+           GRID
+           ===================================================== */
+
+        .checkout-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1.4fr)
+                minmax(360px, .8fr);
+
+            gap: 70px;
+
+            align-items: start;
+
+        }
+
+
+        /* =====================================================
+           SECTIONS
+           ===================================================== */
+
+        .checkout-section {
+
+            background: #fff;
+
+            border: 1px solid var(--border);
+
+            padding: 35px;
+
+        }
+
+
+        .checkout-section + .checkout-section {
+
+            margin-top: 22px;
+
+        }
+
+
+        .section-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .section-number {
+
+            width: 34px;
+            height: 34px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: var(--black);
+
+            color: white;
+
+            font-size: 12px;
+
+        }
+
+
+        .section-title h2 {
+
+            font-family: var(--serif);
+
+            font-size: 27px;
+
+            font-weight: 400;
+
+        }
+
+
+        /* =====================================================
+           FORM
+           ===================================================== */
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 18px;
+
+        }
+
+
+        .form-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+
+        }
+
+
+        .form-group.full {
+
+            grid-column: 1 / -1;
+
+        }
+
+
+        .form-group label {
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+
+            width: 100%;
+
+            background: #faf8f4;
+
+            border: 1px solid var(--border);
+
+            padding: 15px 16px;
+
+            color: var(--text);
+
+            outline: none;
+
+            transition: .25s ease;
+
+        }
+
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+
+            border-color: var(--gold);
+
+            background: white;
+
+        }
+
+
+        .form-group textarea {
+
+            min-height: 110px;
+
+            resize: vertical;
+
+        }
+
+
+        .form-group input[readonly] {
+
+            background: #f1eee8;
+
+            cursor: default;
+
+        }
+
+
+        .field-help {
+
+            color: var(--text-soft);
+
+            font-size: 10px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =====================================================
+           DELIVERY
+           ===================================================== */
+
+        .delivery-options {
+
+            display: grid;
+
+            gap: 12px;
+
+        }
+
+
+        .delivery-option {
+
+            position: relative;
+
+        }
+
+
+        .delivery-option input {
+
+            position: absolute;
+
+            opacity: 0;
+
+        }
+
+
+        .delivery-label {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            border: 1px solid var(--border);
+
+            padding: 20px;
+
+            cursor: pointer;
+
+            transition: .25s ease;
+
+        }
+
+
+        .delivery-label:hover {
+
+            border-color: var(--gold);
+
+        }
+
+
+        .delivery-option input:checked + .delivery-label {
+
+            border-color: var(--gold);
+
+            background: #faf7f1;
+
+        }
+
+
+        .delivery-info {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+        }
+
+
+        .delivery-info i {
+
+            font-size: 18px;
+
+            color: var(--gold);
+
+        }
+
+
+        .delivery-info strong {
+
+            display: block;
+
+            margin-bottom: 4px;
+
+        }
+
+
+        .delivery-info small {
+
+            color: var(--text-soft);
+
+        }
+
+
+        .delivery-price {
+
+            font-weight: 700;
+
+            white-space: nowrap;
+
+        }
+
+
+        /* =====================================================
+           ADDRESS
+           ===================================================== */
+
+        .address-search-wrapper {
+
+            position: relative;
+
+        }
+
+
+        .address-search-wrapper input {
+
+            padding-right: 45px;
+
+        }
+
+
+        .address-search-icon {
+
+            position: absolute;
+
+            right: 16px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: var(--gold);
+
+            pointer-events: none;
+
+        }
+
+
+        /*
+         * Google Places new autocomplete widget.
+         */
+
+        .tml-place-autocomplete {
+
+            width: 100%;
+
+            display: block;
+
+        }
+
+
+        .tml-place-autocomplete gmp-place-autocomplete {
+
+            width: 100%;
+
+        }
+
+
+        .address-map {
+
+            width: 100%;
+
+            height: 280px;
+
+            margin-top: 18px;
+
+            background: #ddd;
+
+            border: 1px solid var(--border);
+
+        }
+
+
+        .address-confirmed {
+
+            display: none;
+
+            margin-top: 12px;
+
+            padding: 12px 15px;
+
+            background: #f5f1ea;
+
+            border-left: 3px solid var(--gold);
+
+            font-size: 11px;
+
+            color: var(--text-soft);
+
+        }
+
+
+        .address-confirmed.show {
+
+            display: flex;
+
+            gap: 10px;
+
+            align-items: flex-start;
+
+        }
+
+
+        .address-confirmed i {
+
+            color: var(--gold);
+
+        }
+
+
+        /* =====================================================
+           PAYMENT
+           ===================================================== */
+
+        .payment-notice {
+
+            padding: 18px;
+
+            background: #f5f1ea;
+
+            border-left: 3px solid var(--gold);
+
+            color: var(--text-soft);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .payment-options {
+
+            display: grid;
+
+            gap: 12px;
+
+        }
+
+
+        .payment-option {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 14px;
+
+            padding: 18px;
+
+            border: 1px solid var(--border);
+
+            cursor: pointer;
+
+            transition: .25s ease;
+
+        }
+
+
+        .payment-option:hover {
+
+            border-color: var(--gold);
+
+        }
+
+
+        .payment-option input {
+
+            accent-color: var(--gold);
+
+            margin-top: 3px;
+
+        }
+
+
+        .payment-option i {
+
+            width: 24px;
+
+            color: var(--gold);
+
+            font-size: 18px;
+
+        }
+
+
+        .payment-option > div {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 5px;
+
+        }
+
+
+        .payment-option small {
+
+            color: var(--text-soft);
+
+            font-size: 11px;
+
+        }
+
+
+        .payment-details {
+
+            margin-top: 18px;
+
+            padding: 24px;
+
+            background: #faf8f4;
+
+            border: 1px solid var(--border);
+
+        }
+
+
+        .payment-method-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .payment-method-header strong {
+
+            display: block;
+
+            font-family: var(--serif);
+
+            font-size: 20px;
+
+            font-weight: 400;
+
+        }
+
+
+        .payment-method-header p {
+
+            margin-top: 5px;
+
+            color: var(--text-soft);
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .card-brands {
+
+            display: flex;
+
+            gap: 7px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .card-brands span {
+
+            padding: 7px 10px;
+
+            background: white;
+
+            border: 1px solid var(--border);
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+        }
+
+
+        .secure-provider {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 14px;
+
+            padding: 16px;
+
+            background: white;
+
+            border: 1px solid var(--border);
+
+        }
+
+
+        .secure-provider > i {
+
+            color: var(--gold);
+
+            font-size: 20px;
+
+        }
+
+
+        .secure-provider strong {
+
+            display: block;
+
+            font-size: 12px;
+
+            margin-bottom: 4px;
+
+        }
+
+
+        .secure-provider small {
+
+            color: var(--text-soft);
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .payment-large-icon {
+
+            color: var(--gold);
+
+            font-size: 28px;
+
+        }
+
+
+        /* =====================================================
+           EFT
+           ===================================================== */
+
+        .bank-details {
+
+            background: white;
+
+            border: 1px solid var(--border);
+
+        }
+
+
+        .bank-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 14px 16px;
+
+            border-bottom: 1px solid var(--border);
+
+        }
+
+
+        .bank-row:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .bank-row span {
+
+            color: var(--text-soft);
+
+            font-size: 11px;
+
+        }
+
+
+        .bank-row strong {
+
+            font-size: 12px;
+
+            text-align: right;
+
+        }
+
+
+        .reference-row {
+
+            background: #f5f1ea;
+
+        }
+
+
+        .reference-row strong {
+
+            color: var(--gold);
+
+        }
+
+
+        .eft-warning {
+
+            display: flex;
+
+            gap: 12px;
+
+            margin: 18px 0;
+
+            padding: 15px;
+
+            background: #f5f1ea;
+
+            border-left: 3px solid var(--gold);
+
+        }
+
+
+        .eft-warning i {
+
+            color: var(--gold);
+
+            margin-top: 3px;
+
+        }
+
+
+        .eft-warning p {
+
+            color: var(--text-soft);
+
+            font-size: 11px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =====================================================
+           WHATSAPP
+           ===================================================== */
+
+        .whatsapp-large-icon {
+
+            color: #25D366;
+
+            font-size: 30px;
+
+        }
+
+
+        .whatsapp-notice {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 15px;
+
+            padding: 18px;
+
+            background: white;
+
+            border: 1px solid var(--border);
+
+        }
+
+
+        .whatsapp-notice > i {
+
+            color: #25D366;
+
+            font-size: 24px;
+
+        }
+
+
+        .whatsapp-notice strong {
+
+            display: block;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .whatsapp-notice p {
+
+            color: var(--text-soft);
+
+            font-size: 12px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =====================================================
+           SUMMARY
+           ===================================================== */
+
+        .summary {
+
+            position: sticky;
+
+            top: 30px;
+
+            background: var(--black);
+
+            color: white;
+
+            padding: 35px;
+
+        }
+
+
+        .summary h2 {
+
+            font-family: var(--serif);
+
+            font-size: 32px;
+
+            font-weight: 400;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .summary-items {
+
+            border-top: 1px solid rgba(255,255,255,.12);
+
+        }
+
+
+        .summary-item {
+
+            display: grid;
+
+            grid-template-columns: 70px 1fr auto;
+
+            gap: 15px;
+
+            align-items: center;
+
+            padding: 18px 0;
+
+            border-bottom: 1px solid rgba(255,255,255,.12);
+
+        }
+
+
+        .summary-image {
+
+            width: 70px;
+
+            height: 85px;
+
+            overflow: hidden;
+
+            background: #1a1917;
+
+        }
+
+
+        .summary-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+        }
+
+
+        .summary-item-name {
+
+            font-family: var(--serif);
+
+            font-size: 17px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .summary-item-details {
+
+            color: rgba(255,255,255,.5);
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .summary-item-price {
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            white-space: nowrap;
+
+        }
+
+
+        .summary-lines {
+
+            padding-top: 25px;
+
+        }
+
+
+        .summary-line {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin-bottom: 14px;
+
+            color: rgba(255,255,255,.65);
+
+            font-size: 13px;
+
+        }
+
+
+        .summary-line.total {
+
+            border-top: 1px solid rgba(255,255,255,.18);
+
+            padding-top: 22px;
+
+            margin-top: 22px;
+
+            color: white;
+
+            font-size: 18px;
+
+        }
+
+
+        .summary-line.total strong {
+
+            color: var(--gold-light);
+
+            font-family: var(--serif);
+
+            font-size: 25px;
+
+            font-weight: 400;
+
+        }
+
+
+        /* =====================================================
+           PLACE ORDER
+           ===================================================== */
+
+        .place-order {
+
+            width: 100%;
+
+            border: none;
+
+            background: var(--gold);
+
+            color: var(--black);
+
+            padding: 18px 25px;
+
+            margin-top: 30px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: .13em;
+
+            text-transform: uppercase;
+
+            cursor: pointer;
+
+            transition: .3s ease;
+
+        }
+
+
+        .place-order:hover {
+
+            background: var(--gold-light);
+
+            transform: translateY(-2px);
+
+        }
+
+
+        .place-order:disabled {
+
+            opacity: .5;
+
+            cursor: not-allowed;
+
+            transform: none;
+
+        }
+
+
+        .terms {
+
+            color: rgba(255,255,255,.42);
+
+            font-size: 10px;
+
+            line-height: 1.7;
+
+            text-align: center;
+
+            margin-top: 18px;
+
+        }
+
+
+        /* =====================================================
+           EMPTY
+           ===================================================== */
+
+        .empty-checkout {
+
+            text-align: center;
+
+            padding: 100px 20px;
+
+        }
+
+
+        .empty-checkout i {
+
+            color: var(--gold);
+
+            font-size: 35px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .empty-checkout h2 {
+
+            font-family: var(--serif);
+
+            font-size: 35px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .empty-checkout p {
+
+            color: var(--text-soft);
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .empty-checkout a {
+
+            display: inline-block;
+
+            background: var(--black);
+
+            color: white;
+
+            padding: 15px 25px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: .12em;
+
+        }
+
+
+        /* =====================================================
+           SUCCESS
+           ===================================================== */
+
+        .order-success {
+
+            display: none;
+
+            min-height: 60vh;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 80px 20px;
+
+        }
+
+
+        .order-success.show {
+
+            display: flex;
+
+        }
+
+
+        .success-inner {
+
+            max-width: 650px;
+
+        }
+
+
+        .success-icon {
+
+            width: 75px;
+
+            height: 75px;
+
+            margin: 0 auto 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border: 1px solid var(--gold);
+
+            color: var(--gold);
+
+            border-radius: 50%;
+
+            font-size: 25px;
+
+        }
+
+
+        .success-inner span {
+
+            display: block;
+
+            color: var(--gold);
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: .2em;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .success-inner h1 {
+
+            font-family: var(--serif);
+
+            font-size: clamp(42px, 6vw, 65px);
+
+            font-weight: 400;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .success-inner p {
+
+            color: var(--text-soft);
+
+            line-height: 1.8;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .order-number {
+
+            display: inline-block;
+
+            background: var(--black);
+
+            color: white;
+
+            padding: 15px 25px;
+
+            margin-bottom: 30px;
+
+            font-size: 13px;
+
+            letter-spacing: .1em;
+
+        }
+
+
+        .success-buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .success-buttons a {
+
+            padding: 15px 25px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: .1em;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .continue-shopping {
+
+            background: var(--black);
+
+            color: white;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .checkout-grid {
+
+                grid-template-columns: 1fr;
+
+                gap: 30px;
+
+            }
+
+
+            .summary {
+
+                position: static;
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .checkout-header {
+
+                height: 75px;
+
+                padding: 0 18px;
+
+            }
+
+
+            .logo {
+
+                width: 70px;
+
+            }
+
+
+            .secure-checkout {
+
+                display: none;
+
+            }
+
+
+            .back-shop {
+
+                font-size: 10px;
+
+            }
+
+
+            .checkout-page {
+
+                padding: 50px 18px 80px;
+
+            }
+
+
+            .checkout-heading {
+
+                margin-bottom: 35px;
+
+            }
+
+
+            .checkout-heading h1 {
+
+                font-size: 45px;
+
+            }
+
+
+            .checkout-section {
+
+                padding: 24px;
+
+            }
+
+
+            .form-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .form-group.full {
+
+                grid-column: auto;
+
+            }
+
+
+            .delivery-label {
+
+                padding: 16px;
+
+            }
+
+
+            .summary {
+
+                padding: 25px;
+
+            }
+
+
+            .summary-item {
+
+                grid-template-columns: 60px 1fr;
+
+            }
+
+
+            .summary-item-price {
+
+                grid-column: 2;
+
+            }
+
+
+            .summary-image {
+
+                width: 60px;
+
+                height: 75px;
+
+            }
+
+
+            .payment-method-header {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+
+            .bank-row {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 5px;
+
+            }
+
+
+            .bank-row strong {
+
+                text-align: left;
+
+            }
+
+
+            .address-map {
+
+                height: 220px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+     ========================================================= -->
+
+<header class="checkout-header">
+
+    <div class="checkout-header-inner">
+
+        <a
+            href="shop.html"
+            class="back-shop"
+        >
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to shop
+
+        </a>
+
+
+        <a href="index.html">
+
+            <img
+                src="images/logo.png"
+                alt="TML Illuminated Candles"
+                class="logo"
+            >
+
+        </a>
+
+
+        <div class="secure-checkout">
+
+            <i class="fa-solid fa-lock"></i>
+
+            Secure checkout
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     CHECKOUT CONTENT
+     ========================================================= -->
+
+<main id="checkoutContent">
+
+    <div class="checkout-page">
+
+        <div class="checkout-heading">
+
+            <span>
+                Complete your order
+            </span>
+
+            <h1>
+                Checkout
+            </h1>
+
+            <p>
+                Complete your details below and we’ll prepare
+                your TML order with care.
+            </p>
+
+        </div>
+
+
+        <div class="checkout-grid">
+
+
+            <!-- =================================================
+                 LEFT
+                 ================================================= -->
+
+            <div class="checkout-left">
+
+
+                <!-- =================================================
+                     CUSTOMER
+                     ================================================= -->
+
+                <section class="checkout-section">
+
+                    <div class="section-title">
+
+                        <div class="section-number">
+                            01
+                        </div>
+
+                        <h2>
+                            Your details
+                        </h2>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label for="firstName">
+                                First name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="firstName"
+                                name="firstName"
+                                autocomplete="given-name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="lastName">
+                                Last name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="lastName"
+                                name="lastName"
+                                autocomplete="family-name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="phone">
+                                Phone number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                autocomplete="tel"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     DELIVERY
+                     ================================================= -->
+
+                <section class="checkout-section">
+
+                    <div class="section-title">
+
+                        <div class="section-number">
+                            02
+                        </div>
+
+                        <h2>
+                            Delivery
+                        </h2>
+
+                    </div>
+
+
+                    <div class="delivery-options">
+
+
+                        <!-- COLLECTION -->
+
+                        <div class="delivery-option">
+
+                            <input
+                                type="radio"
+                                name="delivery"
+                                id="collection"
+                                value="collection"
+                                data-price="0"
+                                checked
+                            >
+
+                            <label
+                                for="collection"
+                                class="delivery-label"
+                            >
+
+                                <div class="delivery-info">
+
+                                    <i class="fa-solid fa-bag-shopping"></i>
+
+                                    <div>
+
+                                        <strong>
+                                            Collection
+                                        </strong>
+
+                                        <small>
+                                            Collection available from TML
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+
+                                <span class="delivery-price">
+                                    FREE
+                                </span>
+
+                            </label>
+
+                        </div>
+
+
+
+                        <!-- DELIVERY -->
+
+                        <div class="delivery-option">
+
+                            <input
+                                type="radio"
+                                name="delivery"
+                                id="delivery"
+                                value="delivery"
+                                data-price="0"
+                            >
+
+                            <label
+                                for="delivery"
+                                class="delivery-label"
+                            >
+
+                                <div class="delivery-info">
+
+                                    <i class="fa-solid fa-truck"></i>
+
+                                    <div>
+
+                                        <strong>
+                                            Delivery
+                                        </strong>
+
+                                        <small>
+                                            Delivery fee calculated separately
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+
+                                <span class="delivery-price">
+                                    TBC
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         ADDRESS FIELDS
+                         ================================================= -->
+
+                    <div
+                        id="addressFields"
+                        style="display:none; margin-top:20px;"
+                    >
+
+                        <div class="form-grid">
+
+
+                            <div class="form-group full">
+
+                                <label for="address">
+                                    Delivery address
+                                </label>
+
+
+                                <!--
+                                    Google Places widget is inserted here.
+                                -->
+
+                                <div
+                                    id="placeAutocompleteContainer"
+                                    class="tml-place-autocomplete"
+                                >
+                                </div>
+
+
+                                <!--
+                                    Hidden field used by the order object.
+                                -->
+
+                                <input
+                                    type="hidden"
+                                    id="address"
+                                    name="address"
+                                >
+
+
+                                <small class="field-help">
+
+                                    Search for your address and
+                                    select the matching Google Maps
+                                    result. Your city, province,
+                                    postal code and map location will
+                                    then be filled automatically.
+
+                                </small>
+
+                            </div>
+
+
+
+                            <!-- MAP -->
+
+                            <div class="form-group full">
+
+                                <div
+                                    id="addressMap"
+                                    class="address-map"
+                                >
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- CONFIRMATION -->
+
+                            <div
+                                id="addressConfirmed"
+                                class="address-confirmed"
+                            >
+
+                                <i class="fa-solid fa-circle-check"></i>
+
+                                <span>
+                                    Delivery location selected.
+                                </span>
+
+                            </div>
+
+
+
+                            <!-- CITY -->
+
+                            <div class="form-group">
+
+                                <label for="city">
+                                    City
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="city"
+                                    autocomplete="address-level2"
+                                    readonly
+                                >
+
+                            </div>
+
+
+
+                            <!-- PROVINCE -->
+
+                            <div class="form-group">
+
+                                <label for="province">
+                                    Province
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="province"
+                                    autocomplete="address-level1"
+                                    readonly
+                                >
+
+                            </div>
+
+
+
+                            <!-- POSTAL CODE -->
+
+                            <div class="form-group">
+
+                                <label for="postalCode">
+                                    Postal code
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="postalCode"
+                                    autocomplete="postal-code"
+                                    readonly
+                                >
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     PAYMENT
+                     ================================================= -->
+
+                <section class="checkout-section">
+
+                    <div class="section-title">
+
+                        <div class="section-number">
+                            03
+                        </div>
+
+                        <h2>
+                            Payment
+                        </h2>
+
+                    </div>
+
+
+                    <div class="payment-notice">
+
+                        <strong>
+                            Choose your payment method
+                        </strong>
+
+                        <br>
+
+                        Select a payment method below.
+                        TML does not ask you to enter your
+                        full card number or CVV directly into
+                        this checkout page.
+
+                    </div>
+
+
+                    <div class="payment-options">
+
+
+                        <!-- CARD -->
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="card"
+                                checked
+                            >
+
+                            <i class="fa-regular fa-credit-card"></i>
+
+                            <div>
+
+                                <strong>
+                                    Card payment
+                                </strong>
+
+                                <small>
+                                    Visa · Mastercard
+                                </small>
+
+                            </div>
+
+                        </label>
+
+
+
+                        <!-- EFT -->
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="eft"
+                            >
+
+                            <i class="fa-solid fa-building-columns"></i>
+
+                            <div>
+
+                                <strong>
+                                    Bank EFT
+                                </strong>
+
+                                <small>
+                                    Pay by electronic bank transfer
+                                </small>
+
+                            </div>
+
+                        </label>
+
+
+
+                        <!-- WHATSAPP -->
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="whatsapp"
+                            >
+
+                            <i class="fa-brands fa-whatsapp"></i>
+
+                            <div>
+
+                                <strong>
+                                    WhatsApp confirmation
+                                </strong>
+
+                                <small>
+                                    Confirm order details through WhatsApp
+                                </small>
+
+                            </div>
+
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         CARD DETAILS
+                         ================================================= -->
+
+                    <div
+                        class="payment-details"
+                        id="cardPaymentDetails"
+                    >
+
+                        <div class="payment-method-header">
+
+                            <div>
+
+                                <strong>
+                                    Card payment
+                                </strong>
+
+                                <p>
+                                    Your card payment should be
+                                    completed through TML's configured
+                                    secure payment provider.
+                                </p>
+
+                            </div>
+
+
+                            <div class="card-brands">
+
+                                <span>
+                                    VISA
+                                </span>
+
+                                <span>
+                                    MASTERCARD
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="secure-provider">
+
+                            <i class="fa-solid fa-shield-halved"></i>
+
+                            <div>
+
+                                <strong>
+                                    Secure card processing
+                                </strong>
+
+                                <small>
+                                    Card details, CVV and PIN should
+                                    not be entered or stored directly
+                                    in this website's JavaScript.
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         EFT DETAILS
+                         ================================================= -->
+
+                    <div
+                        class="payment-details"
+                        id="eftPaymentDetails"
+                        style="display:none;"
+                    >
+
+                        <div class="payment-method-header">
+
+                            <div>
+
+                                <strong>
+                                    TML bank transfer
+                                </strong>
+
+                                <p>
+                                    Use the TML banking details below
+                                    to make your EFT.
+                                </p>
+
+                            </div>
+
+
+                            <i
+                                class="fa-solid fa-building-columns payment-large-icon"
+                            ></i>
+
+                        </div>
+
+
+                        <div class="bank-details">
+
+
+                            <div class="bank-row">
+
+                                <span>
+                                    Bank
+                                </span>
+
+                                <strong>
+                                    TML BANK NAME
+                                </strong>
+
+                            </div>
+
+
+                            <div class="bank-row">
+
+                                <span>
+                                    Account holder
+                                </span>
+
+                                <strong>
+                                    TML Illuminated Candles
+                                </strong>
+
+                            </div>
+
+
+                            <div class="bank-row">
+
+                                <span>
+                                    Account number
+                                </span>
+
+                                <strong>
+                                    0000000000
+                                </strong>
+
+                            </div>
+
+
+                            <div class="bank-row">
+
+                                <span>
+                                    Branch code
+                                </span>
+
+                                <strong>
+                                    000000
+                                </strong>
+
+                            </div>
+
+
+                            <div class="bank-row">
+
+                                <span>
+                                    Account type
+                                </span>
+
+                                <strong>
+                                    Business / Current
+                                </strong>
+
+                            </div>
+
+
+                            <div class="bank-row reference-row">
+
+                                <span>
+                                    Payment reference
+                                </span>
+
+                                <strong id="eftReference">
+                                    TML-0000
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="eft-warning">
+
+                            <i class="fa-solid fa-circle-info"></i>
+
+                            <p>
+                                Use the payment reference shown above
+                                when making your EFT. Replace the
+                                placeholder banking details with
+                                TML's actual business banking details
+                                before going live.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="proofOfPayment">
+                                Proof of payment
+                            </label>
+
+                            <input
+                                type="file"
+                                id="proofOfPayment"
+                                accept="image/*,.pdf"
+                            >
+
+                            <small class="field-help">
+                                Optional. A real upload requires
+                                server/cloud storage before it can
+                                be received by TML.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         WHATSAPP DETAILS
+                         ================================================= -->
+
+                    <div
+                        class="payment-details"
+                        id="whatsappPaymentDetails"
+                        style="display:none;"
+                    >
+
+                        <div class="payment-method-header">
+
+                            <div>
+
+                                <strong>
+                                    WhatsApp confirmation
+                                </strong>
+
+                                <p>
+                                    Your order will be recorded and
+                                    can then be confirmed with TML
+                                    through WhatsApp.
+                                </p>
+
+                            </div>
+
+
+                            <i
+                                class="fa-brands fa-whatsapp whatsapp-large-icon"
+                            ></i>
+
+                        </div>
+
+
+                        <div class="whatsapp-notice">
+
+                            <i class="fa-brands fa-whatsapp"></i>
+
+                            <div>
+
+                                <strong>
+                                    Almost there
+                                </strong>
+
+                                <p>
+                                    After submitting your order,
+                                    TML can confirm the payment
+                                    instructions and order details
+                                    with you through WhatsApp.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     NOTES
+                     ================================================= -->
+
+                <section class="checkout-section">
+
+                    <div class="section-title">
+
+                        <div class="section-number">
+                            04
+                        </div>
+
+                        <h2>
+                            Order notes
+                        </h2>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="notes">
+                            Additional notes
+                        </label>
+
+                        <textarea
+                            id="notes"
+                            name="notes"
+                            placeholder="Anything TML should know about your order?"
+                        ></textarea>
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 RIGHT — ORDER SUMMARY
+                 ================================================= -->
+
+            <aside class="summary">
+
+                <h2>
+                    Your order
+                </h2>
+
+
+                <div
+                    class="summary-items"
+                    id="summaryItems"
+                >
+                </div>
+
+
+                <div class="summary-lines">
+
+
+                    <div class="summary-line">
+
+                        <span>
+                            Subtotal
+                        </span>
+
+                        <span id="subtotal">
+                            R0
+                        </span>
+
+                    </div>
+
+
+                    <div class="summary-line">
+
+                        <span>
+                            Delivery
+                        </span>
+
+                        <span id="deliveryPrice">
+                            FREE
+                        </span>
+
+                    </div>
+
+
+                    <div class="summary-line total">
+
+                        <span>
+                            Total
+                        </span>
+
+                        <strong id="total">
+                            R0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="place-order"
+                    id="placeOrder"
+                >
+
+                    Place order
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+                <p class="terms">
+
+                    By placing your order, you confirm that
+                    the information supplied is correct and
+                    agree to the TML order terms.
+
+                </p>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================================================
+     SUCCESS
+     ========================================================= -->
+
+<section
+    class="order-success"
+    id="orderSuccess"
+>
+
+    <div class="success-inner">
+
+
+        <div class="success-icon">
+
+            <i class="fa-solid fa-check"></i>
+
+        </div>
+
+
+        <span>
+            TML Illuminated Candles
+        </span>
+
+
+        <h1>
+            Order received.
+        </h1>
+
+
+        <p>
+
+            Thank you for choosing TML.
+            Your order has been recorded successfully.
+            We’ll contact you using the details provided
+            to confirm the next steps.
+
+        </p>
+
+
+        <div
+            class="order-number"
+            id="orderNumber"
+        >
+        </div>
+
+
+        <div class="success-buttons">
+
+            <a
+                href="shop.html"
+                class="continue-shopping"
+            >
+                Continue shopping
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+/* =========================================================
+   TML CHECKOUT
+   ========================================================= */
+
+const CART_KEY = "tmlCart";
+const PRICE_KEY = "tmlProductPrices";
+
+
+/* =========================================================
+   PRODUCTS
+   ========================================================= */
+
+const products = [
+
+    {
+        id: "sage-mint",
+        name: "Sage & Mint",
+        collection: "Signature Collection",
+        price: 250,
+        image: "images/products/sage-mint-1.jpg"
+    },
+
+    {
+        id: "cranberry",
+        name: "Cranberry",
+        collection: "Signature Collection",
+        price: 215,
+        image: "images/products/cranberry-1.jpg"
+    },
+
+    {
+        id: "blackberry",
+        name: "Blackberry",
+        collection: "Signature Collection",
+        price: 250,
+        image: "images/products/blackberry-1.jpg"
+    },
+
+    {
+        id: "rose-gold-blush",
+        name: "Rose Gold Blush",
+        collection: "Luxury Collection",
+        price: 300,
+        image: "images/products/rose-gold-blush-1.jpg"
+    },
+
+    {
+        id: "noir-oud-eclat",
+        name: "Noir Oud Éclat",
+        collection: "Luxury Collection",
+        price: 350,
+        image: "images/products/noir-oud-eclat-1.jpg"
+    }
+
+];
+
+
+/* =========================================================
+   CART
+   ========================================================= */
+
+function getCart() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(CART_KEY)
+        ) || [];
+
+    } catch (error) {
+
+        return [];
+
+    }
+
+}
+
+
+/* =========================================================
+   SHOP PRICES
+   ========================================================= */
+
+function getShopPrices() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(PRICE_KEY)
+        ) || {};
+
+    } catch (error) {
+
+        return {};
+
+    }
+
+}
+
+
+/* =========================================================
+   FORMAT PRICE
+   ========================================================= */
+
+function formatPrice(price) {
+
+    return "R" +
+        Number(price).toLocaleString("en-ZA");
+
+}
+
+
+/* =========================================================
+   GET ITEMS
+   ========================================================= */
+
+function getItems() {
+
+    const cart = getCart();
+
+    const shopPrices = getShopPrices();
+
+
+    return cart
+
+        .map(cartItem => {
+
+            const product =
+                products.find(
+                    item =>
+                        item.id === cartItem.id
+                );
+
+
+            if (!product) {
+
+                return null;
+
+            }
+
+
+            let price =
+                product.price;
+
+
+            if (
+                Object.prototype.hasOwnProperty.call(
+                    shopPrices,
+                    product.id
+                )
+            ) {
+
+                price =
+                    Number(
+                        shopPrices[product.id]
+                    );
+
+            }
+
+
+            if (
+                cartItem.price !== undefined &&
+                !Object.prototype.hasOwnProperty.call(
+                    shopPrices,
+                    product.id
+                )
+            ) {
+
+                price =
+                    Number(
+                        cartItem.price
+                    );
+
+            }
+
+
+            return {
+
+                ...product,
+
+                price,
+
+                quantity:
+                    Number(
+                        cartItem.quantity
+                    ) || 1
+
+            };
+
+        })
+
+        .filter(Boolean);
+
+}
+
+
+/* =========================================================
+   RENDER SUMMARY
+   ========================================================= */
+
+function renderSummary() {
+
+    const items =
+        getItems();
+
+
+    const summary =
+        document.getElementById(
+            "summaryItems"
+        );
+
+
+    if (!items.length) {
+
+        document.getElementById(
+            "checkoutContent"
+        ).innerHTML = `
+
+            <div class="checkout-page">
+
+                <div class="empty-checkout">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    <h2>
+                        Your bag is empty
+                    </h2>
+
+                    <p>
+                        Add something beautiful
+                        before continuing to checkout.
+                    </p>
+
+                    <a href="shop.html">
+                        SHOP THE COLLECTION
+                    </a>
+
+                </div>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    let subtotal = 0;
+
+
+    summary.innerHTML =
+
+        items.map(item => {
+
+            const itemTotal =
+                item.price *
+                item.quantity;
+
+
+            subtotal += itemTotal;
+
+
+            return `
+
+                <div class="summary-item">
+
+                    <div class="summary-image">
+
+                        <img
+                            src="${item.image}"
+                            alt="${item.name}"
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="summary-item-name">
+                            ${item.name}
+                        </div>
+
+                        <div class="summary-item-details">
+
+                            ${item.collection}
+
+                            <br>
+
+                            Qty: ${item.quantity}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-item-price">
+
+                        ${formatPrice(itemTotal)}
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+
+    document.getElementById(
+        "subtotal"
+    ).textContent =
+        formatPrice(subtotal);
+
+
+    updateTotal(subtotal);
+
+}
+
+
+/* =========================================================
+   DELIVERY COST
+   ========================================================= */
+
+function getDeliveryCost() {
+
+    const selected =
+        document.querySelector(
+            'input[name="delivery"]:checked'
+        );
+
+
+    if (!selected) {
+
+        return 0;
+
+    }
+
+
+    return Number(
+        selected.dataset.price || 0
+    );
+
+}
+
+
+/* =========================================================
+   UPDATE TOTAL
+   ========================================================= */
+
+function updateTotal(subtotal) {
+
+    const delivery =
+        getDeliveryCost();
+
+
+    document.getElementById(
+        "deliveryPrice"
+    ).textContent =
+
+        delivery > 0
+            ? formatPrice(delivery)
+            : "FREE";
+
+
+    document.getElementById(
+        "total"
+    ).textContent =
+
+        formatPrice(
+            subtotal + delivery
+        );
+
+}
+
+
+/* =========================================================
+   DELIVERY CHANGE
+   ========================================================= */
+
+document
+    .querySelectorAll(
+        'input[name="delivery"]'
+    )
+    .forEach(input => {
+
+        input.addEventListener(
+            "change",
+            function () {
+
+                const addressFields =
+                    document.getElementById(
+                        "addressFields"
+                    );
+
+
+                if (
+                    this.value === "delivery"
+                ) {
+
+                    addressFields.style.display =
+                        "block";
+
+
+                    /*
+                     * Give Google Maps a moment to
+                     * calculate the newly visible map.
+                     */
+
+                    setTimeout(
+                        function () {
+
+                            if (
+                                window.tmlMap &&
+                                typeof window.tmlMap.setCenter === "function"
+                            ) {
+
+                                window.google.maps.event.trigger(
+                                    window.tmlMap,
+                                    "resize"
+                                );
+
+                            }
+
+                        },
+                        250
+                    );
+
+                } else {
+
+                    addressFields.style.display =
+                        "none";
+
+                }
+
+
+                const items =
+                    getItems();
+
+
+                const subtotal =
+                    items.reduce(
+                        (sum, item) =>
+                            sum +
+                            (
+                                item.price *
+                                item.quantity
+                            ),
+                        0
+                    );
+
+
+                updateTotal(subtotal);
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   ORDER NUMBER
+   ========================================================= */
+
+function generateOrderNumber() {
+
+    const date =
+        new Date();
+
+
+    const year =
+        date.getFullYear();
+
+
+    const random =
+        Math.floor(
+            1000 +
+            Math.random() * 9000
+        );
+
+
+    return `TML-${year}-${random}`;
+
+}
+
+
+/* =========================================================
+   PAYMENT SWITCHER
+   ========================================================= */
+
+const paymentInputs =
+    document.querySelectorAll(
+        'input[name="payment"]'
+    );
+
+
+const cardDetails =
+    document.getElementById(
+        "cardPaymentDetails"
+    );
+
+
+const eftDetails =
+    document.getElementById(
+        "eftPaymentDetails"
+    );
+
+
+const whatsappDetails =
+    document.getElementById(
+        "whatsappPaymentDetails"
+    );
+
+
+function updatePaymentMethod() {
+
+    const selected =
+        document.querySelector(
+            'input[name="payment"]:checked'
+        );
+
+
+    if (!selected) {
+
+        return;
+
+    }
+
+
+    cardDetails.style.display =
+        "none";
+
+
+    eftDetails.style.display =
+        "none";
+
+
+    whatsappDetails.style.display =
+        "none";
+
+
+    if (
+        selected.value === "card"
+    ) {
+
+        cardDetails.style.display =
+            "block";
+
+    }
+
+
+    if (
+        selected.value === "eft"
+    ) {
+
+        eftDetails.style.display =
+            "block";
+
+
+        updateEFTReference();
+
+    }
+
+
+    if (
+        selected.value === "whatsapp"
+    ) {
+
+        whatsappDetails.style.display =
+            "block";
+
+    }
+
+}
+
+
+paymentInputs.forEach(
+    input => {
+
+        input.addEventListener(
+            "change",
+            updatePaymentMethod
+        );
+
+    }
+);
+
+
+/* =========================================================
+   EFT REFERENCE
+   ========================================================= */
+
+function createShortReference() {
+
+    const random =
+        Math.floor(
+            1000 +
+            Math.random() * 9000
+        );
+
+
+    return `TML-${random}`;
+
+}
+
+
+function updateEFTReference() {
+
+    const reference =
+        document.getElementById(
+            "eftReference"
+        );
+
+
+    if (!reference) {
+
+        return;
+
+    }
+
+
+    let savedReference =
+        sessionStorage.getItem(
+            "tmlEFTReference"
+        );
+
+
+    if (!savedReference) {
+
+        savedReference =
+            createShortReference();
+
+
+        sessionStorage.setItem(
+            "tmlEFTReference",
+            savedReference
+        );
+
+    }
+
+
+    reference.textContent =
+        savedReference;
+
+}
+
+
+updatePaymentMethod();
+
+
+/* =========================================================
+   GOOGLE MAPS VARIABLES
+   ========================================================= */
+
+window.tmlMap = null;
+
+let tmlMarker = null;
+
+let tmlPlaceAutocomplete = null;
+
+let selectedDeliveryPlace = null;
+
+
+/* =========================================================
+   GOOGLE MAPS INITIALIZATION
+   ========================================================= */
+
+async function initTMLMap() {
+
+    try {
+
+        const {
+
+            Map
+
+        } = await google.maps.importLibrary(
+            "maps"
+        );
+
+
+        const {
+
+            AdvancedMarkerElement
+
+        } = await google.maps.importLibrary(
+            "marker"
+        );
+
+
+        const {
+
+            PlaceAutocompleteElement
+
+        } = await google.maps.importLibrary(
+            "places"
+        );
+
+
+        const mapElement =
+            document.getElementById(
+                "addressMap"
+            );
+
+
+        const autocompleteContainer =
+            document.getElementById(
+                "placeAutocompleteContainer"
+            );
+
+
+        if (
+            !mapElement ||
+            !autocompleteContainer
+        ) {
+
+            console.error(
+                "TML Google Maps elements were not found."
+            );
+
+            return;
+
+        }
+
+
+        /* -----------------------------------------
+           MAP
+           ----------------------------------------- */
+
+        const defaultLocation = {
+
+            lat: -30.5595,
+
+            lng: 22.9375
+
+        };
+
+
+        window.tmlMap =
+            new Map(
+                mapElement,
+                {
+
+                    center:
+                        defaultLocation,
+
+                    zoom: 5,
+
+                    mapTypeControl: false,
+
+                    streetViewControl: false,
+
+                    fullscreenControl: false,
+
+                    mapId:
+                        "TML_CHECKOUT_MAP"
+
+                }
+            );
+
+
+        /* -----------------------------------------
+           NEW PLACE AUTOCOMPLETE
+           ----------------------------------------- */
+
+        tmlPlaceAutocomplete =
+            new PlaceAutocompleteElement();
+
+
+        tmlPlaceAutocomplete.placeholder =
+            "Search your delivery address...";
+
+
+        /*
+         * Restrict predictions to South Africa.
+         */
+
+        tmlPlaceAutocomplete.includedRegionCodes =
+            ["za"];
+
+
+        tmlPlaceAutocomplete.className =
+            "tml-google-address";
+
+
+        autocompleteContainer.appendChild(
+            tmlPlaceAutocomplete
+        );
+
+
+        /* -----------------------------------------
+           STYLE GOOGLE WIDGET
+           ----------------------------------------- */
+
+        const style =
+            document.createElement(
+                "style"
+            );
+
+
+        style.textContent = `
+
+            .tml-google-address {
+                width: 100%;
+                display: block;
+            }
+
+            .tml-google-address::part(input) {
+                width: 100%;
+            }
+
+        `;
+
+
+        document.head.appendChild(
+            style
+        );
+
+
+        /* -----------------------------------------
+           ADDRESS SELECTED
+           ----------------------------------------- */
+
+        tmlPlaceAutocomplete.addEventListener(
+            "gmp-select",
+            async function (
+                event
+            ) {
+
+                try {
+
+                    const place =
+                        event
+                            .placePrediction
+                            .toPlace();
+
+
+                    await place.fetchFields({
+
+                        fields: [
+                            "displayName",
+                            "formattedAddress",
+                            "location",
+                            "addressComponents",
+                            "viewport"
+                        ]
+
+                    });
+
+
+                    if (
+                        !place.location
+                    ) {
+
+                        alert(
+                            "We could not determine the exact location of that address. Please select another result."
+                        );
+
+                        return;
+
+                    }
+
+
+                    selectedDeliveryPlace =
+                        place;
+
+
+                    setSelectedAddress(
+                        place,
+                        AdvancedMarkerElement
+                    );
+
+                }
+
+                catch (error) {
+
+                    console.error(
+                        "TML address selection error:",
+                        error
+                    );
+
+
+                    alert(
+                        "We could not load that address. Please select another result."
+                    );
+
+                }
+
+            }
+        );
+
+
+        console.log(
+            "TML Google Maps is ready."
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "TML Google Maps failed to initialize:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   SET SELECTED ADDRESS
+   ========================================================= */
+
+function setSelectedAddress(
+    place,
+    AdvancedMarkerElement
+) {
+
+    const addressInput =
+        document.getElementById(
+            "address"
+        );
+
+
+    const cityInput =
+        document.getElementById(
+            "city"
+        );
+
+
+    const provinceInput =
+        document.getElementById(
+            "province"
+        );
+
+
+    const postalCodeInput =
+        document.getElementById(
+            "postalCode"
+        );
+
+
+    if (
+        !addressInput ||
+        !place.location
+    ) {
+
+        return;
+
+    }
+
+
+    const location =
+        place.location;
+
+
+    const latitude =
+        location.lat();
+
+
+    const longitude =
+        location.lng();
+
+
+    /* -----------------------------------------
+       ADDRESS
+       ----------------------------------------- */
+
+    addressInput.value =
+        place.formattedAddress || "";
+
+
+    /* -----------------------------------------
+       SAVE COORDINATES
+       ----------------------------------------- */
+
+    addressInput.dataset.latitude =
+        latitude;
+
+
+    addressInput.dataset.longitude =
+        longitude;
+
+
+    /* -----------------------------------------
+       ADDRESS COMPONENTS
+       ----------------------------------------- */
+
+    let city = "";
+
+    let province = "";
+
+    let postalCode = "";
+
+
+    if (
+        place.addressComponents
+    ) {
+
+        place.addressComponents.forEach(
+            component => {
+
+                const types =
+                    component.types || [];
+
+
+                if (
+                    types.includes(
+                        "locality"
+                    )
+                ) {
+
+                    city =
+                        component.longText || "";
+
+                }
+
+
+                /*
+                 * Some South African addresses
+                 * may not return locality.
+                 */
+
+                if (
+                    !city &&
+                    types.includes(
+                        "postal_town"
+                    )
+                ) {
+
+                    city =
+                        component.longText || "";
+
+                }
+
+
+                if (
+                    types.includes(
+                        "administrative_area_level_1"
+                    )
+                ) {
+
+                    province =
+                        component.longText || "";
+
+                }
+
+
+                if (
+                    types.includes(
+                        "postal_code"
+                    )
+                ) {
+
+                    postalCode =
+                        component.longText || "";
+
+                }
+
+            }
+        );
+
+    }
+
+
+    cityInput.value =
+        city;
+
+
+    provinceInput.value =
+        province;
+
+
+    postalCodeInput.value =
+        postalCode;
+
+
+    /* -----------------------------------------
+       MOVE MAP
+       ----------------------------------------- */
+
+    if (
+        place.viewport
+    ) {
+
+        window.tmlMap.fitBounds(
+            place.viewport
+        );
+
+    } else {
+
+        window.tmlMap.setCenter({
+
+            lat: latitude,
+
+            lng: longitude
+
+        });
+
+
+        window.tmlMap.setZoom(
+            17
+        );
+
+    }
+
+
+    /* -----------------------------------------
+       MARKER
+       ----------------------------------------- */
+
+    if (
+        tmlMarker
+    ) {
+
+        tmlMarker.map =
+            null;
+
+    }
+
+
+    tmlMarker =
+        new AdvancedMarkerElement({
+
+            map:
+                window.tmlMap,
+
+            position: {
+
+                lat:
+                    latitude,
+
+                lng:
+                    longitude
+
+            }
+
+        });
+
+
+    /* -----------------------------------------
+       CONFIRMATION
+       ----------------------------------------- */
+
+    const confirmed =
+        document.getElementById(
+            "addressConfirmed"
+        );
+
+
+    if (
+        confirmed
+    ) {
+
+        confirmed.classList.add(
+            "show"
+        );
+
+
+        confirmed.querySelector(
+            "span"
+        ).textContent =
+            `Delivery location selected: ${
+                place.formattedAddress || ""
+            }`;
+
+    }
+
+
+    console.log(
+        "TML selected delivery location:",
+        {
+
+            address:
+                addressInput.value,
+
+            latitude,
+
+            longitude,
+
+            city,
+
+            province,
+
+            postalCode
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   CLEAR SELECTED ADDRESS
+   ========================================================= */
+
+function clearAddressLocation() {
+
+    const address =
+        document.getElementById(
+            "address"
+        );
+
+
+    if (!address) {
+
+        return;
+
+    }
+
+
+    delete address.dataset.latitude;
+
+    delete address.dataset.longitude;
+
+
+    selectedDeliveryPlace =
+        null;
+
+
+    const city =
+        document.getElementById(
+            "city"
+        );
+
+
+    const province =
+        document.getElementById(
+            "province"
+        );
+
+
+    const postalCode =
+        document.getElementById(
+            "postalCode"
+        );
+
+
+    if (city) {
+
+        city.value = "";
+
+    }
+
+
+    if (province) {
+
+        province.value = "";
+
+    }
+
+
+    if (postalCode) {
+
+        postalCode.value = "";
+
+    }
+
+
+    const confirmed =
+        document.getElementById(
+            "addressConfirmed"
+        );
+
+
+    if (confirmed) {
+
+        confirmed.classList.remove(
+            "show"
+        );
+
+    }
+
+
+    if (tmlMarker) {
+
+        tmlMarker.map =
+            null;
+
+        tmlMarker =
+            null;
+
+    }
+
+}
+
+
+/* =========================================================
+   PLACE ORDER
+   ========================================================= */
+
+document
+    .getElementById(
+        "placeOrder"
+    )
+    .addEventListener(
+        "click",
+        function () {
+
+
+            /* -----------------------------------------
+               CUSTOMER DETAILS
+               ----------------------------------------- */
+
+            const formFields = [
+
+                "firstName",
+                "lastName",
+                "email",
+                "phone"
+
+            ];
+
+
+            for (
+                const fieldId
+                of formFields
+            ) {
+
+                const field =
+                    document.getElementById(
+                        fieldId
+                    );
+
+
+                if (
+                    !field.value.trim()
+                ) {
+
+                    field.focus();
+
+
+                    alert(
+                        "Please complete your details before placing the order."
+                    );
+
+
+                    return;
+
+                }
+
+            }
+
+
+            /* -----------------------------------------
+               DELIVERY
+               ----------------------------------------- */
+
+            const delivery =
+                document.querySelector(
+                    'input[name="delivery"]:checked'
+                );
+
+
+            const address =
+                document.getElementById(
+                    "address"
+                );
+
+
+            if (
+                delivery &&
+                delivery.value === "delivery"
+            ) {
+
+                const latitude =
+                    address?.dataset.latitude;
+
+
+                const longitude =
+                    address?.dataset.longitude;
+
+
+                if (
+                    !address ||
+                    !address.value.trim() ||
+                    !latitude ||
+                    !longitude
+                ) {
+
+                    alert(
+                        "Please search for and select your delivery address from the Google Maps suggestions."
+                    );
+
+
+                    return;
+
+                }
+
+            }
+
+
+            /* -----------------------------------------
+               CART
+               ----------------------------------------- */
+
+            const items =
+                getItems();
+
+
+            if (
+                !items.length
+            ) {
+
+                alert(
+                    "Your bag is empty."
+                );
+
+
+                return;
+
+            }
+
+
+            /* -----------------------------------------
+               ORDER NUMBER
+               ----------------------------------------- */
+
+            const orderNumber =
+                generateOrderNumber();
+
+
+            /* -----------------------------------------
+               PAYMENT
+               ----------------------------------------- */
+
+            const paymentMethod =
+                document.querySelector(
+                    'input[name="payment"]:checked'
+                )?.value ||
+                "card";
+
+
+            /* -----------------------------------------
+               ORDER
+               ----------------------------------------- */
+
+            const order = {
+
+
+                orderNumber,
+
+
+                customer: {
+
+                    firstName:
+                        document.getElementById(
+                            "firstName"
+                        ).value.trim(),
+
+
+                    lastName:
+                        document.getElementById(
+                            "lastName"
+                        ).value.trim(),
+
+
+                    email:
+                        document.getElementById(
+                            "email"
+                        ).value.trim(),
+
+
+                    phone:
+                        document.getElementById(
+                            "phone"
+                        ).value.trim()
+
+                },
+
+
+                delivery: {
+
+                    method:
+                        delivery
+                            ? delivery.value
+                            : "collection",
+
+
+                    address:
+                        address
+                            ? address.value.trim()
+                            : "",
+
+
+                    city:
+                        document.getElementById(
+                            "city"
+                        ).value.trim(),
+
+
+                    province:
+                        document.getElementById(
+                            "province"
+                        ).value,
+
+
+                    postalCode:
+                        document.getElementById(
+                            "postalCode"
+                        ).value.trim(),
+
+
+                    latitude:
+                        address?.dataset.latitude ||
+                        null,
+
+
+                    longitude:
+                        address?.dataset.longitude ||
+                        null
+
+                },
+
+
+                payment: {
+
+                    method:
+                        paymentMethod,
+
+
+                    eftReference:
+                        paymentMethod === "eft"
+                            ? sessionStorage.getItem(
+                                "tmlEFTReference"
+                            )
+                            : null
+
+                },
+
+
+                notes:
+                    document.getElementById(
+                        "notes"
+                    ).value.trim(),
+
+
+                items,
+
+
+                subtotal:
+                    items.reduce(
+                        (sum, item) =>
+                            sum +
+                            (
+                                item.price *
+                                item.quantity
+                            ),
+                        0
+                    ),
+
+
+                deliveryCost:
+                    getDeliveryCost(),
+
+
+                createdAt:
+                    new Date().toISOString()
+
+            };
+
+
+            /* -----------------------------------------
+               TOTAL
+               ----------------------------------------- */
+
+            order.total =
+                order.subtotal +
+                order.deliveryCost;
+
+
+            /* -----------------------------------------
+               LOCAL SAVE
+               ----------------------------------------- */
+
+            localStorage.setItem(
+                "tmlLastOrder",
+                JSON.stringify(
+                    order
+                )
+            );
+
+
+            /* -----------------------------------------
+               SUCCESS
+               ----------------------------------------- */
+
+            document.getElementById(
+                "checkoutContent"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "orderSuccess"
+            ).classList.add(
+                "show"
+            );
+
+
+            document.getElementById(
+                "orderNumber"
+            ).textContent =
+                `ORDER ${orderNumber}`;
+
+
+            /* -----------------------------------------
+               CLEAR CART
+               ----------------------------------------- */
+
+            localStorage.removeItem(
+                CART_KEY
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   START CHECKOUT
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        renderSummary();
+
+        updatePaymentMethod();
+
+    }
+);
+
+</script>
+
+
+<!-- =========================================================
+     GOOGLE MAPS
+     =========================================================
+
+     IMPORTANT:
+     Replace YOUR_GOOGLE_MAPS_API_KEY with your restricted
+     Google Maps API key.
+
+     Enable:
+     - Maps JavaScript API
+     - Places API
+     - Places API (New)
+     ========================================================= -->
+
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZWXD5VvqKscPxgkoDZv7vjr5ncoONp1U&loading=async&libraries=places&callback=initTMLMap"
+    async
+    defer>
+</script>
+
+
+</body>
+
+</html>

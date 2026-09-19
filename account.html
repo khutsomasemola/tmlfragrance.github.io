@@ -1,0 +1,3268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Account | TML</title>
+
+    <meta
+        name="description"
+        content="Sign in to your TML account, manage your orders, wishlist and personal details."
+    >
+
+    <!-- =========================================================
+         GOOGLE FONTS
+    ========================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- =========================================================
+         FONT AWESOME
+    ========================================================== -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+
+        /* =========================================================
+           TML DESIGN SYSTEM
+        ========================================================== */
+
+        :root {
+            --black: #080807;
+            --black-soft: #11100e;
+            --cream: #f4f0e9;
+            --cream-dark: #e9e3da;
+            --gold: #c9a76a;
+            --gold-light: #e2c58e;
+            --text: #171614;
+            --text-soft: #6d6962;
+            --white: #ffffff;
+            --border: rgba(0,0,0,.12);
+
+            --serif: "Playfair Display", Georgia, serif;
+            --sans: "DM Sans", Arial, sans-serif;
+
+            --container: 1440px;
+            --transition: .45s cubic-bezier(.22,.61,.36,1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--cream);
+            color: var(--text);
+            font-family: var(--sans);
+            overflow-x: hidden;
+        }
+
+        body.loading {
+            overflow: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           ANNOUNCEMENT
+        ========================================================== */
+
+        .announcement {
+            height: 44px;
+            background: var(--black);
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 10px;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================== */
+
+        .site-header {
+            height: 108px;
+            background: var(--cream);
+
+            border-bottom: 1px solid rgba(0,0,0,.07);
+
+            position: sticky;
+            top: 0;
+            z-index: 900;
+        }
+
+        .header-inner {
+            height: 100%;
+            max-width: var(--container);
+            margin: auto;
+            padding: 0 40px;
+
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .desktop-nav a {
+            position: relative;
+
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+
+            transition: var(--transition);
+        }
+
+        .desktop-nav a::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+
+            width: 0;
+            height: 1px;
+
+            background: var(--gold);
+
+            transition: var(--transition);
+        }
+
+        .desktop-nav a:hover {
+            color: var(--gold);
+        }
+
+        .desktop-nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-logo {
+            justify-self: center;
+        }
+
+        .header-logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        .header-actions {
+            justify-self: end;
+
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .header-actions a,
+        .header-actions button {
+            background: none;
+            border: 0;
+
+            color: var(--text);
+            font-size: 15px;
+
+            transition: var(--transition);
+        }
+
+        .header-actions a:hover,
+        .header-actions button:hover {
+            color: var(--gold);
+        }
+
+        .bag {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -9px;
+            right: -10px;
+
+            min-width: 15px;
+            height: 15px;
+
+            padding: 0 4px;
+
+            border-radius: 50%;
+
+            background: var(--gold);
+            color: var(--black);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 8px;
+            font-weight: 600;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+
+        /* =========================================================
+           PAGE HERO
+        ========================================================== */
+
+        .account-hero {
+            background: var(--black);
+            color: white;
+
+            padding: 95px 20px 100px;
+
+            text-align: center;
+        }
+
+        .eyebrow {
+            color: var(--gold-light);
+
+            font-size: 10px;
+            font-weight: 500;
+
+            letter-spacing: .27em;
+            text-transform: uppercase;
+        }
+
+        .account-hero h1 {
+            margin-top: 18px;
+
+            font-family: var(--serif);
+            font-size: clamp(52px, 7vw, 95px);
+            font-weight: 400;
+
+            line-height: .95;
+            letter-spacing: -.04em;
+        }
+
+        .account-hero h1 em {
+            color: var(--gold-light);
+            font-style: italic;
+        }
+
+        .account-hero p {
+            max-width: 570px;
+            margin: 25px auto 0;
+
+            color: rgba(255,255,255,.65);
+
+            font-size: 13px;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+
+        /* =========================================================
+           AUTH AREA
+        ========================================================== */
+
+        .account-section {
+            padding: 100px 20px 130px;
+        }
+
+        .account-container {
+            width: min(100%, 1160px);
+            margin: auto;
+        }
+
+        .auth-layout {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+
+            min-height: 620px;
+
+            background: white;
+
+            box-shadow:
+                0 25px 80px rgba(0,0,0,.08);
+        }
+
+
+        /* =========================================================
+           AUTH BRAND PANEL
+        ========================================================== */
+
+        .auth-brand {
+            background:
+                linear-gradient(
+                    rgba(8,8,7,.68),
+                    rgba(8,8,7,.88)
+                ),
+                url("assets/lifestyle/luxury-interior.jpg")
+                center/cover no-repeat;
+
+            color: white;
+
+            padding: 65px 50px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .auth-brand-logo img {
+            width: 90px;
+            filter: brightness(0) invert(1);
+        }
+
+        .auth-brand-content {
+            max-width: 340px;
+        }
+
+        .auth-brand-content span {
+            color: var(--gold-light);
+
+            font-size: 9px;
+            letter-spacing: .24em;
+            text-transform: uppercase;
+        }
+
+        .auth-brand-content h2 {
+            margin-top: 15px;
+
+            font-family: var(--serif);
+            font-size: 43px;
+            font-weight: 400;
+
+            line-height: 1.08;
+        }
+
+        .auth-brand-content h2 em {
+            font-style: italic;
+        }
+
+        .auth-brand-content p {
+            margin-top: 20px;
+
+            color: rgba(255,255,255,.62);
+
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        .brand-quote {
+            border-left: 1px solid var(--gold);
+
+            padding-left: 18px;
+
+            color: rgba(255,255,255,.65);
+
+            font-family: var(--serif);
+            font-size: 13px;
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           AUTH PANEL
+        ========================================================== */
+
+        .auth-panel {
+            padding: 65px 75px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .auth-tabs {
+            display: flex;
+
+            border-bottom: 1px solid rgba(0,0,0,.12);
+
+            margin-bottom: 40px;
+        }
+
+        .auth-tab {
+            position: relative;
+
+            background: transparent;
+            border: 0;
+
+            padding: 0 0 16px;
+            margin-right: 32px;
+
+            color: var(--text-soft);
+
+            font-size: 10px;
+            font-weight: 500;
+
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+
+        .auth-tab::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+
+            width: 0;
+            height: 1px;
+
+            background: var(--black);
+
+            transition: var(--transition);
+        }
+
+        .auth-tab.active {
+            color: var(--black);
+        }
+
+        .auth-tab.active::after {
+            width: 100%;
+        }
+
+
+        /* =========================================================
+           AUTH HEADING
+        ========================================================== */
+
+        .auth-heading {
+            margin-bottom: 28px;
+        }
+
+        .auth-heading h2 {
+            font-family: var(--serif);
+            font-size: 40px;
+            font-weight: 400;
+
+            line-height: 1.1;
+        }
+
+        .auth-heading p {
+            margin-top: 10px;
+
+            color: var(--text-soft);
+
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           SOCIAL LOGIN
+        ========================================================== */
+
+        .social-login {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+
+            margin-bottom: 28px;
+        }
+
+        .social-button {
+            min-height: 48px;
+
+            background: white;
+
+            border: 1px solid rgba(0,0,0,.16);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            font-size: 10px;
+            font-weight: 500;
+
+            letter-spacing: .06em;
+
+            transition: var(--transition);
+        }
+
+        .social-button:hover {
+            border-color: var(--black);
+            background: var(--black);
+            color: white;
+        }
+
+        .social-button i {
+            font-size: 14px;
+        }
+
+
+        /* =========================================================
+           DIVIDER
+        ========================================================== */
+
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            margin: 28px 0;
+        }
+
+        .auth-divider::before,
+        .auth-divider::after {
+            content: "";
+
+            flex: 1;
+
+            height: 1px;
+
+            background: rgba(0,0,0,.1);
+        }
+
+        .auth-divider span {
+            color: var(--text-soft);
+
+            font-size: 9px;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================================
+           FORM
+        ========================================================== */
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 9px;
+
+            font-size: 9px;
+            font-weight: 500;
+
+            letter-spacing: .17em;
+            text-transform: uppercase;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .form-group input {
+            width: 100%;
+
+            height: 50px;
+
+            padding: 0 15px;
+
+            border: 1px solid rgba(0,0,0,.15);
+
+            background: #faf9f6;
+
+            outline: none;
+
+            font-size: 12px;
+
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            border-color: var(--gold);
+            background: white;
+        }
+
+        .password-toggle {
+            position: absolute;
+
+            right: 15px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            background: transparent;
+            border: 0;
+
+            color: var(--text-soft);
+
+            font-size: 13px;
+        }
+
+        .password-toggle:hover {
+            color: var(--black);
+        }
+
+
+        /* =========================================================
+           FORM OPTIONS
+        ========================================================== */
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin: 5px 0 24px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            color: var(--text-soft);
+
+            font-size: 10px;
+        }
+
+        .remember input {
+            accent-color: var(--black);
+        }
+
+        .forgot-password {
+            border: 0;
+            background: none;
+
+            color: var(--text-soft);
+
+            font-size: 10px;
+
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .forgot-password:hover {
+            color: var(--black);
+        }
+
+
+        /* =========================================================
+           PRIMARY BUTTON
+        ========================================================== */
+
+        .primary-button {
+            width: 100%;
+            height: 52px;
+
+            border: 1px solid var(--black);
+
+            background: var(--black);
+            color: white;
+
+            font-size: 10px;
+            font-weight: 500;
+
+            letter-spacing: .18em;
+            text-transform: uppercase;
+
+            transition: var(--transition);
+        }
+
+        .primary-button:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--black);
+        }
+
+        .primary-button:disabled {
+            opacity: .55;
+            cursor: wait;
+        }
+
+
+        /* =========================================================
+           PASSWORDLESS
+        ========================================================== */
+
+        .passwordless-button {
+            width: 100%;
+
+            margin-top: 12px;
+
+            background: transparent;
+            border: 0;
+
+            color: var(--text-soft);
+
+            font-size: 10px;
+
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .passwordless-button:hover {
+            color: var(--black);
+        }
+
+
+        /* =========================================================
+           TERMS
+        ========================================================== */
+
+        .terms {
+            margin-top: 20px;
+
+            color: var(--text-soft);
+
+            font-size: 9px;
+            line-height: 1.7;
+
+            text-align: center;
+        }
+
+        .terms a {
+            text-decoration: underline;
+        }
+
+
+        /* =========================================================
+           MESSAGE
+        ========================================================== */
+
+        .auth-message {
+            display: none;
+
+            margin-bottom: 20px;
+
+            padding: 13px 15px;
+
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .auth-message.show {
+            display: block;
+        }
+
+        .auth-message.success {
+            background: #e7eee5;
+            color: #31432d;
+        }
+
+        .auth-message.error {
+            background: #eee3df;
+            color: #733d32;
+        }
+
+
+        /* =========================================================
+           GUEST
+        ========================================================== */
+
+        .guest-area {
+            margin-top: 25px;
+
+            padding-top: 22px;
+
+            border-top: 1px solid rgba(0,0,0,.09);
+
+            text-align: center;
+        }
+
+        .guest-area span {
+            color: var(--text-soft);
+            font-size: 10px;
+        }
+
+        .guest-area a {
+            margin-left: 5px;
+
+            font-size: 10px;
+            font-weight: 500;
+
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+
+        /* =========================================================
+           ACCOUNT DASHBOARD
+        ========================================================== */
+
+        .dashboard {
+            display: none;
+        }
+
+        .dashboard.active {
+            display: block;
+        }
+
+        .auth-layout.dashboard-mode .auth-brand {
+            display: none;
+        }
+
+        .auth-layout.dashboard-mode {
+            grid-template-columns: 1fr;
+        }
+
+        .dashboard-panel {
+            padding: 70px;
+        }
+
+        .dashboard-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            padding-bottom: 35px;
+
+            border-bottom: 1px solid rgba(0,0,0,.12);
+        }
+
+        .dashboard-top span {
+            color: var(--gold);
+
+            font-size: 9px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+        }
+
+        .dashboard-top h2 {
+            margin-top: 10px;
+
+            font-family: var(--serif);
+            font-size: 42px;
+            font-weight: 400;
+        }
+
+        .logout-button {
+            background: transparent;
+            border: 1px solid rgba(0,0,0,.15);
+
+            padding: 12px 18px;
+
+            font-size: 9px;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+
+            transition: var(--transition);
+        }
+
+        .logout-button:hover {
+            background: var(--black);
+            color: white;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 1px;
+
+            margin-top: 35px;
+
+            background: rgba(0,0,0,.1);
+        }
+
+        .dashboard-card {
+            min-height: 170px;
+
+            background: white;
+
+            padding: 30px;
+
+            transition: var(--transition);
+        }
+
+        .dashboard-card:hover {
+            background: var(--cream);
+        }
+
+        .dashboard-card i {
+            color: var(--gold);
+            font-size: 18px;
+        }
+
+        .dashboard-card h3 {
+            margin-top: 22px;
+
+            font-family: var(--serif);
+            font-size: 24px;
+            font-weight: 400;
+        }
+
+        .dashboard-card p {
+            margin-top: 8px;
+
+            color: var(--text-soft);
+
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+        .account-details {
+            margin-top: 35px;
+
+            padding: 30px;
+
+            background: var(--cream);
+        }
+
+        .account-details h3 {
+            font-family: var(--serif);
+            font-size: 25px;
+            font-weight: 400;
+        }
+
+        .account-details p {
+            margin-top: 10px;
+
+            color: var(--text-soft);
+
+            font-size: 11px;
+        }
+
+
+        /* =========================================================
+           ACCOUNT BENEFITS
+        ========================================================== */
+
+        .benefits {
+            padding: 110px 20px;
+
+            background: var(--cream-dark);
+        }
+
+        .benefits-heading {
+            max-width: 650px;
+            margin: auto;
+
+            text-align: center;
+        }
+
+        .benefits-heading span {
+            color: var(--gold);
+
+            font-size: 9px;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+        }
+
+        .benefits-heading h2 {
+            margin-top: 15px;
+
+            font-family: var(--serif);
+            font-size: clamp(42px, 5vw, 65px);
+            font-weight: 400;
+
+            line-height: 1;
+        }
+
+        .benefits-grid {
+            width: min(100%, 1050px);
+
+            margin: 65px auto 0;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            border-top: 1px solid rgba(0,0,0,.12);
+        }
+
+        .benefit {
+            padding: 42px 30px;
+
+            text-align: center;
+
+            border-right: 1px solid rgba(0,0,0,.12);
+        }
+
+        .benefit:last-child {
+            border-right: 0;
+        }
+
+        .benefit i {
+            color: var(--gold);
+            font-size: 19px;
+        }
+
+        .benefit h3 {
+            margin-top: 20px;
+
+            font-family: var(--serif);
+            font-size: 25px;
+            font-weight: 400;
+        }
+
+        .benefit p {
+            margin-top: 12px;
+
+            color: var(--text-soft);
+
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           CTA
+        ========================================================== */
+
+        .account-cta {
+            background: var(--black);
+            color: white;
+
+            text-align: center;
+
+            padding: 120px 20px;
+        }
+
+        .account-cta span {
+            color: var(--gold-light);
+
+            font-size: 9px;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+        }
+
+        .account-cta h2 {
+            margin-top: 18px;
+
+            font-family: var(--serif);
+            font-size: clamp(45px, 6vw, 75px);
+            font-weight: 400;
+
+            line-height: .98;
+        }
+
+        .account-cta h2 em {
+            color: var(--gold-light);
+            font-style: italic;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-top: 30px;
+
+            background: white;
+            color: var(--black);
+
+            padding: 17px 28px;
+
+            font-size: 9px;
+            font-weight: 500;
+
+            letter-spacing: .18em;
+            text-transform: uppercase;
+
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            background: var(--gold);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================== */
+
+        footer {
+            background: var(--black);
+            color: white;
+
+            padding: 70px 20px 30px;
+        }
+
+        .footer-container {
+            width: min(100%, var(--container));
+            margin: auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+
+            gap: 50px;
+
+            padding-bottom: 55px;
+        }
+
+        .footer-brand img {
+            width: 95px;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            max-width: 300px;
+
+            color: rgba(255,255,255,.5);
+
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 20px;
+
+            color: var(--gold-light);
+
+            font-size: 9px;
+            font-weight: 500;
+
+            letter-spacing: .2em;
+            text-transform: uppercase;
+        }
+
+        .footer-column a {
+            display: block;
+
+            margin-bottom: 12px;
+
+            color: rgba(255,255,255,.55);
+
+            font-size: 11px;
+
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 25px;
+
+            border-top: 1px solid rgba(255,255,255,.1);
+
+            display: flex;
+            justify-content: space-between;
+
+            color: rgba(255,255,255,.35);
+
+            font-size: 9px;
+        }
+
+
+        /* =========================================================
+           WHATSAPP
+        ========================================================== */
+
+        .whatsapp {
+            position: fixed;
+
+            right: 25px;
+            bottom: 25px;
+
+            width: 52px;
+            height: 52px;
+
+            border-radius: 50%;
+
+            background: #25D366;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 22px;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,.2);
+
+            z-index: 1000;
+
+            transition: var(--transition);
+        }
+
+        .whatsapp:hover {
+            transform: translateY(-5px);
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================== */
+
+        @media (max-width: 950px) {
+
+            .desktop-nav {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .header-inner {
+                padding: 0 20px;
+            }
+
+            .auth-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .auth-brand {
+                min-height: 350px;
+            }
+
+            .auth-panel {
+                padding: 55px 45px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-panel {
+                padding: 50px 35px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefit {
+                border-right: 0;
+                border-bottom: 1px solid rgba(0,0,0,.12);
+            }
+
+            .benefit:last-child {
+                border-bottom: 0;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .announcement {
+                height: 38px;
+
+                font-size: 8px;
+                letter-spacing: .16em;
+            }
+
+            .site-header {
+                height: 80px;
+            }
+
+            .header-logo img {
+                width: 75px;
+            }
+
+            .header-actions {
+                gap: 15px;
+            }
+
+            .account-hero {
+                padding: 75px 20px 80px;
+            }
+
+            .account-section {
+                padding: 60px 15px 80px;
+            }
+
+            .auth-brand {
+                padding: 45px 30px;
+            }
+
+            .auth-panel {
+                padding: 45px 25px;
+            }
+
+            .social-login {
+                grid-template-columns: 1fr;
+            }
+
+            .form-options {
+                align-items: flex-start;
+                gap: 15px;
+                flex-direction: column;
+            }
+
+            .dashboard-top {
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .whatsapp {
+                width: 48px;
+                height: 48px;
+
+                right: 18px;
+                bottom: 18px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         ANNOUNCEMENT
+    ========================================================== -->
+
+    <div class="announcement">
+        Welcome to the world of TML
+    </div>
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <header class="site-header">
+
+        <div class="header-inner">
+
+            <nav class="desktop-nav">
+
+                <a href="shop.html">
+                    Shop
+                </a>
+
+                <a href="collections.html">
+                    Collections
+                </a>
+
+                <a href="experience.html">
+                    The TML Experience
+                </a>
+
+            </nav>
+
+
+            <a href="index.html" class="header-logo">
+
+                <img
+                    src="images/logo.png"
+                    alt="TML Illuminated Candles & Home Fragrances"
+                >
+
+            </a>
+
+
+            <div class="header-actions">
+
+                <a href="shop.html" aria-label="Shop">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+
+                <a href="account.html" aria-label="Account">
+                    <i class="fa-regular fa-user"></i>
+                </a>
+
+                <a href="bag.html" class="bag" aria-label="Shopping bag">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    <span
+                        class="cart-count"
+                        id="cartCount">
+                        0
+                    </span>
+
+                </a>
+
+                <button
+                    class="menu-toggle"
+                    type="button"
+                    aria-label="Open menu">
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
+
+    <section class="account-hero">
+
+        <div class="eyebrow">
+            The TML Private Space
+        </div>
+
+        <h1>
+            Your TML <em>account.</em>
+        </h1>
+
+        <p>
+            Keep your orders, preferences and TML experience
+            beautifully organised in one place.
+        </p>
+
+    </section>
+
+
+    <!-- =========================================================
+         ACCOUNT AREA
+    ========================================================== -->
+
+    <main class="account-section">
+
+        <div class="account-container">
+
+
+            <!-- =====================================================
+                 AUTHENTICATION LAYOUT
+            ====================================================== -->
+
+            <div
+                class="auth-layout"
+                id="authLayout">
+
+
+                <!-- =================================================
+                     BRAND PANEL
+                ================================================== -->
+
+                <aside class="auth-brand">
+
+                    <div class="auth-brand-logo">
+
+                        <img
+                            src="images/logo.png"
+                            alt="TML"
+                        >
+
+                    </div>
+
+
+                    <div class="auth-brand-content">
+
+                        <span>
+                            Timeless Made Luxurious
+                        </span>
+
+                        <h2>
+                            A more personal<br>
+                            way to experience <em>TML.</em>
+                        </h2>
+
+                        <p>
+                            Sign in to keep track of your orders,
+                            save your favourite pieces and make
+                            every TML experience uniquely yours.
+                        </p>
+
+                    </div>
+
+
+                    <div class="brand-quote">
+
+                        “Luxury is not simply what surrounds you.
+                        It is how your space makes you feel.”
+
+                    </div>
+
+                </aside>
+
+
+                <!-- =================================================
+                     AUTH PANEL
+                ================================================== -->
+
+                <section class="auth-panel">
+
+
+                    <!-- =================================================
+                         TABS
+                    ================================================== -->
+
+                    <div class="auth-tabs">
+
+                        <button
+                            class="auth-tab active"
+                            data-tab="signin"
+                            type="button">
+
+                            Sign In
+
+                        </button>
+
+                        <button
+                            class="auth-tab"
+                            data-tab="signup"
+                            type="button">
+
+                            Create Account
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         MESSAGE
+                    ================================================== -->
+
+                    <div
+                        class="auth-message"
+                        id="authMessage">
+                    </div>
+
+
+                    <!-- =================================================
+                         SIGN IN
+                    ================================================== -->
+
+                    <div
+                        class="auth-form active"
+                        id="signinForm">
+
+                        <div class="auth-heading">
+
+                            <h2>
+                                Welcome back.
+                            </h2>
+
+                            <p>
+                                Continue your TML experience.
+                            </p>
+
+                        </div>
+
+
+                        <!-- SOCIAL -->
+
+                        <div class="social-login">
+
+                            <button
+                                class="social-button"
+                                id="googleSignIn"
+                                type="button">
+
+                                <i class="fa-brands fa-google"></i>
+
+                                Continue with Google
+
+                            </button>
+
+
+                            <button
+                                class="social-button"
+                                id="appleSignIn"
+                                type="button">
+
+                                <i class="fa-brands fa-apple"></i>
+
+                                Continue with Apple
+
+                            </button>
+
+                        </div>
+
+
+                        <div class="auth-divider">
+                            <span>or continue with email</span>
+                        </div>
+
+
+                        <form id="loginForm">
+
+                            <div class="form-group">
+
+                                <label for="loginEmail">
+                                    Email Address
+                                </label>
+
+                                <input
+                                    id="loginEmail"
+                                    type="email"
+                                    autocomplete="email"
+                                    placeholder="you@example.com"
+                                    required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="loginPassword">
+                                    Password
+                                </label>
+
+                                <div class="input-wrap">
+
+                                    <input
+                                        id="loginPassword"
+                                        type="password"
+                                        autocomplete="current-password"
+                                        placeholder="Enter your password"
+                                        required>
+
+                                    <button
+                                        class="password-toggle"
+                                        type="button"
+                                        data-target="loginPassword"
+                                        aria-label="Show password">
+
+                                        <i class="fa-regular fa-eye"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-options">
+
+                                <label class="remember">
+
+                                    <input
+                                        type="checkbox"
+                                        id="rememberMe">
+
+                                    Remember me
+
+                                </label>
+
+
+                                <button
+                                    class="forgot-password"
+                                    id="forgotPassword"
+                                    type="button">
+
+                                    Forgot password?
+
+                                </button>
+
+                            </div>
+
+
+                            <button
+                                class="primary-button"
+                                id="loginButton"
+                                type="submit">
+
+                                Sign In
+
+                            </button>
+
+                        </form>
+
+
+                        <button
+                            class="passwordless-button"
+                            id="emailLinkButton"
+                            type="button">
+
+                            Sign in with a secure email link instead
+
+                        </button>
+
+
+                        <div class="guest-area">
+
+                            <span>
+                                Prefer not to create an account?
+                            </span>
+
+                            <a href="checkout.html">
+                                Continue as guest
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SIGN UP
+                    ================================================== -->
+
+                    <div
+                        class="auth-form"
+                        id="signupForm">
+
+                        <div class="auth-heading">
+
+                            <h2>
+                                Create your space.
+                            </h2>
+
+                            <p>
+                                Join TML and make your next experience
+                                more personal.
+                            </p>
+
+                        </div>
+
+
+                        <div class="social-login">
+
+                            <button
+                                class="social-button"
+                                id="googleSignUp"
+                                type="button">
+
+                                <i class="fa-brands fa-google"></i>
+
+                                Continue with Google
+
+                            </button>
+
+
+                            <button
+                                class="social-button"
+                                id="appleSignUp"
+                                type="button">
+
+                                <i class="fa-brands fa-apple"></i>
+
+                                Continue with Apple
+
+                            </button>
+
+                        </div>
+
+
+                        <div class="auth-divider">
+                            <span>or create with email</span>
+                        </div>
+
+
+                        <form id="signupFormElement">
+
+                            <div class="form-group">
+
+                                <label for="signupName">
+                                    Full Name
+                                </label>
+
+                                <input
+                                    id="signupName"
+                                    type="text"
+                                    autocomplete="name"
+                                    placeholder="Your name"
+                                    required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="signupEmail">
+                                    Email Address
+                                </label>
+
+                                <input
+                                    id="signupEmail"
+                                    type="email"
+                                    autocomplete="email"
+                                    placeholder="you@example.com"
+                                    required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="signupPassword">
+                                    Password
+                                </label>
+
+                                <div class="input-wrap">
+
+                                    <input
+                                        id="signupPassword"
+                                        type="password"
+                                        autocomplete="new-password"
+                                        placeholder="Create a password"
+                                        minlength="8"
+                                        required>
+
+                                    <button
+                                        class="password-toggle"
+                                        type="button"
+                                        data-target="signupPassword">
+
+                                        <i class="fa-regular fa-eye"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="signupPasswordConfirm">
+                                    Confirm Password
+                                </label>
+
+                                <input
+                                    id="signupPasswordConfirm"
+                                    type="password"
+                                    autocomplete="new-password"
+                                    placeholder="Confirm your password"
+                                    minlength="8"
+                                    required>
+
+                            </div>
+
+
+                            <button
+                                class="primary-button"
+                                id="signupButton"
+                                type="submit">
+
+                                Create My Account
+
+                            </button>
+
+
+                            <p class="terms">
+
+                                By creating an account you agree to
+                                TML's applicable terms and privacy
+                                practices.
+
+                            </p>
+
+                        </form>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         DASHBOARD
+                    ================================================== -->
+
+                    <div
+                        class="dashboard"
+                        id="dashboard">
+
+                        <div class="dashboard-panel">
+
+                            <div class="dashboard-top">
+
+                                <div>
+
+                                    <span>
+                                        My TML
+                                    </span>
+
+                                    <h2 id="dashboardGreeting">
+                                        Welcome.
+                                    </h2>
+
+                                </div>
+
+
+                                <button
+                                    class="logout-button"
+                                    id="logoutButton"
+                                    type="button">
+
+                                    Sign Out
+
+                                </button>
+
+                            </div>
+
+
+                            <div class="dashboard-grid">
+
+
+                                <a
+                                    href="orders.html"
+                                    class="dashboard-card">
+
+                                    <i class="fa-solid fa-box-open"></i>
+
+                                    <h3>
+                                        Orders
+                                    </h3>
+
+                                    <p>
+                                        View your TML purchases
+                                        and order history.
+                                    </p>
+
+                                </a>
+
+
+                                <a
+                                    href="wishlist.html"
+                                    class="dashboard-card">
+
+                                    <i class="fa-regular fa-heart"></i>
+
+                                    <h3>
+                                        Wishlist
+                                    </h3>
+
+                                    <p>
+                                        Keep the pieces you love
+                                        close.
+                                    </p>
+
+                                </a>
+
+
+                                <a
+                                    href="#profile"
+                                    class="dashboard-card"
+                                    id="profileCard">
+
+                                    <i class="fa-regular fa-user"></i>
+
+                                    <h3>
+                                        Profile
+                                    </h3>
+
+                                    <p>
+                                        Manage your personal
+                                        account details.
+                                    </p>
+
+                                </a>
+
+
+                            </div>
+
+
+                            <div class="account-details">
+
+                                <h3>
+                                    Account details
+                                </h3>
+
+                                <p id="accountEmail">
+                                    —
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================================
+         BENEFITS
+    ========================================================== -->
+
+    <section class="benefits">
+
+        <div class="benefits-heading">
+
+            <span>
+                Your TML Experience
+            </span>
+
+            <h2>
+                More than an account.
+            </h2>
+
+        </div>
+
+
+        <div class="benefits-grid">
+
+
+            <div class="benefit">
+
+                <i class="fa-solid fa-box-open"></i>
+
+                <h3>
+                    Your Orders
+                </h3>
+
+                <p>
+                    Keep your TML purchases organised
+                    and accessible.
+                </p>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <i class="fa-regular fa-heart"></i>
+
+                <h3>
+                    Your Favourites
+                </h3>
+
+                <p>
+                    Save the fragrances and pieces
+                    you want to revisit.
+                </p>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <i class="fa-solid fa-sparkles"></i>
+
+                <h3>
+                    Your Experience
+                </h3>
+
+                <p>
+                    Build a more personal relationship
+                    with the world of TML.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         CTA
+    ========================================================== -->
+
+    <section class="account-cta">
+
+        <span>
+            Discover TML
+        </span>
+
+        <h2>
+            Your space.<br>
+            Your <em>signature.</em>
+        </h2>
+
+        <a
+            href="shop.html"
+            class="cta-button">
+
+            Explore The Collection
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </a>
+
+    </section>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer>
+
+        <div class="footer-container">
+
+            <div class="footer-grid">
+
+
+                <div class="footer-brand">
+
+                    <img
+                        src="images/logo.png"
+                        alt="TML">
+
+                    <p>
+                        Luxury for the senses.
+                        Beauty for the home.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Explore
+                    </h4>
+
+                    <a href="shop.html">
+                        Shop
+                    </a>
+
+                    <a href="collections.html">
+                        Collections
+                    </a>
+
+                    <a href="experience.html">
+                        The TML Experience
+                    </a>
+
+                    <a href="about.html">
+                        About TML
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Account
+                    </h4>
+
+                    <a href="account.html">
+                        My Account
+                    </a>
+
+                    <a href="bag.html">
+                        My Bag
+                    </a>
+
+                    <a href="checkout.html">
+                        Checkout
+                    </a>
+
+                    <a href="contact.html">
+                        Concierge
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Connect
+                    </h4>
+
+                    <a href="#">
+                        Instagram
+                    </a>
+
+                    <a href="#">
+                        Facebook
+                    </a>
+
+                    <a href="#">
+                        TikTok
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 TML Illuminated Candles & Home Fragrances
+                </span>
+
+                <span>
+                    Timeless Made Luxurious
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================================
+         WHATSAPP
+    ========================================================== -->
+
+    <a
+        href="https://wa.me/27000000000"
+        class="whatsapp"
+        target="_blank"
+        rel="noopener"
+        aria-label="Chat with TML">
+
+        <i class="fa-brands fa-whatsapp"></i>
+
+    </a>
+
+
+    <!-- =========================================================
+         FIREBASE
+         Firebase Web SDK
+    ========================================================== -->
+
+    <script type="module">
+
+        import { initializeApp }
+            from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+
+        import {
+            getAuth,
+            GoogleAuthProvider,
+            OAuthProvider,
+            signInWithPopup,
+            signInWithRedirect,
+            getRedirectResult,
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            sendPasswordResetEmail,
+            sendSignInLinkToEmail,
+            isSignInWithEmailLink,
+            signInWithEmailLink,
+            updateProfile,
+            signOut,
+            onAuthStateChanged,
+            setPersistence,
+            browserLocalPersistence,
+            browserSessionPersistence
+        } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+
+
+        /* =========================================================
+           FIREBASE CONFIGURATION
+           
+           REPLACE ONLY THESE VALUES WITH YOUR FIREBASE
+           WEB APP CONFIGURATION.
+
+           DO NOT PUT PRIVATE/SERVICE ACCOUNT KEYS HERE.
+        ========================================================== */
+
+        const firebaseConfig = {
+            apiKey: "YOUR_FIREBASE_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.firebasestorage.app",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_FIREBASE_APP_ID"
+        };
+
+
+        /* =========================================================
+           INITIALISE FIREBASE
+        ========================================================== */
+
+        const firebaseReady =
+            firebaseConfig.apiKey !== "YOUR_FIREBASE_API_KEY" &&
+            firebaseConfig.projectId !== "YOUR_PROJECT_ID";
+
+
+        let auth = null;
+        let googleProvider = null;
+        let appleProvider = null;
+
+
+        if (firebaseReady) {
+
+            const app =
+                initializeApp(firebaseConfig);
+
+            auth =
+                getAuth(app);
+
+            googleProvider =
+                new GoogleAuthProvider();
+
+            googleProvider.setCustomParameters({
+                prompt: "select_account"
+            });
+
+
+            appleProvider =
+                new OAuthProvider("apple.com");
+
+            appleProvider.addScope("email");
+            appleProvider.addScope("name");
+
+
+            /*
+                Check whether the user returned from a
+                redirect authentication flow.
+            */
+
+            getRedirectResult(auth)
+                .then(result => {
+
+                    if (result && result.user) {
+                        showSuccess(
+                            "Welcome back to TML."
+                        );
+                    }
+
+                })
+                .catch(error => {
+
+                    handleAuthError(error);
+
+                });
+
+
+            onAuthStateChanged(auth, user => {
+
+                if (user) {
+
+                    showDashboard(user);
+
+                } else {
+
+                    showAuthentication();
+
+                }
+
+            });
+
+        } else {
+
+            showMessage(
+                "Firebase is not connected yet. Add your Firebase web configuration to activate account sign-in.",
+                "error"
+            );
+
+        }
+
+
+        /* =========================================================
+           ELEMENTS
+        ========================================================== */
+
+        const authLayout =
+            document.getElementById("authLayout");
+
+        const authMessage =
+            document.getElementById("authMessage");
+
+        const signinForm =
+            document.getElementById("signinForm");
+
+        const signupForm =
+            document.getElementById("signupForm");
+
+        const dashboard =
+            document.getElementById("dashboard");
+
+        const tabs =
+            document.querySelectorAll(".auth-tab");
+
+
+        /* =========================================================
+           MESSAGE SYSTEM
+        ========================================================== */
+
+        function showMessage(message, type = "success") {
+
+            authMessage.textContent = message;
+
+            authMessage.className =
+                "auth-message show " + type;
+
+        }
+
+
+        function showSuccess(message) {
+
+            showMessage(message, "success");
+
+        }
+
+
+        function clearMessage() {
+
+            authMessage.textContent = "";
+
+            authMessage.className =
+                "auth-message";
+
+        }
+
+
+        /* =========================================================
+           ERROR HANDLING
+        ========================================================== */
+
+        function handleAuthError(error) {
+
+            console.error(error);
+
+            const messages = {
+
+                "auth/invalid-credential":
+                    "The email or password is incorrect.",
+
+                "auth/user-not-found":
+                    "No account was found with that email.",
+
+                "auth/wrong-password":
+                    "The email or password is incorrect.",
+
+                "auth/email-already-in-use":
+                    "An account already exists with this email.",
+
+                "auth/weak-password":
+                    "Please choose a stronger password.",
+
+                "auth/invalid-email":
+                    "Please enter a valid email address.",
+
+                "auth/popup-closed-by-user":
+                    "The sign-in window was closed.",
+
+                "auth/popup-blocked":
+                    "Your browser blocked the sign-in window. Please allow pop-ups and try again.",
+
+                "auth/operation-not-allowed":
+                    "This sign-in method has not been enabled in Firebase yet.",
+
+                "auth/account-exists-with-different-credential":
+                    "An account already exists with this email using another sign-in method.",
+
+                "auth/too-many-requests":
+                    "Too many attempts were made. Please try again later."
+
+            };
+
+
+            showMessage(
+                messages[error.code] ||
+                error.message ||
+                "Something went wrong. Please try again.",
+                "error"
+            );
+
+        }
+
+
+        /* =========================================================
+           TABS
+        ========================================================== */
+
+        tabs.forEach(tab => {
+
+            tab.addEventListener("click", () => {
+
+                const target =
+                    tab.dataset.tab;
+
+                tabs.forEach(item =>
+                    item.classList.remove("active")
+                );
+
+                tab.classList.add("active");
+
+                clearMessage();
+
+
+                if (target === "signin") {
+
+                    signinForm.classList.add("active");
+                    signupForm.classList.remove("active");
+
+                } else {
+
+                    signupForm.classList.add("active");
+                    signinForm.classList.remove("active");
+
+                }
+
+            });
+
+        });
+
+
+        /* =========================================================
+           GOOGLE SIGN IN
+        ========================================================== */
+
+        async function googleSignIn() {
+
+            if (!auth) {
+
+                showMessage(
+                    "Connect Firebase first to activate Google sign-in.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            try {
+
+                await signInWithPopup(
+                    auth,
+                    googleProvider
+                );
+
+            } catch (error) {
+
+                handleAuthError(error);
+
+            }
+
+        }
+
+
+        document
+            .getElementById("googleSignIn")
+            .addEventListener(
+                "click",
+                googleSignIn
+            );
+
+
+        document
+            .getElementById("googleSignUp")
+            .addEventListener(
+                "click",
+                googleSignIn
+            );
+
+
+        /* =========================================================
+           APPLE SIGN IN
+        ========================================================== */
+
+        async function appleSignIn() {
+
+            if (!auth) {
+
+                showMessage(
+                    "Connect Firebase first to activate Apple sign-in.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            try {
+
+                /*
+                    Redirect is preferred for mobile.
+                */
+
+                const isMobile =
+                    window.matchMedia(
+                        "(max-width: 768px)"
+                    ).matches;
+
+
+                if (isMobile) {
+
+                    await signInWithRedirect(
+                        auth,
+                        appleProvider
+                    );
+
+                } else {
+
+                    await signInWithPopup(
+                        auth,
+                        appleProvider
+                    );
+
+                }
+
+            } catch (error) {
+
+                handleAuthError(error);
+
+            }
+
+        }
+
+
+        document
+            .getElementById("appleSignIn")
+            .addEventListener(
+                "click",
+                appleSignIn
+            );
+
+
+        document
+            .getElementById("appleSignUp")
+            .addEventListener(
+                "click",
+                appleSignIn
+            );
+
+
+        /* =========================================================
+           EMAIL SIGN IN
+        ========================================================== */
+
+        document
+            .getElementById("loginForm")
+            .addEventListener(
+                "submit",
+                async event => {
+
+                    event.preventDefault();
+
+                    if (!auth) {
+
+                        showMessage(
+                            "Connect Firebase first to activate email sign-in.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
+
+                    const email =
+                        document
+                            .getElementById("loginEmail")
+                            .value
+                            .trim();
+
+
+                    const password =
+                        document
+                            .getElementById("loginPassword")
+                            .value;
+
+
+                    const remember =
+                        document
+                            .getElementById("rememberMe")
+                            .checked;
+
+
+                    try {
+
+                        await setPersistence(
+                            auth,
+                            remember
+                                ? browserLocalPersistence
+                                : browserSessionPersistence
+                        );
+
+
+                        await signInWithEmailAndPassword(
+                            auth,
+                            email,
+                            password
+                        );
+
+
+                        showSuccess(
+                            "Welcome back to TML."
+                        );
+
+
+                    } catch (error) {
+
+                        handleAuthError(error);
+
+                    }
+
+                }
+            );
+
+
+        /* =========================================================
+           CREATE ACCOUNT
+        ========================================================== */
+
+        document
+            .getElementById("signupFormElement")
+            .addEventListener(
+                "submit",
+                async event => {
+
+                    event.preventDefault();
+
+                    if (!auth) {
+
+                        showMessage(
+                            "Connect Firebase first to activate account creation.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
+
+                    const name =
+                        document
+                            .getElementById("signupName")
+                            .value
+                            .trim();
+
+
+                    const email =
+                        document
+                            .getElementById("signupEmail")
+                            .value
+                            .trim();
+
+
+                    const password =
+                        document
+                            .getElementById("signupPassword")
+                            .value;
+
+
+                    const confirmPassword =
+                        document
+                            .getElementById("signupPasswordConfirm")
+                            .value;
+
+
+                    if (password !== confirmPassword) {
+
+                        showMessage(
+                            "Your passwords do not match.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
+
+                    if (password.length < 8) {
+
+                        showMessage(
+                            "Your password must contain at least 8 characters.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
+
+                    try {
+
+                        const credential =
+                            await createUserWithEmailAndPassword(
+                                auth,
+                                email,
+                                password
+                            );
+
+
+                        if (credential.user) {
+
+                            await updateProfile(
+                                credential.user,
+                                {
+                                    displayName: name
+                                }
+                            );
+
+                        }
+
+
+                        showSuccess(
+                            "Your TML account has been created."
+                        );
+
+
+                    } catch (error) {
+
+                        handleAuthError(error);
+
+                    }
+
+                }
+            );
+
+
+        /* =========================================================
+           PASSWORD RESET
+        ========================================================== */
+
+        document
+            .getElementById("forgotPassword")
+            .addEventListener(
+                "click",
+                async () => {
+
+                    if (!auth) {
+
+                        showMessage(
+                            "Connect Firebase first.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
+
+                    const email =
+                        document
+                            .getElementById("loginEmail")
+                            .value
+                            .trim();
+
+
+                    if (!email) {
+
+                        showMessage(
+                            "Enter your email address first.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
+
+                    try {
+
+                        await sendPasswordResetEmail(
+                            auth,
+                            email
+                        );
+
+
+                        showSuccess(
+                            "If an account exists for that email, a password-reset email has been sent."
+                        );
+
+
+                    } catch (error) {
+
+                        handleAuthError(error);
+
+                    }
+
+                }
+            );
+
+
+        /* =========================================================
+           PASSWORDLESS EMAIL
+        ========================================================== */
+
+        document
+            .getElementById("emailLinkButton")
+            .addEventListener(
+                "click",
+                async () => {
+
+                    if (!auth) {
+
+                        showMessage(
+                            "Connect Firebase first.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
+
+                    const email =
+                        document
+                            .getElementById("loginEmail")
+                            .value
+                            .trim();
+
+
+                    if (!email) {
+
+                        showMessage(
+                            "Enter your email address first.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
+
+                    const actionCodeSettings = {
+
+                        url:
+                            window.location.origin +
+                            window.location.pathname,
+
+                        handleCodeInApp: true
+
+                    };
+
+
+                    try {
+
+                        await sendSignInLinkToEmail(
+                            auth,
+                            email,
+                            actionCodeSettings
+                        );
+
+
+                        localStorage.setItem(
+                            "tmlEmailForSignIn",
+                            email
+                        );
+
+
+                        showSuccess(
+                            "We've sent a secure sign-in link to your email."
+                        );
+
+
+                    } catch (error) {
+
+                        handleAuthError(error);
+
+                    }
+
+                }
+            );
+
+
+        /* =========================================================
+           COMPLETE PASSWORDLESS SIGN IN
+        ========================================================== */
+
+        async function completeEmailLinkSignIn() {
+
+            if (!auth) return;
+
+
+            if (
+                isSignInWithEmailLink(
+                    auth,
+                    window.location.href
+                )
+            ) {
+
+                let email =
+                    localStorage.getItem(
+                        "tmlEmailForSignIn"
+                    );
+
+
+                if (!email) {
+
+                    email =
+                        window.prompt(
+                            "Please enter the email address you used to request the sign-in link."
+                        );
+
+                }
+
+
+                if (!email) return;
+
+
+                try {
+
+                    await signInWithEmailLink(
+                        auth,
+                        email,
+                        window.location.href
+                    );
+
+
+                    localStorage.removeItem(
+                        "tmlEmailForSignIn"
+                    );
+
+
+                    window.history.replaceState(
+                        {},
+                        document.title,
+                        window.location.pathname
+                    );
+
+
+                    showSuccess(
+                        "You are now signed in to TML."
+                    );
+
+
+                } catch (error) {
+
+                    handleAuthError(error);
+
+                }
+
+            }
+
+        }
+
+
+        completeEmailLinkSignIn();
+
+
+        /* =========================================================
+           PASSWORD VISIBILITY
+        ========================================================== */
+
+        document
+            .querySelectorAll(".password-toggle")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        const target =
+                            document.getElementById(
+                                button.dataset.target
+                            );
+
+
+                        if (!target) return;
+
+
+                        const icon =
+                            button.querySelector("i");
+
+
+                        if (
+                            target.type === "password"
+                        ) {
+
+                            target.type = "text";
+
+                            icon.classList.remove(
+                                "fa-eye"
+                            );
+
+                            icon.classList.add(
+                                "fa-eye-slash"
+                            );
+
+                        } else {
+
+                            target.type = "password";
+
+                            icon.classList.remove(
+                                "fa-eye-slash"
+                            );
+
+                            icon.classList.add(
+                                "fa-eye"
+                            );
+
+                        }
+
+                    }
+                );
+
+            });
+
+
+        /* =========================================================
+           DASHBOARD
+        ========================================================== */
+
+        function showDashboard(user) {
+
+            if (!user) return;
+
+
+            document
+                .querySelector(".auth-tabs")
+                .style.display = "none";
+
+
+            signinForm.classList.remove("active");
+            signupForm.classList.remove("active");
+
+
+            dashboard.classList.add("active");
+
+            authLayout.classList.add(
+                "dashboard-mode"
+            );
+
+
+            const greeting =
+                document.getElementById(
+                    "dashboardGreeting"
+                );
+
+
+            const email =
+                document.getElementById(
+                    "accountEmail"
+                );
+
+
+            const displayName =
+                user.displayName;
+
+
+            if (displayName) {
+
+                const firstName =
+                    displayName.split(" ")[0];
+
+                greeting.textContent =
+                    `Welcome, ${firstName}.`;
+
+            } else {
+
+                greeting.textContent =
+                    "Welcome.";
+
+            }
+
+
+            email.textContent =
+                user.email || "Email unavailable";
+
+        }
+
+
+        function showAuthentication() {
+
+            document
+                .querySelector(".auth-tabs")
+                .style.display = "flex";
+
+
+            dashboard.classList.remove("active");
+
+            authLayout.classList.remove(
+                "dashboard-mode"
+            );
+
+        }
+
+
+        /* =========================================================
+           SIGN OUT
+        ========================================================== */
+
+        document
+            .getElementById("logoutButton")
+            .addEventListener(
+                "click",
+                async () => {
+
+                    if (!auth) return;
+
+
+                    try {
+
+                        await signOut(auth);
+
+                        showAuthentication();
+
+                        showSuccess(
+                            "You have been signed out."
+                        );
+
+                    } catch (error) {
+
+                        handleAuthError(error);
+
+                    }
+
+                }
+            );
+
+
+        /* =========================================================
+           CART COUNT
+        ========================================================== */
+
+        function updateCartCount() {
+
+            const cartCount =
+                document.getElementById(
+                    "cartCount"
+                );
+
+
+            if (!cartCount) return;
+
+
+            try {
+
+                const cart =
+                    JSON.parse(
+                        localStorage.getItem("tmlCart")
+                    ) || [];
+
+
+                const count =
+                    cart.reduce(
+                        (total, item) =>
+                            total +
+                            (Number(item.quantity) || 0),
+                        0
+                    );
+
+
+                cartCount.textContent =
+                    count;
+
+            } catch {
+
+                cartCount.textContent =
+                    "0";
+
+            }
+
+        }
+
+
+        updateCartCount();
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,2886 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>About TML | TML Illuminated</title>
+
+    <meta
+        name="description"
+        content="Discover the story, vision and philosophy behind TML Illuminated Candles & Home Fragrances."
+    >
+
+    <!-- FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- FONT AWESOME -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <style>
+
+        /* =========================================
+           ROOT
+        ========================================== */
+
+        :root {
+
+            --black: #080807;
+            --black-soft: #11100e;
+
+            --cream: #f4f0e9;
+            --cream-dark: #e9e3da;
+
+            --gold: #c9a76a;
+            --gold-light: #e2c58e;
+
+            --text: #171614;
+            --text-soft: #6d6962;
+
+            --border: rgba(0,0,0,.12);
+
+            --serif:
+                "Playfair Display",
+                Georgia,
+                serif;
+
+            --sans:
+                "DM Sans",
+                Arial,
+                sans-serif;
+
+            --container: 1440px;
+
+            --transition:
+                .45s cubic-bezier(.22,.61,.36,1);
+        }
+
+
+        /* =========================================
+           RESET
+        ========================================== */
+
+        * {
+
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            background:
+                var(--cream);
+
+            color:
+                var(--text);
+
+            font-family:
+                var(--sans);
+
+            line-height:
+                1.6;
+
+            overflow-x:
+                hidden;
+        }
+
+
+        img {
+
+            display: block;
+
+            width: 100%;
+        }
+
+
+        a {
+
+            color: inherit;
+
+            text-decoration: none;
+        }
+
+
+        button {
+
+            font: inherit;
+        }
+
+
+        /* =========================================
+           ANNOUNCEMENT
+        ========================================== */
+
+        .announcement {
+
+            height: 44px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                var(--black);
+
+            color:
+                white;
+
+            font-size: 10px;
+
+            letter-spacing: .22em;
+
+            text-transform: uppercase;
+
+            position: relative;
+
+            z-index: 1100;
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================== */
+
+        .site-header {
+
+            position: fixed;
+
+            top: 44px;
+
+            left: 0;
+
+            width: 100%;
+
+            z-index: 1000;
+
+            color: white;
+
+            transition:
+                background .35s ease,
+                backdrop-filter .35s ease;
+        }
+
+
+        .site-header.scrolled {
+
+            background:
+                rgba(8,8,7,.94);
+
+            backdrop-filter:
+                blur(16px);
+        }
+
+
+        .header-inner {
+
+            max-width:
+                var(--container);
+
+            height:
+                108px;
+
+            margin:
+                auto;
+
+            padding:
+                0 42px;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr auto 1fr;
+
+            align-items:
+                center;
+        }
+
+
+        .desktop-nav {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                34px;
+        }
+
+
+        .desktop-nav a {
+
+            font-size:
+                10px;
+
+            letter-spacing:
+                .17em;
+
+            text-transform:
+                uppercase;
+
+            transition:
+                color .3s ease;
+        }
+
+
+        .desktop-nav a:hover {
+
+            color:
+                var(--gold-light);
+        }
+
+
+        .logo {
+
+            width:
+                100px;
+
+            justify-self:
+                center;
+        }
+
+
+        .header-actions {
+
+            justify-self:
+                end;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                22px;
+        }
+
+
+        .header-action {
+
+            border:
+                0;
+
+            background:
+                transparent;
+
+            color:
+                white;
+
+            cursor:
+                pointer;
+
+            font-size:
+                12px;
+
+            transition:
+                color .3s ease;
+        }
+
+
+        .header-action:hover {
+
+            color:
+                var(--gold-light);
+        }
+
+
+        .bag-link {
+
+            position:
+                relative;
+        }
+
+
+        .cart-count {
+
+            position:
+                absolute;
+
+            top:
+                -12px;
+
+            right:
+                -13px;
+
+            min-width:
+                18px;
+
+            height:
+                18px;
+
+            padding:
+                0 4px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--gold);
+
+            color:
+                var(--black);
+
+            font-size:
+                9px;
+        }
+
+
+        .menu-toggle {
+
+            display:
+                none;
+
+            border:
+                0;
+
+            background:
+                transparent;
+
+            color:
+                white;
+
+            cursor:
+                pointer;
+
+            font-size:
+                21px;
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================== */
+
+        .about-hero {
+
+            min-height:
+                88svh;
+
+            position:
+                relative;
+
+            display:
+                flex;
+
+            align-items:
+                flex-end;
+
+            padding:
+                170px 7% 90px;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    rgba(8,8,7,.86) 0%,
+                    rgba(8,8,7,.58) 45%,
+                    rgba(8,8,7,.20) 100%
+                ),
+
+                url("assets/lifestyle/tml-brand-story.jpg")
+                center / cover no-repeat;
+
+            background-color:
+                var(--black);
+
+            color:
+                white;
+        }
+
+
+        .hero-inner {
+
+            width:
+                100%;
+
+            max-width:
+                var(--container);
+
+            margin:
+                auto;
+        }
+
+
+        .hero-content {
+
+            max-width:
+                760px;
+        }
+
+
+        .eyebrow {
+
+            margin-bottom:
+                20px;
+
+            color:
+                var(--gold-light);
+
+            font-size:
+                10px;
+
+            font-weight:
+                600;
+
+            letter-spacing:
+                .28em;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .about-hero h1 {
+
+            font-family:
+                var(--serif);
+
+            font-size:
+                clamp(60px, 8vw, 110px);
+
+            font-weight:
+                400;
+
+            line-height:
+                .95;
+
+            letter-spacing:
+                -.025em;
+        }
+
+
+        .about-hero h1 em {
+
+            color:
+                var(--gold-light);
+        }
+
+
+        .hero-divider {
+
+            width:
+                75px;
+
+            height:
+                1px;
+
+            margin:
+                30px 0;
+
+            background:
+                var(--gold-light);
+        }
+
+
+        .hero-content p {
+
+            max-width:
+                580px;
+
+            color:
+                rgba(255,255,255,.75);
+
+            font-size:
+                15px;
+
+            line-height:
+                1.9;
+        }
+
+
+        /* =========================================
+           INTRO
+        ========================================== */
+
+        .about-intro {
+
+            padding:
+                145px 7%;
+
+            text-align:
+                center;
+        }
+
+
+        .about-intro-inner {
+
+            max-width:
+                900px;
+
+            margin:
+                auto;
+        }
+
+
+        .about-intro h2 {
+
+            font-family:
+                var(--serif);
+
+            font-size:
+                clamp(43px, 5.5vw, 72px);
+
+            font-weight:
+                400;
+
+            line-height:
+                1.06;
+        }
+
+
+        .about-intro h2 em {
+
+            color:
+                var(--gold);
+        }
+
+
+        .about-intro p {
+
+            max-width:
+                700px;
+
+            margin:
+                30px auto 0;
+
+            color:
+                var(--text-soft);
+
+            font-size:
+                15px;
+
+            line-height:
+                1.95;
+        }
+
+
+        /* =========================================
+           OUR STORY
+        ========================================== */
+
+        .story {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            background:
+                var(--black);
+
+            color:
+                white;
+        }
+
+
+        .story-image {
+
+            min-height:
+                720px;
+
+            overflow:
+                hidden;
+        }
+
+
+        .story-image img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                cover;
+
+            transition:
+                transform 1s ease;
+        }
+
+
+        .story-image:hover img {
+
+            transform:
+                scale(1.025);
+        }
+
+
+        .story-content {
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                center;
+
+            padding:
+                100px 11%;
+        }
+
+
+        .story-content h2 {
+
+            font-family:
+                var(--serif);
+
+            font-size:
+                clamp(45px, 5vw, 68px);
+
+            font-weight:
+                400;
+
+            line-height:
+                1.04;
+        }
+
+
+        .story-content h2 em {
+
+            color:
+                var(--gold-light);
+        }
+
+
+        .story-content p {
+
+            max-width:
+                540px;
+
+            margin-top:
+                24px;
+
+            color:
+                rgba(255,255,255,.66);
+
+            font-size:
+                15px;
+
+            line-height:
+                1.9;
+        }
+
+
+        .story-signature {
+
+            margin-top:
+                40px;
+
+            padding-top:
+                24px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.14);
+
+            color:
+                var(--gold-light);
+
+            font-family:
+                var(--serif);
+
+            font-size:
+                25px;
+
+            font-style:
+                italic;
+        }
+
+
+        /* =========================================
+           VISION
+        ========================================== */
+
+        .vision {
+
+            padding:
+                145px 7%;
+
+            background:
+                var(--cream-dark);
+        }
+
+
+        .vision-inner {
+
+            max-width:
+                1180px;
+
+            margin:
+                auto;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                .85fr 1.15fr;
+
+            gap:
+                100px;
+
+            align-items:
+                center;
+        }
+
+
+        .vision-number {
+
+            font-family:
+                var(--serif);
+
+            font-size:
+                clamp(100px, 13vw, 190px);
+
+            line-height:
+                .75;
+
+            color:
+                var(--gold);
+
+            opacity:
+                .7;
+        }
+
+
+        .vision-content {
+
+            max-width:
+                650px;
+        }
+
+
+        .vision-content h2 {
+
+            font-family:
+                var(--serif);
+
+            font-size:
+                clamp(42px, 5vw, 68px);
+
+            font-weight:
+                400;
+
+            line-height:
+                1.04;
+        }
+
+
+        .vision-content h2 em {
+
+            color:
+                var(--gold);
+        }
+
+
+        .vision-content p {
+
+            margin-top:
+                24px;
+
+            color:
+                var(--text-soft);
+
+            font-size:
+                15px;
+
+            line-height:
+                1.9;
+        }
+
+
+        /* =========================================
+           VALUES
+        ========================================== */
+
+        .values {
+
+            padding:
+                145px 7%;
+
+            background:
+                var(--cream);
+        }
+
+
+        .values-header {
+
+            max-width:
+                750px;
+
+            margin:
+                0 auto 70px;
+
+            text-align:
+                center;
+        }
+
+
+        .values-header h2 {
+
+            font-family:
+                var(--serif);
+
+            font-size:
+                clamp(43px, 5vw, 66px);
+
+            font-weight:
+                400;
+
+            line-height:
+                1.05;
+        }
+
+
+        .values-header h2 em {
+
+            color:
+                var(--gold);
+        }
+
+
+        .values-header p {
+
+            margin-top:
+                22px;
+
+            color:
+                var(--text-soft);
+
+            font-size:
+                14px;
+        }
+
+
+        .values-grid {
+
+            max-width:
+                var(--container);
+
+            margin:
+                auto;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            border-top:
+                1px solid
+                var(--border);
+
+            border-left:
+                1px solid
+                var(--border);
+        }
+
+
+        .value {
+
+            min-height:
+                310px;
+
+            padding:
+                38px;
+
+            border-right:
+                1px solid
+                var(--border);
+
+            border-bottom:
+                1px solid
+                var(--border);
+
+            transition:
+                background .35s ease;
+        }
+
+
+        .value:hover {
+
+            background:
+                var(--cream-dark);
+        }
+
+
+        .value-number {
+
+            color:
+                var(--gold);
+
+            font-size:
+                10px;
+
+            letter-spacing:
+                .2em;
+        }
+
+
+        .value-icon {
+
+            width:
+                48px;
+
+            height:
+                48px;
+
+            margin:
+                55px 0 25px;
+
+            border:
+                1px solid
+                var(--gold);
+
+            border-radius:
+                50%;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            color:
+                var(--gold);
+
+            font-size:
+                15px;
+        }
+
+
+        .value h3 {
+
+            font-family:
+                var(--serif);
+
+            font-size:
+                29px;
+
+            font-weight:
+                400;
+        }
+
+
+        .value p {
+
+            margin-top:
+                12px;
+
+            color:
+                var(--text-soft);
+
+            font-size:
+                13px;
+
+            line-height:
+                1.75;
+        }
+
+
+        /* =========================================
+           SOUTH AFRICAN IDENTITY
+        ========================================== */
+
+        .south-africa {
+
+            padding:
+                150px 7%;
+
+            background:
+                var(--black);
+
+            color:
+                white;
+
+            text-align:
+                center;
+        }
+
+
+        .south-africa-inner {
+
+            max-width:
+                900px;
+
+            margin:
+                auto;
+        }
+
+
+        .south-africa-mark {
+
+            color:
+                var(--gold-light);
+
+            font-size:
+                32px;
+
+            margin-bottom:
+                25px;
+        }
+
+
+        .south-africa h2 {
+
+            font-family:
+                var(--serif);
+
+            font-size:
+                clamp(45px, 6vw, 78px);
+
+            font-weight:
+                400;
+
+            line-height:
+                1.04;
+        }
+
+
+        .south-africa h2 em {
+
+            color:
+                var(--gold-light);
+        }
+
+
+        .south-africa p {
+
+            max-width:
+                680px;
+
+            margin:
+                30px auto 0;
+
+            color:
+                rgba(255,255,255,.6);
+
+            font-size:
+                15px;
+
+            line-height:
+                1.9;
+        }
+
+
+        .country-label {
+
+            margin-top:
+                45px;
+
+            color:
+                var(--gold-light);
+
+            font-size:
+                10px;
+
+            letter-spacing:
+                .35em;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        /* =========================================
+           CREATIVE DIRECTION
+        ========================================== */
+
+        .creative {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            background:
+                #e7e1d8;
+        }
+
+
+        .creative-content {
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                center;
+
+            padding:
+                100px 11%;
+        }
+
+
+        .creative-content h2 {
+
+            font-family:
+                var(--serif);
+
+            font-size:
+                clamp(43px, 5vw, 67px);
+
+            font-weight:
+                400;
+
+            line-height:
+                1.04;
+        }
+
+
+        .creative-content h2 em {
+
+            color:
+                var(--gold);
+        }
+
+
+        .creative-content p {
+
+            max-width:
+                550px;
+
+            margin-top:
+                25px;
+
+            color:
+                var(--text-soft);
+
+            font-size:
+                15px;
+
+            line-height:
+                1.9;
+        }
+
+
+        .creative-credit {
+
+            margin-top:
+                35px;
+
+            padding-top:
+                25px;
+
+            border-top:
+                1px solid
+                var(--border);
+
+            font-family:
+                var(--serif);
+
+            font-size:
+                23px;
+
+            font-style:
+                italic;
+        }
+
+
+        .creative-credit small {
+
+            display:
+                block;
+
+            margin-top:
+                8px;
+
+            color:
+                var(--text-soft);
+
+            font-family:
+                var(--sans);
+
+            font-size:
+                9px;
+
+            font-style:
+                normal;
+
+            letter-spacing:
+                .18em;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .creative-image {
+
+            min-height:
+                650px;
+
+            background:
+                var(--black);
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                50px;
+        }
+
+
+        .creative-image img {
+
+            max-width:
+                600px;
+
+            height:
+                100%;
+
+            object-fit:
+                cover;
+        }
+
+
+        /* =========================================
+           CTA
+        ========================================== */
+
+        .about-cta {
+
+            padding:
+                140px 7%;
+
+            text-align:
+                center;
+
+            background:
+                var(--cream);
+        }
+
+
+        .about-cta-inner {
+
+            max-width:
+                850px;
+
+            margin:
+                auto;
+        }
+
+
+        .about-cta h2 {
+
+            font-family:
+                var(--serif);
+
+            font-size:
+                clamp(44px, 5.5vw, 72px);
+
+            font-weight:
+                400;
+
+            line-height:
+                1.05;
+        }
+
+
+        .about-cta h2 em {
+
+            color:
+                var(--gold);
+        }
+
+
+        .about-cta p {
+
+            max-width:
+                620px;
+
+            margin:
+                25px auto 35px;
+
+            color:
+                var(--text-soft);
+
+            font-size:
+                15px;
+        }
+
+
+        .button {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            min-height:
+                54px;
+
+            padding:
+                0 34px;
+
+            background:
+                var(--black);
+
+            color:
+                white;
+
+            font-size:
+                10px;
+
+            font-weight:
+                600;
+
+            letter-spacing:
+                .18em;
+
+            text-transform:
+                uppercase;
+
+            transition:
+                background .3s ease,
+                transform .3s ease;
+        }
+
+
+        .button:hover {
+
+            background:
+                var(--gold);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================== */
+
+        footer {
+
+            padding:
+                75px 7% 35px;
+
+            background:
+                var(--black);
+
+            color:
+                white;
+        }
+
+
+        .footer-inner {
+
+            max-width:
+                var(--container);
+
+            margin:
+                auto;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1.5fr 1fr 1fr 1fr;
+
+            gap:
+                50px;
+        }
+
+
+        .footer-logo {
+
+            width:
+                90px;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .footer-brand p {
+
+            max-width:
+                330px;
+
+            color:
+                rgba(255,255,255,.5);
+
+            font-size:
+                13px;
+
+            line-height:
+                1.8;
+        }
+
+
+        .footer-column h4 {
+
+            margin-bottom:
+                18px;
+
+            color:
+                var(--gold-light);
+
+            font-size:
+                10px;
+
+            letter-spacing:
+                .18em;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .footer-column a {
+
+            display:
+                block;
+
+            margin-bottom:
+                9px;
+
+            color:
+                rgba(255,255,255,.62);
+
+            font-size:
+                13px;
+
+            transition:
+                color .3s ease;
+        }
+
+
+        .footer-column a:hover {
+
+            color:
+                white;
+        }
+
+
+        .footer-bottom {
+
+            max-width:
+                var(--container);
+
+            margin:
+                55px auto 0;
+
+            padding-top:
+                25px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.1);
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            color:
+                rgba(255,255,255,.38);
+
+            font-size:
+                10px;
+        }
+
+
+        /* =========================================
+           WHATSAPP
+        ========================================== */
+
+        .whatsapp {
+
+            position:
+                fixed;
+
+            right:
+                22px;
+
+            bottom:
+                22px;
+
+            width:
+                52px;
+
+            height:
+                52px;
+
+            border-radius:
+                50%;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                #25D366;
+
+            color:
+                white;
+
+            font-size:
+                22px;
+
+            z-index:
+                1000;
+
+            box-shadow:
+                0 8px 30px rgba(0,0,0,.2);
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================== */
+
+        @media (max-width: 900px) {
+
+
+            .announcement {
+
+                height:
+                    38px;
+
+                font-size:
+                    8px;
+            }
+
+
+            .site-header {
+
+                top:
+                    38px;
+            }
+
+
+            .header-inner {
+
+                height:
+                    80px;
+
+                padding:
+                    0 22px;
+
+                display:
+                    flex;
+
+                justify-content:
+                    space-between;
+            }
+
+
+            .desktop-nav {
+
+                display:
+                    none;
+            }
+
+
+            .menu-toggle {
+
+                display:
+                    block;
+
+                order:
+                    -1;
+            }
+
+
+            .logo {
+
+                width:
+                    75px;
+
+                margin-left:
+                    18px;
+
+                margin-right:
+                    auto;
+            }
+
+
+            .header-actions {
+
+                gap:
+                    15px;
+            }
+
+
+            .header-action.search,
+            .header-action.account {
+
+                display:
+                    none;
+            }
+
+
+            .about-hero {
+
+                min-height:
+                    82svh;
+
+                padding:
+                    145px 7% 65px;
+            }
+
+
+            .about-hero h1 {
+
+                font-size:
+                    55px;
+            }
+
+
+            .about-intro {
+
+                padding:
+                    90px 7%;
+            }
+
+
+            .story {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .story-image {
+
+                min-height:
+                    560px;
+            }
+
+
+            .story-content {
+
+                padding:
+                    80px 7%;
+            }
+
+
+            .vision {
+
+                padding:
+                    90px 7%;
+            }
+
+
+            .vision-inner {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    50px;
+            }
+
+
+            .vision-number {
+
+                font-size:
+                    110px;
+            }
+
+
+            .values {
+
+                padding:
+                    90px 7%;
+            }
+
+
+            .values-grid {
+
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+
+            .value {
+
+                min-height:
+                    290px;
+
+                padding:
+                    28px;
+            }
+
+
+            .south-africa {
+
+                padding:
+                    100px 7%;
+            }
+
+
+            .creative {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .creative-image {
+
+                min-height:
+                    500px;
+
+                order:
+                    -1;
+            }
+
+
+            .creative-content {
+
+                padding:
+                    80px 7%;
+            }
+
+
+            .about-cta {
+
+                padding:
+                    90px 7%;
+            }
+
+
+            .footer-inner {
+
+                grid-template-columns:
+                    1fr 1fr;
+
+                gap:
+                    40px 25px;
+            }
+
+
+            .footer-brand {
+
+                grid-column:
+                    span 2;
+            }
+
+
+            .footer-bottom {
+
+                flex-direction:
+                    column;
+
+                gap:
+                    10px;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+
+            .values-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .value {
+
+                min-height:
+                    auto;
+
+                padding:
+                    32px;
+            }
+
+
+            .creative-image {
+
+                min-height:
+                    420px;
+
+                padding:
+                    25px;
+            }
+
+
+            .footer-inner {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .footer-brand {
+
+                grid-column:
+                    auto;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         ANNOUNCEMENT
+    ========================================== -->
+
+    <div class="announcement">
+
+        Luxury for the senses. Beauty for the home.
+
+    </div>
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header
+        class="site-header"
+        id="siteHeader"
+    >
+
+        <div class="header-inner">
+
+
+            <nav class="desktop-nav">
+
+                <a href="shop.html">
+                    Shop
+                </a>
+
+                <a href="collections.html">
+                    Collections
+                </a>
+
+                <a href="experience.html">
+                    The TML Experience
+                </a>
+
+            </nav>
+
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open menu"
+            >
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+
+            <a href="index.html">
+
+                <img
+                    src="images/logo.png"
+                    alt="TML Illuminated"
+                    class="logo"
+                >
+
+            </a>
+
+
+            <div class="header-actions">
+
+
+                <button
+                    class="header-action search"
+                    aria-label="Search"
+                >
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                </button>
+
+
+                <a
+                    href="#"
+                    class="header-action account"
+                    aria-label="Account"
+                >
+
+                    <i class="fa-regular fa-user"></i>
+
+                </a>
+
+
+                <a
+                    href="bag.html"
+                    class="header-action bag-link"
+                    aria-label="Shopping bag"
+                >
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    <span
+                        class="cart-count"
+                        id="cartCount"
+                    >
+                        0
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main>
+
+
+        <!-- =====================================
+             HERO
+        ====================================== -->
+
+        <section class="about-hero">
+
+            <div class="hero-inner">
+
+                <div class="hero-content">
+
+                    <div class="eyebrow">
+                        About TML Illuminated
+                    </div>
+
+
+                    <h1>
+
+                        Timeless
+                        <em>by design.</em>
+
+                    </h1>
+
+
+                    <div class="hero-divider"></div>
+
+
+                    <p>
+
+                        A South African home-fragrance brand
+                        created around the belief that beautiful
+                        spaces deserve beautiful experiences.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             INTRO
+        ====================================== -->
+
+        <section class="about-intro">
+
+            <div class="about-intro-inner">
+
+                <div class="eyebrow">
+                    Who We Are
+                </div>
+
+
+                <h2>
+
+                    We believe your home
+                    should <em>feel</em> as
+                    beautiful as it looks.
+
+                </h2>
+
+
+                <p>
+
+                    TML Illuminated creates candles and home
+                    fragrances designed to transform ordinary
+                    spaces into environments filled with
+                    atmosphere, warmth and character.
+
+                    We see fragrance as part of the identity
+                    of a home — not simply an accessory.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             OUR STORY
+        ====================================== -->
+
+        <section class="story">
+
+
+            <div class="story-image">
+
+                <img
+                    src="images/new chapter.jpg"
+                    alt="TML Illuminated brand story"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="story-content">
+
+                <div class="eyebrow">
+                    Our Beginning
+                </div>
+
+
+                <h2>
+
+                    A passion project
+                    became a <em>brand.</em>
+
+                </h2>
+
+
+                <p>
+
+                    TML Illuminated began with a vision to create
+                    products that could bring together fragrance,
+                    beauty and the feeling of a thoughtfully
+                    designed home.
+
+                </p>
+
+
+                <p>
+
+                    Our first collection represents the beginning
+                    of that journey — developed with intention,
+                    care and genuine pride in what we are creating.
+
+                </p>
+
+
+                <p>
+
+                    TML is more than a range of fragrances.
+                    It is a vision for a lifestyle where the
+                    everyday can feel considered, beautiful
+                    and luxurious.
+
+                </p>
+
+
+                <div class="story-signature">
+
+                    Timeless Made Luxurious.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             VISION
+        ====================================== -->
+
+        <section class="vision">
+
+            <div class="vision-inner">
+
+
+                <div class="vision-number">
+
+                    01
+
+                </div>
+
+
+                <div class="vision-content">
+
+                    <div class="eyebrow">
+                        Our Vision
+                    </div>
+
+
+                    <h2>
+
+                        To make
+                        <em>everyday spaces</em>
+                        extraordinary.
+
+                    </h2>
+
+
+                    <p>
+
+                        We envision TML becoming part of the
+                        spaces people are proud to call home.
+
+                        From a quiet morning to an evening with
+                        friends, fragrance has the ability to
+                        change how a space feels.
+
+                    </p>
+
+
+                    <p>
+
+                        Our goal is to create products that
+                        complement the home rather than compete
+                        with it — refined, intentional and
+                        timeless.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             VALUES
+        ====================================== -->
+
+        <section class="values">
+
+
+            <div class="values-header">
+
+                <div class="eyebrow">
+                    What We Stand For
+                </div>
+
+
+                <h2>
+
+                    The principles behind
+                    <em>TML.</em>
+
+                </h2>
+
+
+                <p>
+
+                    Every part of the brand begins with
+                    intention.
+
+                </p>
+
+            </div>
+
+
+            <div class="values-grid">
+
+
+                <!-- VALUE 01 -->
+
+                <article class="value">
+
+                    <div class="value-number">
+                        01
+                    </div>
+
+
+                    <div class="value-icon">
+
+                        <i class="fa-solid fa-gem"></i>
+
+                    </div>
+
+
+                    <h3>
+                        Quality
+                    </h3>
+
+
+                    <p>
+
+                        We believe luxury begins with
+                        attention to detail and a commitment
+                        to creating products worth experiencing.
+
+                    </p>
+
+                </article>
+
+
+                <!-- VALUE 02 -->
+
+                <article class="value">
+
+                    <div class="value-number">
+                        02
+                    </div>
+
+
+                    <div class="value-icon">
+
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    </div>
+
+
+                    <h3>
+                        Intention
+                    </h3>
+
+
+                    <p>
+
+                        Every fragrance, product and visual
+                        element has a purpose within the
+                        TML world.
+
+                    </p>
+
+                </article>
+
+
+                <!-- VALUE 03 -->
+
+                <article class="value">
+
+                    <div class="value-number">
+                        03
+                    </div>
+
+
+                    <div class="value-icon">
+
+                        <i class="fa-solid fa-house"></i>
+
+                    </div>
+
+
+                    <h3>
+                        Home
+                    </h3>
+
+
+                    <p>
+
+                        Our products are created to live
+                        beautifully within the spaces
+                        people call home.
+
+                    </p>
+
+                </article>
+
+
+                <!-- VALUE 04 -->
+
+                <article class="value">
+
+                    <div class="value-number">
+                        04
+                    </div>
+
+
+                    <div class="value-icon">
+
+                        <i class="fa-solid fa-infinity"></i>
+
+                    </div>
+
+
+                    <h3>
+                        Timelessness
+                    </h3>
+
+
+                    <p>
+
+                        We create with a long-term perspective,
+                        favouring enduring elegance over
+                        passing trends.
+
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             SOUTH AFRICA
+        ====================================== -->
+
+        <section class="south-africa">
+
+            <div class="south-africa-inner">
+
+
+                <div class="south-africa-mark">
+
+                    <i class="fa-solid fa-star"></i>
+
+                </div>
+
+
+                <div class="eyebrow">
+                    Our Roots
+                </div>
+
+
+                <h2>
+
+                    Born in
+                    <em>South Africa.</em>
+
+                </h2>
+
+
+                <p>
+
+                    TML Illuminated is a South African brand
+                    created with an appreciation for beautiful
+                    spaces, distinctive fragrance and the
+                    art of making everyday living feel special.
+
+                </p>
+
+
+                <div class="country-label">
+
+                    South African Brand
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CREATIVE DIRECTION
+        ====================================== -->
+
+        <section class="creative">
+
+
+            <div class="creative-content">
+
+                <div class="eyebrow">
+                    Creative Direction
+                </div>
+
+
+                <h2>
+
+                    A vision brought
+                    to <em>life.</em>
+
+                </h2>
+
+
+                <p>
+
+                    TML is driven by a creative vision centred
+                    around the relationship between fragrance,
+                    interiors and the feeling of a beautifully
+                    considered home.
+
+                </p>
+
+
+                <p>
+
+                    The brand combines visual storytelling,
+                    fragrance and design to create an experience
+                    that feels distinctly TML.
+
+                </p>
+
+
+                <div class="creative-credit">
+
+                    Thembekile Magalani Ledwaba
+
+                    <small>
+                        Creative Director
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="creative-image">
+
+                <img
+                    src="images/lifestyle/lifestyle-1.webp"
+                    alt="TML Illuminated creative direction"
+                    loading="lazy"
+                >
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CTA
+        ====================================== -->
+
+        <section class="about-cta">
+
+            <div class="about-cta-inner">
+
+                <div class="eyebrow">
+                    Discover The Collection
+                </div>
+
+
+                <h2>
+
+                    Bring the TML
+                    experience <em>home.</em>
+
+                </h2>
+
+
+                <p>
+
+                    Explore candles and home fragrances
+                    created to add atmosphere, character
+                    and beauty to your space.
+
+                </p>
+
+
+                <a
+                    href="shop.html"
+                    class="button"
+                >
+
+                    Shop TML
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer>
+
+        <div class="footer-inner">
+
+
+            <div class="footer-brand">
+
+                <img
+                    src="images/logo.png"
+                    alt="TML Illuminated"
+                    class="footer-logo"
+                >
+
+
+                <p>
+
+                    Illuminated candles and home fragrances
+                    created to bring luxury, atmosphere and
+                    beauty into everyday spaces.
+
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Explore
+                </h4>
+
+
+                <a href="shop.html">
+                    Shop
+                </a>
+
+
+                <a href="collections.html">
+                    Collections
+                </a>
+
+
+                <a href="experience.html">
+                    The TML Experience
+                </a>
+
+
+                <a href="about.html">
+                    About TML
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Help
+                </h4>
+
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+
+                <a href="faq.html">
+                    FAQs
+                </a>
+
+
+                <a href="shipping.html">
+                    Delivery
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Follow
+                </h4>
+
+
+                <a href="#">
+                    Instagram
+                </a>
+
+
+                <a href="#">
+                    Facebook
+                </a>
+
+
+                <a href="#">
+                    WhatsApp
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 TML Illuminated Candles & Home Fragrances.
+            </span>
+
+
+            <span>
+                Timeless Made Luxurious · South African Brand
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         WHATSAPP
+    ========================================== -->
+
+    <a
+        href="https://wa.me/"
+        class="whatsapp"
+        target="_blank"
+        rel="noopener"
+        aria-label="Contact TML on WhatsApp"
+    >
+
+        <i class="fa-brands fa-whatsapp"></i>
+
+    </a>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+        /* =========================================
+           HEADER
+        ========================================== */
+
+        const siteHeader =
+            document.getElementById(
+                "siteHeader"
+            );
+
+
+        window.addEventListener(
+            "scroll",
+            function () {
+
+                if (
+                    window.scrollY > 40
+                ) {
+
+                    siteHeader.classList.add(
+                        "scrolled"
+                    );
+
+                } else {
+
+                    siteHeader.classList.remove(
+                        "scrolled"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =========================================
+           CART COUNT
+        ========================================== */
+
+        const CART_KEY =
+            "tmlCart";
+
+
+        function updateCartCount() {
+
+            const cartCount =
+                document.getElementById(
+                    "cartCount"
+                );
+
+
+            if (!cartCount) {
+                return;
+            }
+
+
+            try {
+
+                const cart =
+                    JSON.parse(
+                        localStorage.getItem(
+                            CART_KEY
+                        )
+                    ) || [];
+
+
+                const count =
+                    cart.reduce(
+                        function (
+                            total,
+                            item
+                        ) {
+
+                            return (
+                                total +
+                                (
+                                    Number(
+                                        item.quantity
+                                    ) || 0
+                                )
+                            );
+
+                        },
+                        0
+                    );
+
+
+                cartCount.textContent =
+                    count;
+
+            } catch (error) {
+
+                cartCount.textContent =
+                    "0";
+
+            }
+
+        }
+
+
+        updateCartCount();
+
+
+        /* =========================================
+           PAGE REVEAL
+        ========================================== */
+
+        const revealItems =
+            document.querySelectorAll(
+                ".value, .vision-content, .story-content"
+            );
+
+
+        revealItems.forEach(
+            function (item) {
+
+                item.style.opacity =
+                    "0";
+
+                item.style.transform =
+                    "translateY(25px)";
+
+                item.style.transition =
+                    "opacity .8s ease, transform .8s ease";
+
+            }
+        );
+
+
+        const observer =
+            new IntersectionObserver(
+                function (
+                    entries,
+                    observer
+                ) {
+
+                    entries.forEach(
+                        function (entry) {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.style.opacity =
+                                    "1";
+
+                                entry.target.style.transform =
+                                    "translateY(0)";
+
+                                observer.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: .12
+                }
+            );
+
+
+        revealItems.forEach(
+            function (item) {
+
+                observer.observe(
+                    item
+                );
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
