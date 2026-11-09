@@ -1,0 +1,1849 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080807">
+
+    <title>Checkout | TML Illuminated</title>
+    <meta name="description" content="Complete your TML Illuminated order details. Luxury for the senses. Beauty for the home.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --black: #080807;
+            --black-soft: #11110f;
+            --panel: #151512;
+            --gold: #c9a76a;
+            --gold-light: #e2c58e;
+            --cream: #f4f0e9;
+            --muted: #99958c;
+            --border: rgba(201,167,106,.19);
+            --danger: #d28a7e;
+            --heading: "Playfair Display", serif;
+            --body: "DM Sans", sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--cream);
+            font-family: var(--body);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button, input, select, textarea {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        /* HEADER */
+
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 84px;
+            z-index: 9999;
+            background: rgba(8,8,7,.95);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            width: min(1380px, 92%);
+            height: 100%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .brand img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .brand-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .brand-name {
+            font-family: var(--heading);
+            font-size: 20px;
+            letter-spacing: 3px;
+        }
+
+        .brand-subtitle {
+            color: var(--gold);
+            font-size: 8px;
+            letter-spacing: 3px;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+        }
+
+        .main-nav a {
+            color: #c4bfb4;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.3px;
+            transition: color .3s;
+        }
+
+        .main-nav a:hover {
+            color: var(--gold-light);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-bag {
+            color: var(--gold-light);
+            font-size: 17px;
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -12px;
+            min-width: 17px;
+            height: 17px;
+            padding: 0 4px;
+            display: grid;
+            place-items: center;
+            border-radius: 50px;
+            background: var(--gold);
+            color: var(--black);
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            background: transparent;
+            color: var(--gold);
+        }
+
+        .mobile-drawer {
+            display: none;
+        }
+
+        /* INTRODUCTION */
+
+        .checkout-hero {
+            padding: 145px 5% 48px;
+            text-align: center;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(201,167,106,.13), transparent 60%),
+                var(--black);
+        }
+
+        .eyebrow {
+            color: var(--gold);
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 17px;
+        }
+
+        .checkout-hero h1 {
+            font-family: var(--heading);
+            font-size: clamp(40px, 6vw, 62px);
+            font-weight: 400;
+        }
+
+        .checkout-hero h1 span {
+            color: var(--gold-light);
+            font-style: italic;
+        }
+
+        .checkout-hero p.description {
+            margin-top: 15px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-top: 24px;
+            color: var(--muted);
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .breadcrumb i {
+            color: var(--gold);
+            font-size: 8px;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--gold-light);
+        }
+
+        /* CHECKOUT LAYOUT */
+
+        .checkout-section {
+            width: min(1250px, 90%);
+            margin: auto;
+            padding: 25px 0 110px;
+        }
+
+        .checkout-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(320px, .85fr);
+            gap: 55px;
+            align-items: start;
+        }
+
+        .checkout-main {
+            min-width: 0;
+        }
+
+        .checkout-block {
+            padding: 28px 0 34px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .block-heading {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 25px;
+        }
+
+        .step-number {
+            width: 33px;
+            height: 33px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: var(--gold-light);
+            font-size: 11px;
+        }
+
+        .block-heading h2 {
+            font-family: var(--heading);
+            font-weight: 400;
+            font-size: 25px;
+        }
+
+        .block-description {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.8;
+            margin: -12px 0 23px 47px;
+        }
+
+        /* FORM */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 19px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            color: #d8d1c5;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        .form-group label span {
+            color: var(--gold);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            min-height: 49px;
+            padding: 13px 15px;
+            border: 1px solid var(--border);
+            border-radius: 0;
+            outline: none;
+            background: #11110f;
+            color: var(--cream);
+            font-size: 12px;
+            transition: border-color .3s, background .3s;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #716d65;
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23c9a76a' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+        }
+
+        .form-group select option {
+            background: #11110f;
+            color: var(--cream);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--gold);
+            background: #151512;
+        }
+
+        .form-group input:invalid:not(:placeholder-shown) {
+            border-color: var(--danger);
+        }
+
+        /* DELIVERY OPTIONS */
+
+        .delivery-options {
+            display: grid;
+            gap: 13px;
+        }
+
+        .delivery-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 18px;
+            border: 1px solid var(--border);
+            background: var(--black-soft);
+            cursor: pointer;
+            transition: border-color .3s, background .3s;
+        }
+
+        .delivery-option:has(input:checked) {
+            border-color: var(--gold);
+            background: rgba(201,167,106,.06);
+        }
+
+        .delivery-option input {
+            accent-color: var(--gold);
+            margin-top: 3px;
+        }
+
+        .delivery-option-content {
+            flex: 1;
+        }
+
+        .delivery-option-content strong {
+            display: block;
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .delivery-option-content small {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+            line-height: 1.7;
+        }
+
+        .delivery-option .option-label {
+            color: var(--gold-light);
+            font-size: 10px;
+            white-space: nowrap;
+        }
+
+        /* PAYMENT PLACEHOLDER */
+
+        .payment-panel {
+            padding: 22px;
+            border: 1px solid var(--border);
+            background: var(--black-soft);
+        }
+
+        .payment-panel-top {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+
+        .payment-panel-top i {
+            color: var(--gold);
+            font-size: 21px;
+        }
+
+        .payment-panel-top strong {
+            font-family: var(--heading);
+            font-weight: 400;
+            font-size: 19px;
+        }
+
+        .payment-panel p {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .payment-status {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 11px;
+            border: 1px solid var(--border);
+            color: var(--gold-light);
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        /* TERMS */
+
+        .terms-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .terms-check input {
+            accent-color: var(--gold);
+            margin-top: 3px;
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+        }
+
+        .terms-check label {
+            color: var(--muted);
+            font-size: 10px;
+            line-height: 1.8;
+        }
+
+        .terms-check a {
+            color: var(--gold-light);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        /* ORDER SUMMARY */
+
+        .order-summary {
+            position: sticky;
+            top: 110px;
+            padding: 28px;
+            background: var(--black-soft);
+            border: 1px solid var(--border);
+        }
+
+        .order-summary h2 {
+            font-family: var(--heading);
+            font-weight: 400;
+            font-size: 27px;
+            margin-bottom: 7px;
+        }
+
+        .summary-subtitle {
+            color: var(--muted);
+            font-size: 10px;
+            margin-bottom: 25px;
+        }
+
+        .summary-products {
+            display: flex;
+            flex-direction: column;
+            gap: 17px;
+            padding-bottom: 22px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .summary-product {
+            display: grid;
+            grid-template-columns: 62px minmax(0,1fr) auto;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .summary-product-image {
+            width: 62px;
+            height: 68px;
+            background: #201e18;
+            overflow: hidden;
+        }
+
+        .summary-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .summary-product-image .fallback {
+            height: 100%;
+            display: grid;
+            place-items: center;
+            color: var(--gold);
+        }
+
+        .summary-product-info {
+            min-width: 0;
+        }
+
+        .summary-product-info strong {
+            display: block;
+            font-family: var(--heading);
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .summary-product-info small {
+            display: block;
+            color: var(--muted);
+            font-size: 9px;
+            margin-top: 5px;
+        }
+
+        .summary-product-price {
+            font-size: 10px;
+            white-space: nowrap;
+        }
+
+        .summary-totals {
+            padding-top: 18px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 11px 0;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .summary-row strong {
+            color: var(--cream);
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .summary-row.final-total {
+            margin-top: 10px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--cream);
+        }
+
+        .summary-row.final-total strong {
+            color: var(--gold-light);
+            font-family: var(--heading);
+            font-size: 23px;
+        }
+
+        .delivery-disclaimer {
+            margin-top: 14px;
+            color: var(--muted);
+            font-size: 9px;
+            line-height: 1.8;
+        }
+
+        .place-order-button {
+            width: 100%;
+            min-height: 54px;
+            margin-top: 23px;
+            background: var(--gold);
+            border: 1px solid var(--gold);
+            color: var(--black);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: .3s;
+        }
+
+        .place-order-button:hover {
+            background: var(--gold-light);
+            border-color: var(--gold-light);
+        }
+
+        .place-order-button:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+        .back-to-bag {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+
+        .back-to-bag:hover {
+            color: var(--gold-light);
+        }
+
+        .checkout-message {
+            display: none;
+            margin-top: 17px;
+            padding: 14px;
+            border: 1px solid var(--border);
+            color: var(--gold-light);
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        .checkout-message.visible {
+            display: block;
+        }
+
+        /* EMPTY CART */
+
+        .empty-checkout {
+            display: none;
+            text-align: center;
+            padding: 70px 20px 100px;
+        }
+
+        .empty-checkout i {
+            color: var(--gold);
+            font-size: 38px;
+            margin-bottom: 25px;
+        }
+
+        .empty-checkout h2 {
+            font-family: var(--heading);
+            font-size: 35px;
+            font-weight: 400;
+            margin-bottom: 14px;
+        }
+
+        .empty-checkout p {
+            color: var(--muted);
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+
+        .empty-checkout a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 49px;
+            padding: 0 28px;
+            background: var(--gold);
+            color: var(--black);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* FOOTER */
+
+        .site-footer {
+            padding: 50px 5% 30px;
+            background: #050504;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            width: min(1250px, 100%);
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand {
+            font-family: var(--heading);
+            font-size: 20px;
+            letter-spacing: 3px;
+        }
+
+        .footer-brand span {
+            color: var(--gold);
+        }
+
+        .footer-tagline {
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            width: min(1250px, 100%);
+            margin: 30px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(201,167,106,.1);
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            color: #77736b;
+            font-size: 9px;
+        }
+
+        /* MOBILE BOTTOM NAV */
+
+        .mobile-bottom-nav {
+            display: none;
+        }
+
+        @media (max-width: 1050px) {
+            .main-nav {
+                gap: 15px;
+            }
+
+            .main-nav a {
+                font-size: 9px;
+            }
+
+            .checkout-layout {
+                gap: 30px;
+            }
+
+            .order-summary {
+                padding: 22px;
+            }
+        }
+
+        @media (max-width: 850px) {
+            body {
+                padding-bottom: calc(76px + env(safe-area-inset-bottom));
+            }
+
+            .site-header {
+                height: 72px;
+            }
+
+            .header-inner {
+                width: 90%;
+            }
+
+            .main-nav {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: grid;
+                place-items: center;
+            }
+
+            .brand img {
+                width: 42px;
+                height: 42px;
+            }
+
+            .brand-name {
+                font-size: 18px;
+            }
+
+            .mobile-drawer {
+                display: flex;
+                position: fixed;
+                top: 72px;
+                right: 0;
+                width: min(360px, 88%);
+                height: calc(100dvh - 72px);
+                padding: 30px;
+                flex-direction: column;
+                background: #0d0d0b;
+                border-left: 1px solid var(--border);
+                z-index: 9998;
+                transform: translateX(105%);
+                visibility: hidden;
+                transition: transform .35s ease, visibility .35s ease;
+            }
+
+            .mobile-drawer.open {
+                transform: translateX(0);
+                visibility: visible;
+            }
+
+            .mobile-drawer a {
+                padding: 17px 0;
+                border-bottom: 1px solid var(--border);
+                color: #d9d2c5;
+                font-size: 11px;
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+            }
+
+            .mobile-drawer a:hover {
+                color: var(--gold-light);
+            }
+
+            .drawer-caption {
+                margin-bottom: 12px;
+                color: var(--gold);
+                font-size: 9px;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+            }
+
+            .drawer-overlay {
+                position: fixed;
+                inset: 72px 0 0;
+                z-index: 9997;
+                background: rgba(0,0,0,.65);
+                opacity: 0;
+                visibility: hidden;
+                transition: .3s;
+            }
+
+            .drawer-overlay.open {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .checkout-hero {
+                padding-top: 125px;
+            }
+
+            .checkout-layout {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .order-summary {
+                position: static;
+            }
+
+            .mobile-bottom-nav {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: calc(68px + env(safe-area-inset-bottom));
+                padding: 7px 5px env(safe-area-inset-bottom);
+                background: rgba(8,8,7,.97);
+                border-top: 1px solid var(--border);
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                align-items: center;
+                z-index: 9996;
+                backdrop-filter: blur(15px);
+            }
+
+            .mobile-bottom-nav a {
+                min-width: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                color: #918c82;
+                font-size: 8px;
+                letter-spacing: .4px;
+                text-transform: uppercase;
+                position: relative;
+            }
+
+            .mobile-bottom-nav a i {
+                font-size: 17px;
+            }
+
+            .mobile-bottom-nav a.active {
+                color: var(--gold-light);
+            }
+
+            .mobile-bottom-nav a.active::before {
+                content: "";
+                position: absolute;
+                top: -8px;
+                width: 22px;
+                height: 2px;
+                background: var(--gold);
+            }
+
+            .nav-bag-icon {
+                position: relative;
+            }
+
+            .nav-bag-count {
+                position: absolute;
+                top: -8px;
+                right: -10px;
+                min-width: 14px;
+                height: 14px;
+                padding: 0 3px;
+                display: grid;
+                place-items: center;
+                border-radius: 50%;
+                background: var(--gold);
+                color: var(--black);
+                font-size: 8px;
+                font-weight: 700;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .checkout-hero {
+                padding-bottom: 35px;
+            }
+
+            .checkout-hero h1 {
+                font-size: 43px;
+            }
+
+            .checkout-section {
+                width: 90%;
+                padding-top: 10px;
+                padding-bottom: 65px;
+            }
+
+            .checkout-block {
+                padding: 24px 0 28px;
+            }
+
+            .block-heading h2 {
+                font-size: 22px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .delivery-option {
+                padding: 15px;
+            }
+
+            .delivery-option .option-label {
+                font-size: 9px;
+            }
+
+            .order-summary {
+                padding: 22px 18px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+
+            .site-footer {
+                padding-bottom: 30px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-inner">
+
+            <a href="index.html" class="brand" aria-label="TML Illuminated home">
+                <img src="images/logo.png" alt="TML Illuminated logo">
+                <div class="brand-copy">
+                    <span class="brand-name">TML</span>
+                    <span class="brand-subtitle">ILLUMINATED</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="collections.html">Collections</a>
+                <a href="experience.html">Experience</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="bag.html" class="header-bag" aria-label="Shopping bag">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count" id="headerCartCount">0</span>
+                </a>
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-controls="mobileDrawer"
+                    aria-expanded="false"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <nav class="mobile-drawer" id="mobileDrawer" aria-label="Mobile navigation">
+        <span class="drawer-caption">Explore TML</span>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="collections.html">Collections</a>
+        <a href="experience.html">The TML Experience</a>
+        <a href="about.html">Our Story</a>
+        <a href="contact.html">Contact</a>
+        <a href="bag.html">Shopping Bag</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="checkout-hero">
+        <div class="eyebrow">Almost Yours</div>
+
+        <h1>Secure Your <span>Selection</span></h1>
+
+        <p class="description">
+            Complete your details to prepare your TML order.
+        </p>
+
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <a href="bag.html">Shopping Bag</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span>Checkout</span>
+        </div>
+    </section>
+
+    <!-- CHECKOUT -->
+    <main class="checkout-section">
+
+        <div class="checkout-layout" id="checkoutLayout">
+
+            <!-- CUSTOMER FORM -->
+            <form id="checkoutForm" class="checkout-main">
+
+                <!-- CONTACT DETAILS -->
+                <section class="checkout-block">
+
+                    <div class="block-heading">
+                        <span class="step-number">01</span>
+                        <h2>Contact Information</h2>
+                    </div>
+
+                    <p class="block-description">
+                        Tell us how we can reach you about your order.
+                    </p>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="firstName">First Name <span>*</span></label>
+                            <input
+                                type="text"
+                                id="firstName"
+                                name="firstName"
+                                placeholder="Your first name"
+                                autocomplete="given-name"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName">Last Name <span>*</span></label>
+                            <input
+                                type="text"
+                                id="lastName"
+                                name="lastName"
+                                placeholder="Your last name"
+                                autocomplete="family-name"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address <span>*</span></label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number <span>*</span></label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="e.g. 071 234 5678"
+                                autocomplete="tel"
+                                required
+                            >
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- DELIVERY ADDRESS -->
+                <section class="checkout-block">
+
+                    <div class="block-heading">
+                        <span class="step-number">02</span>
+                        <h2>Delivery Address</h2>
+                    </div>
+
+                    <p class="block-description">
+                        Where should we send your TML selection?
+                    </p>
+
+                    <div class="form-grid">
+
+                        <div class="form-group full">
+                            <label for="address">Street Address <span>*</span></label>
+                            <input
+                                type="text"
+                                id="address"
+                                name="address"
+                                placeholder="House number and street name"
+                                autocomplete="street-address"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="suburb">Suburb / Area <span>*</span></label>
+                            <input
+                                type="text"
+                                id="suburb"
+                                name="suburb"
+                                placeholder="Your suburb"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city">City / Town <span>*</span></label>
+                            <input
+                                type="text"
+                                id="city"
+                                name="city"
+                                placeholder="Your city"
+                                autocomplete="address-level2"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="province">Province <span>*</span></label>
+                            <select id="province" name="province" required>
+                                <option value="">Select province</option>
+                                <option>Eastern Cape</option>
+                                <option>Free State</option>
+                                <option>Gauteng</option>
+                                <option>KwaZulu-Natal</option>
+                                <option>Limpopo</option>
+                                <option>Mpumalanga</option>
+                                <option>Northern Cape</option>
+                                <option>North West</option>
+                                <option>Western Cape</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="postalCode">Postal Code <span>*</span></label>
+                            <input
+                                type="text"
+                                id="postalCode"
+                                name="postalCode"
+                                placeholder="Postal code"
+                                autocomplete="postal-code"
+                                inputmode="numeric"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="deliveryNotes">Delivery Notes (Optional)</label>
+                            <textarea
+                                id="deliveryNotes"
+                                name="deliveryNotes"
+                                placeholder="Apartment number, gate instructions or other useful information..."
+                            ></textarea>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- DELIVERY METHOD -->
+                <section class="checkout-block">
+
+                    <div class="block-heading">
+                        <span class="step-number">03</span>
+                        <h2>Delivery Method</h2>
+                    </div>
+
+                    <p class="block-description">
+                        Choose how you would prefer to receive your order.
+                    </p>
+
+                    <div class="delivery-options">
+
+                        <label class="delivery-option">
+                            <input
+                                type="radio"
+                                name="deliveryMethod"
+                                value="delivery"
+                                checked
+                            >
+
+                            <span class="delivery-option-content">
+                                <strong>Standard Delivery</strong>
+                                <small>
+                                    Have your order delivered to your provided address.
+                                    Delivery arrangements and charges will be confirmed.
+                                </small>
+                            </span>
+
+                            <span class="option-label">To your door</span>
+                        </label>
+
+                        <label class="delivery-option">
+                            <input
+                                type="radio"
+                                name="deliveryMethod"
+                                value="collection"
+                            >
+
+                            <span class="delivery-option-content">
+                                <strong>Collection</strong>
+                                <small>
+                                    Collection arrangements and the collection location
+                                    will be confirmed with you.
+                                </small>
+                            </span>
+
+                            <span class="option-label">Collection</span>
+                        </label>
+
+                    </div>
+                </section>
+
+                <!-- PAYMENT -->
+                <section class="checkout-block">
+
+                    <div class="block-heading">
+                        <span class="step-number">04</span>
+                        <h2>Payment</h2>
+                    </div>
+
+                    <div class="payment-panel">
+
+                        <div class="payment-panel-top">
+                            <i class="fa-regular fa-credit-card"></i>
+                            <strong>Payment Options</strong>
+                        </div>
+
+                        <p>
+                            TML's online payment gateway is being prepared.
+                            Available payment methods and payment instructions
+                            will be displayed here once the payment integration
+                            is activated.
+                        </p>
+
+                        <span class="payment-status">
+                            <i class="fa-solid fa-clock"></i>
+                            Payment integration pending
+                        </span>
+
+                    </div>
+
+                </section>
+
+                <!-- TERMS -->
+                <div class="terms-check">
+                    <input
+                        type="checkbox"
+                        id="agreeTerms"
+                        name="agreeTerms"
+                        required
+                    >
+
+                    <label for="agreeTerms">
+                        I confirm that the contact and delivery information
+                        provided above is accurate. I have read the
+                        <a href="terms.html">Terms and Conditions</a>
+                        and
+                        <a href="privacy.html">Privacy Policy</a>.
+                        <span style="color:var(--gold)">*</span>
+                    </label>
+                </div>
+
+            </form>
+
+            <!-- ORDER SUMMARY -->
+            <aside class="order-summary">
+
+                <h2>Your Order</h2>
+                <p class="summary-subtitle">
+                    A final look at your selection.
+                </p>
+
+                <div class="summary-products" id="summaryProducts">
+                    <!-- Cart items inserted here -->
+                </div>
+
+                <div class="summary-totals">
+
+                    <div class="summary-row">
+                        <span>Items</span>
+                        <strong id="summaryCount">0</strong>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <strong id="summarySubtotal">R 0.00</strong>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Delivery</span>
+                        <strong id="summaryDelivery">To be confirmed</strong>
+                    </div>
+
+                    <div class="summary-row final-total">
+                        <span>Estimated total</span>
+                        <strong id="summaryTotal">R 0.00</strong>
+                    </div>
+
+                </div>
+
+                <p class="delivery-disclaimer">
+                    Delivery charges are not included in this estimate.
+                    The final amount will be confirmed before payment.
+                </p>
+
+                <button
+                    type="submit"
+                    form="checkoutForm"
+                    class="place-order-button"
+                    id="placeOrderButton"
+                >
+                    Continue to Payment
+                    <i class="fa-solid fa-arrow-right" style="margin-left:10px;"></i>
+                </button>
+
+                <div class="checkout-message" id="checkoutMessage" aria-live="polite"></div>
+
+                <a href="bag.html" class="back-to-bag">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    &nbsp; Return to shopping bag
+                </a>
+
+            </aside>
+
+        </div>
+
+        <!-- EMPTY CART -->
+        <section class="empty-checkout" id="emptyCheckout">
+            <i class="fa-solid fa-bag-shopping"></i>
+
+            <h2>Your bag is empty.</h2>
+
+            <p>
+                Add something special from the TML collection before proceeding.
+            </p>
+
+            <a href="shop.html">
+                Explore the collection
+            </a>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="footer-inner">
+
+            <div>
+                <div class="footer-brand">TML <span>ILLUMINATED</span></div>
+                <p class="footer-tagline">
+                    Luxury for the senses. Beauty for the home.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <a href="shop.html">Shop</a>
+                <a href="collections.html">Collections</a>
+                <a href="experience.html">Experience</a>
+                <a href="about.html">Our Story</a>
+                <a href="contact.html">Contact</a>
+                <a href="faq.html">FAQs</a>
+                <a href="shipping.html">Shipping</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <span>© <span id="currentYear"></span> TML Illuminated. All rights reserved.</span>
+            <span>TIMELESS MADE LUXURIOUS.</span>
+        </div>
+
+    </footer>
+
+    <!-- MOBILE NAVIGATION: EXACTLY FIVE ITEMS -->
+    <nav class="mobile-bottom-nav" aria-label="Mobile bottom navigation">
+
+        <a href="index.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+
+        <a href="shop.html">
+            <i class="fa-solid fa-store"></i>
+            <span>Shop</span>
+        </a>
+
+        <a href="collections.html">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Collections</span>
+        </a>
+
+        <a href="experience.html">
+            <i class="fa-regular fa-gem"></i>
+            <span>Experience</span>
+        </a>
+
+        <a href="bag.html">
+            <span class="nav-bag-icon">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="nav-bag-count" id="mobileCartCount">0</span>
+            </span>
+            <span>Bag</span>
+        </a>
+
+    </nav>
+
+    <script>
+        /* ==========================================
+           TML CHECKOUT
+           Shared cart: tmlCart
+        ========================================== */
+
+        const CART_KEY = "tmlCart";
+
+        const checkoutLayout = document.getElementById("checkoutLayout");
+        const emptyCheckout = document.getElementById("emptyCheckout");
+
+        const summaryProducts = document.getElementById("summaryProducts");
+        const summaryCount = document.getElementById("summaryCount");
+        const summarySubtotal = document.getElementById("summarySubtotal");
+        const summaryTotal = document.getElementById("summaryTotal");
+
+        const checkoutForm = document.getElementById("checkoutForm");
+        const checkoutMessage = document.getElementById("checkoutMessage");
+
+        let cart = readCart();
+
+        function readCart() {
+            try {
+                const stored = localStorage.getItem(CART_KEY);
+                const parsed = stored ? JSON.parse(stored) : [];
+
+                return Array.isArray(parsed)
+                    ? parsed.filter(item => item && typeof item === "object")
+                    : [];
+            } catch (error) {
+                console.error("Unable to read TML cart:", error);
+                return [];
+            }
+        }
+
+        function escapeHTML(value) {
+            return String(value ?? "").replace(/[&<>"']/g, character => {
+                const entities = {
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': "&quot;",
+                    "'": "&#039;"
+                };
+
+                return entities[character];
+            });
+        }
+
+        function getName(item) {
+            return item.name || item.title || item.productName || "TML Product";
+        }
+
+        function getVariant(item) {
+            return item.variant || item.size || item.option || item.scent || "";
+        }
+
+        function getImage(item) {
+            return item.image || item.imageUrl || item.img || item.photo || "";
+        }
+
+        function getPrice(item) {
+            const value = item.price ?? item.unitPrice ?? item.amount ?? null;
+
+            if (typeof value === "number") {
+                return Number.isFinite(value) && value >= 0 ? value : null;
+            }
+
+            if (value === null || value === undefined || value === "") {
+                return null;
+            }
+
+            const parsed = Number(String(value).replace(/[^\d.-]/g, ""));
+
+            return Number.isFinite(parsed) && parsed >= 0 ? parsed : null;
+        }
+
+        function getQuantity(item) {
+            const quantity = Number(item.quantity);
+
+            return Number.isFinite(quantity) && quantity > 0
+                ? Math.floor(quantity)
+                : 1;
+        }
+
+        function formatMoney(value) {
+            return new Intl.NumberFormat("en-ZA", {
+                style: "currency",
+                currency: "ZAR",
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(value);
+        }
+
+        function getItemCount() {
+            return cart.reduce((total, item) => {
+                return total + getQuantity(item);
+            }, 0);
+        }
+
+        function getSubtotal() {
+            return cart.reduce((total, item) => {
+                const price = getPrice(item);
+
+                return total + (price === null ? 0 : price * getQuantity(item));
+            }, 0);
+        }
+
+        function updateCartCounters() {
+            const count = getItemCount();
+
+            document.getElementById("headerCartCount").textContent = count;
+            document.getElementById("mobileCartCount").textContent = count;
+        }
+
+        function renderSummary() {
+            summaryProducts.innerHTML = "";
+
+            if (cart.length === 0) {
+                checkoutLayout.style.display = "none";
+                emptyCheckout.style.display = "block";
+                updateCartCounters();
+                return;
+            }
+
+            checkoutLayout.style.display = "grid";
+            emptyCheckout.style.display = "none";
+
+            cart.forEach(item => {
+                const name = getName(item);
+                const variant = getVariant(item);
+                const image = getImage(item);
+                const quantity = getQuantity(item);
+                const price = getPrice(item);
+
+                const lineTotal = price === null
+                    ? null
+                    : price * quantity;
+
+                const product = document.createElement("div");
+                product.className = "summary-product";
+
+                const imageBox = document.createElement("div");
+                imageBox.className = "summary-product-image";
+
+                if (image) {
+                    const img = document.createElement("img");
+                    img.src = image;
+                    img.alt = name;
+                    img.loading = "lazy";
+
+                    img.addEventListener("error", () => {
+                        imageBox.innerHTML = `
+                            <div class="fallback">
+                                <i class="fa-regular fa-gem"></i>
+                            </div>
+                        `;
+                    });
+
+                    imageBox.appendChild(img);
+                } else {
+                    imageBox.innerHTML = `
+                        <div class="fallback">
+                            <i class="fa-regular fa-gem"></i>
+                        </div>
+                    `;
+                }
+
+                const info = document.createElement("div");
+                info.className = "summary-product-info";
+
+                const productName = document.createElement("strong");
+                productName.textContent = name;
+
+                const productVariant = document.createElement("small");
+                productVariant.textContent =
+                    `${variant ? variant + " · " : ""}Qty: ${quantity}`;
+
+                info.append(productName, productVariant);
+
+                const priceElement = document.createElement("div");
+                priceElement.className = "summary-product-price";
+                priceElement.textContent = lineTotal === null
+                    ? "—"
+                    : formatMoney(lineTotal);
+
+                product.append(imageBox, info, priceElement);
+                summaryProducts.appendChild(product);
+            });
+
+            const count = getItemCount();
+            const subtotal = getSubtotal();
+
+            summaryCount.textContent = count;
+            summarySubtotal.textContent = formatMoney(subtotal);
+            summaryTotal.textContent = formatMoney(subtotal);
+
+            updateCartCounters();
+        }
+
+        /* DELIVERY METHOD DISPLAY */
+
+        const deliveryRadios = document.querySelectorAll(
+            'input[name="deliveryMethod"]'
+        );
+
+        const summaryDelivery = document.getElementById("summaryDelivery");
+
+        function updateDeliveryDisplay() {
+            const selected = document.querySelector(
+                'input[name="deliveryMethod"]:checked'
+            );
+
+            if (!selected) return;
+
+            summaryDelivery.textContent =
+                selected.value === "collection"
+                    ? "Collection to be confirmed"
+                    : "To be confirmed";
+        }
+
+        deliveryRadios.forEach(radio => {
+            radio.addEventListener("change", updateDeliveryDisplay);
+        });
+
+        /* FORM SUBMISSION */
+
+        checkoutForm.addEventListener("submit", event => {
+            event.preventDefault();
+
+            checkoutMessage.classList.remove("visible");
+            checkoutMessage.textContent = "";
+
+            if (cart.length === 0) {
+                checkoutMessage.textContent =
+                    "Your shopping bag is empty. Please add products before continuing.";
+
+                checkoutMessage.classList.add("visible");
+                return;
+            }
+
+            if (!checkoutForm.reportValidity()) {
+                return;
+            }
+
+            /*
+              This page is currently a frontend checkout preview.
+              No personal details are transmitted or stored.
+              Connect a backend and payment provider before accepting orders.
+            */
+
+            checkoutMessage.textContent =
+                "Your details have passed the form checks. Online payment and order submission are not active yet. Please do not treat this as a completed order.";
+
+            checkoutMessage.classList.add("visible");
+            checkoutMessage.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest"
+            });
+        });
+
+        /* MOBILE MENU */
+
+        const menuToggle = document.getElementById("menuToggle");
+        const mobileDrawer = document.getElementById("mobileDrawer");
+        const drawerOverlay = document.getElementById("drawerOverlay");
+        const menuIcon = menuToggle.querySelector("i");
+
+        function openMenu() {
+            mobileDrawer.classList.add("open");
+            drawerOverlay.classList.add("open");
+            document.body.classList.add("menu-open");
+
+            menuToggle.setAttribute("aria-expanded", "true");
+            menuToggle.setAttribute("aria-label", "Close navigation menu");
+
+            menuIcon.classList.remove("fa-bars");
+            menuIcon.classList.add("fa-xmark");
+        }
+
+        function closeMenu() {
+            mobileDrawer.classList.remove("open");
+            drawerOverlay.classList.remove("open");
+            document.body.classList.remove("menu-open");
+
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Open navigation menu");
+
+            menuIcon.classList.remove("fa-xmark");
+            menuIcon.classList.add("fa-bars");
+        }
+
+        menuToggle.addEventListener("click", () => {
+            mobileDrawer.classList.contains("open")
+                ? closeMenu()
+                : openMenu();
+        });
+
+        drawerOverlay.addEventListener("click", closeMenu);
+
+        mobileDrawer.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", closeMenu);
+        });
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape") closeMenu();
+        });
+
+        /* SYNC WHEN CART CHANGES IN ANOTHER TAB */
+
+        window.addEventListener("storage", event => {
+            if (event.key === CART_KEY) {
+                cart = readCart();
+                renderSummary();
+            }
+        });
+
+        /* FOOTER YEAR */
+
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+        /* INITIALISE */
+
+        renderSummary();
+        updateDeliveryDisplay();
+    </script>
+
+</body>
+</html>

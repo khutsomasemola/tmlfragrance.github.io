@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Product | TML Illuminated Candles & Home Fragrances</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+<style>
+
+/* =========================================================
+   TML PRODUCT PAGE
+========================================================= */
+
+:root {
+    --black: #080807;
+    --black-soft: #11100e;
+    --cream: #f4f0e9;
+    --cream-dark: #e9e3da;
+    --gold: #c9a76a;
+    --gold-light: #e2c58e;
+    --text: #171614;
+    --text-soft: #6d6962;
+    --border: rgba(0,0,0,.12);
+    --serif: "Playfair Display", Georgia, serif;
+    --sans: "DM Sans", Arial, sans-serif;
+    --container: 1440px;
+    --transition: .45s cubic-bezier(.22,.61,.36,1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: var(--sans);
+    overflow-x: hidden;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: 0;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    width: min(calc(100% - 80px), var(--container));
+    margin: auto;
+}
+
+
+/* =========================================================
+   ANNOUNCEMENT
+========================================================= */
+
+.announcement {
+    height: 44px;
+    background: var(--black);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header {
+    height: 108px;
+    background: var(--black);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-inner {
+    max-width: var(--container);
+    width: calc(100% - 80px);
+    height: 100%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+}
+
+.desktop-nav {
+    display: flex;
+    gap: 38px;
+}
+
+.desktop-nav a {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    transition: .3s ease;
+}
+
+.desktop-nav a:hover {
+    color: var(--gold-light);
+}
+
+.logo {
+    width: 100px;
+}
+
+.logo img {
+    width: 100%;
+}
+
+.header-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 24px;
+}
+
+.header-action {
+    background: transparent;
+    color: white;
+    position: relative;
+    font-size: 15px;
+}
+
+.header-action:hover {
+    color: var(--gold-light);
+}
+
+.bag-count {
+    position: absolute;
+    right: -12px;
+    top: -10px;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    color: white;
+}
+
+
+/* =========================================================
+   BREADCRUMB
+========================================================= */
+
+.breadcrumb {
+    padding: 30px 0;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--text-soft);
+}
+
+.breadcrumb a:hover {
+    color: var(--text);
+}
+
+
+/* =========================================================
+   PRODUCT
+========================================================= */
+
+.product-section {
+    padding: 10px 0 140px;
+}
+
+.product-layout {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 90px;
+    align-items: start;
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.product-gallery {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 15px;
+}
+
+.thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.thumbnail {
+    width: 90px;
+    height: 110px;
+    border: 1px solid transparent;
+    background: var(--cream-dark);
+    padding: 0;
+    overflow: hidden;
+}
+
+.thumbnail.active {
+    border-color: var(--black);
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.main-product-image {
+    aspect-ratio: 4 / 5;
+    background: var(--cream-dark);
+    overflow: hidden;
+}
+
+.main-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   PRODUCT INFO
+========================================================= */
+
+.product-info {
+    padding: 35px 0;
+}
+
+.product-badge {
+    display: inline-block;
+    padding: 8px 11px;
+    background: var(--black);
+    color: white;
+    font-size: 9px;
+    letter-spacing: .15em;
+    margin-bottom: 20px;
+}
+
+.product-collection {
+    color: var(--text-soft);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    margin-bottom: 12px;
+}
+
+.product-info h1 {
+    font-family: var(--serif);
+    font-size: clamp(45px, 5vw, 72px);
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.product-notes {
+    color: var(--text-soft);
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 35px;
+}
+
+.product-description {
+    color: var(--text-soft);
+    line-height: 1.9;
+    font-size: 13px;
+    max-width: 560px;
+    padding-bottom: 35px;
+    border-bottom: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   PURCHASE
+========================================================= */
+
+.purchase-area {
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.stock-status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    margin-bottom: 20px;
+}
+
+.stock-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #557b4d;
+}
+
+.purchase-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 12px;
+}
+
+.quantity {
+    display: flex;
+    border: 1px solid rgba(0,0,0,.18);
+    height: 55px;
+}
+
+.quantity button {
+    width: 38px;
+    background: transparent;
+}
+
+.quantity input {
+    width: 44px;
+    text-align: center;
+    border: 0;
+    background: transparent;
+    outline: none;
+}
+
+.add-to-bag {
+    background: var(--black);
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    font-size: 10px;
+    transition: .3s ease;
+}
+
+.add-to-bag:hover {
+    background: var(--gold);
+    color: var(--black);
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.product-details {
+    padding-top: 30px;
+}
+
+.detail {
+    padding: 17px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.detail span:first-child {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .13em;
+}
+
+.detail span:last-child {
+    color: var(--text-soft);
+    font-size: 12px;
+    text-align: right;
+}
+
+
+/* =========================================================
+   RELATED
+========================================================= */
+
+.related {
+    background: #eeebe5;
+    padding: 120px 0;
+}
+
+.section-eyebrow {
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-size: 10px;
+    margin-bottom: 18px;
+}
+
+.related h2 {
+    font-family: var(--serif);
+    font-size: 52px;
+    font-weight: 400;
+    margin-bottom: 50px;
+}
+
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.related-card-image {
+    aspect-ratio: 4 / 5;
+    background: var(--cream-dark);
+    overflow: hidden;
+}
+
+.related-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .7s ease;
+}
+
+.related-card:hover img {
+    transform: scale(1.04);
+}
+
+.related-card-info {
+    padding-top: 15px;
+}
+
+.related-card-info small {
+    color: var(--text-soft);
+    font-size: 9px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.related-card-info h3 {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 6px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    background: var(--black);
+    color: white;
+    padding: 80px 0 35px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 50px;
+    padding-bottom: 65px;
+}
+
+.footer-brand img {
+    width: 90px;
+    margin-bottom: 20px;
+}
+
+.footer-brand p {
+    color: rgba(255,255,255,.55);
+    font-size: 12px;
+    line-height: 1.8;
+    max-width: 300px;
+}
+
+.footer-title {
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,.7);
+    font-size: 12px;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    color: rgba(255,255,255,.4);
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.bag-message {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    background: var(--black);
+    color: white;
+    padding: 16px 20px;
+    z-index: 3000;
+    transform: translateY(120px);
+    opacity: 0;
+    transition: .4s ease;
+    font-size: 11px;
+}
+
+.bag-message.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .desktop-nav {
+        display: none;
+    }
+
+    .header-inner {
+        display: flex;
+        justify-content: space-between;
+        width: calc(100% - 40px);
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        font-size: 19px;
+    }
+
+    .logo {
+        width: 75px;
+    }
+
+    .header-actions {
+        gap: 18px;
+    }
+
+    .search-action,
+    .account-action {
+        display: none;
+    }
+
+    .product-layout {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .related-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 35px 12px;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .announcement {
+        height: 38px;
+        font-size: 8px;
+    }
+
+    .site-header {
+        height: 80px;
+    }
+
+    .container {
+        width: calc(100% - 35px);
+    }
+
+    .breadcrumb {
+        padding: 22px 0;
+    }
+
+    .product-section {
+        padding-bottom: 80px;
+    }
+
+    .product-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .thumbnails {
+        order: 2;
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .thumbnail {
+        min-width: 75px;
+        width: 75px;
+        height: 90px;
+    }
+
+    .product-info {
+        padding-top: 10px;
+    }
+
+    .product-info h1 {
+        font-size: 45px;
+    }
+
+    .purchase-row {
+        grid-template-columns: 100px 1fr;
+    }
+
+    .related {
+        padding: 80px 0;
+    }
+
+    .related h2 {
+        font-size: 40px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px 25px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     ANNOUNCEMENT
+========================================================= -->
+
+<div class="announcement">
+    Luxury for the senses. Beauty for the home.
+</div>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="site-header">
+
+    <div class="header-inner">
+
+        <button class="mobile-menu-btn"
+                id="mobileMenuBtn"
+                aria-label="Menu">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+
+        <nav class="desktop-nav">
+
+            <a href="shop.html">
+                Shop
+            </a>
+
+            <a href="index.html#collections">
+                Collections
+            </a>
+
+            <a href="index.html#experience">
+                The TML Experience
+            </a>
+
+        </nav>
+
+
+        <a href="index.html" class="logo">
+
+            <img src="images/logo.png"
+                 alt="TML Illuminated Candles & Home Fragrances">
+
+        </a>
+
+
+        <div class="header-actions">
+
+            <button class="header-action"
+                    id="bagBtn"
+                    aria-label="Shopping Bag">
+
+                <i class="fa-solid fa-bag-shopping"></i>
+
+                <span class="bag-count"
+                      id="bagCount">
+                    0
+                </span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     BREADCRUMB
+========================================================= -->
+
+<div class="container">
+
+    <div class="breadcrumb">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <span> / </span>
+
+        <a href="shop.html">
+            Shop
+        </a>
+
+        <span> / </span>
+
+        <span id="breadcrumbProduct">
+            Product
+        </span>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     PRODUCT
+========================================================= -->
+
+<main class="product-section">
+
+    <div class="container">
+
+        <div class="product-layout">
+
+
+            <!-- GALLERY -->
+
+            <div class="product-gallery">
+
+                <div class="thumbnails"
+                     id="thumbnails">
+                </div>
+
+
+                <div class="main-product-image">
+
+                    <img id="mainProductImage"
+                         src=""
+                         alt="">
+
+                </div>
+
+            </div>
+
+
+            <!-- INFORMATION -->
+
+            <div class="product-info">
+
+                <span class="product-badge"
+                      id="productBadge">
+                </span>
+
+
+                <div class="product-collection"
+                     id="productCollection">
+                </div>
+
+
+                <h1 id="productName">
+                    Product
+                </h1>
+
+
+                <div class="product-notes"
+                     id="productNotes">
+                </div>
+
+
+                <div class="product-price"
+                     id="productPrice">
+                </div>
+
+
+                <p class="product-description"
+                   id="productDescription">
+                </p>
+
+
+                <!-- PURCHASE -->
+
+                <div class="purchase-area">
+
+                    <div class="stock-status">
+
+                        <span class="stock-dot"></span>
+
+                        <span>
+                            In stock
+                        </span>
+
+                    </div>
+
+
+                    <div class="purchase-row">
+
+                        <div class="quantity">
+
+                            <button id="minusBtn">
+                                −
+                            </button>
+
+                            <input id="quantity"
+                                   type="number"
+                                   min="1"
+                                   value="1">
+
+                            <button id="plusBtn">
+                                +
+                            </button>
+
+                        </div>
+
+
+                        <button class="add-to-bag"
+                                id="addToBag">
+
+                            Add to Bag
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DETAILS -->
+
+                <div class="product-details">
+
+                    <div class="detail">
+
+                        <span>
+                            Collection
+                        </span>
+
+                        <span id="detailCollection">
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span>
+                            Availability
+                        </span>
+
+                        <span>
+                            In stock
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span>
+                            Fragrance
+                        </span>
+
+                        <span id="detailNotes">
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- =========================================================
+     RELATED PRODUCTS
+========================================================= -->
+
+<section class="related">
+
+    <div class="container">
+
+        <div class="section-eyebrow">
+            Discover more
+        </div>
+
+        <h2>
+            You may also like
+        </h2>
+
+        <div class="related-grid"
+             id="relatedGrid">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     BAG MESSAGE
+========================================================= -->
+
+<div class="bag-message"
+     id="bagMessage">
+
+    Added to your bag
+
+</div>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+
+            <div class="footer-brand">
+
+                <img src="images/logo.png"
+                     alt="TML">
+
+                <p>
+                    Luxury illuminated candles and home fragrances
+                    designed to make every space feel considered.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <div class="footer-title">
+                    Explore
+                </div>
+
+                <div class="footer-links">
+
+                    <a href="shop.html">
+                        Shop
+                    </a>
+
+                    <a href="index.html#collections">
+                        Collections
+                    </a>
+
+                    <a href="index.html#experience">
+                        The TML Experience
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <div class="footer-title">
+                    Information
+                </div>
+
+                <div class="footer-links">
+
+                    <a href="#">
+                        Contact
+                    </a>
+
+                    <a href="#">
+                        Shipping
+                    </a>
+
+                    <a href="#">
+                        Returns
+                    </a>
+
+                    <a href="#">
+                        FAQs
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <div class="footer-title">
+                    Follow TML
+                </div>
+
+                <div class="footer-links">
+
+                    <a href="#">
+                        Instagram
+                    </a>
+
+                    <a href="#">
+                        Facebook
+                    </a>
+
+                    <a href="#">
+                        WhatsApp
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 TML Illuminated Candles & Home Fragrances
+            </span>
+
+            <span>
+                Luxury for the senses. Beauty for the home.
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   TML PRODUCT DATA
+
+   KEEP THIS DATA THE SAME AS shop.html
+
+   TO CHANGE PRODUCT PHOTOS:
+
+   images: [
+       "images/products/photo-1.jpg",
+       "images/products/photo-2.jpg",
+       "images/products/photo-3.jpg"
+   ]
+========================================================= */
+
+const products = [
+
+    {
+        id: "sage-mint",
+        name: "Sage & Mint",
+        collection: "Signature Collection",
+        category: ["signature"],
+        badge: "SIGNATURE",
+        price: null,
+        notes: "Sage · Fresh Mint · Green Botanicals",
+
+        description:
+            "A fresh and sophisticated home fragrance designed to create a clean and beautifully refined atmosphere.",
+
+        available: true,
+
+        images: [
+            "images/products/sage-mint-1.jpg",
+            "images/products/sage-mint-2.jpg",
+            "images/products/sage-mint-3.jpg"
+        ]
+    },
+
+
+    {
+        id: "cranberry",
+        name: "Cranberry",
+        collection: "Signature Collection",
+        category: ["signature", "fruit"],
+        badge: "SIGNATURE",
+        price: null,
+        notes: "Cranberry · Sweet Fruit · Warm Notes",
+
+        description:
+            "A rich and inviting fragrance created to bring warmth and character into the home.",
+
+        available: true,
+
+        images: [
+            "images/products/cranberry-1.jpg",
+            "images/products/cranberry-2.jpg",
+            "images/products/cranberry-3.jpg"
+        ]
+    },
+
+
+    {
+        id: "blackberry",
+        name: "Blackberry",
+        collection: "Signature Collection",
+        category: ["signature", "fruit"],
+        badge: "SIGNATURE",
+        price: null,
+        notes: "Blackberry · Dark Fruit · Soft Sweetness",
+
+        description:
+            "A sophisticated fruit-inspired fragrance with a deep and elegant character.",
+
+        available: true,
+
+        images: [
+            "images/products/blackberry-1.jpg",
+            "images/products/blackberry-2.jpg",
+            "images/products/blackberry-3.jpg"
+        ]
+    },
+
+
+    {
+        id: "rose-gold-blush",
+        name: "Rose Gold Blush",
+        collection: "Luxury Collection",
+        category: ["floral"],
+        badge: "LUXURY",
+        price: null,
+        notes: "Rose · Soft Florals · Elegant Sweetness",
+
+        description:
+            "A graceful floral fragrance designed to add softness, warmth and elegance to your surroundings.",
+
+        available: true,
+
+        images: [
+            "images/products/rose-gold-blush-1.jpg",
+            "images/products/rose-gold-blush-2.jpg",
+            "images/products/rose-gold-blush-3.jpg"
+        ]
+    },
+
+
+    {
+        id: "noir-oud-eclat",
+        name: "Noir Oud Éclat",
+        collection: "Luxury Collection",
+        category: ["oud"],
+        badge: "LUXURY",
+        price: null,
+        notes: "Oud · Dark Woods · Amber",
+
+        description:
+            "A deep, sophisticated fragrance built around a luxurious woody character.",
+
+        available: true,
+
+        images: [
+            "images/products/noir-oud-eclat-1.jpg",
+            "images/products/noir-oud-eclat-2.jpg",
+            "images/products/noir-oud-eclat-3.jpg"
+        ]
+    }
+
+];
+
+
+/* =========================================================
+   PRICE
+========================================================= */
+
+function formatPrice(price) {
+
+    if (price === null || price === undefined) {
+        return "Price on request";
+    }
+
+    return "R" + Number(price).toLocaleString("en-ZA");
+
+}
+
+
+/* =========================================================
+   SAFE IMAGE
+========================================================= */
+
+function setSafeImage(img, src, alt = "") {
+
+    img.alt = alt;
+
+    img.onerror = function () {
+
+        this.onerror = null;
+
+        this.src =
+            "data:image/svg+xml;charset=UTF-8," +
+            encodeURIComponent(`
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="800"
+                     height="1000">
+
+                    <rect width="800"
+                          height="1000"
+                          fill="#e9e3da"/>
+
+                    <text x="50%"
+                          y="48%"
+                          text-anchor="middle"
+                          font-family="Georgia"
+                          font-size="40"
+                          fill="#171614">
+                        TML
+                    </text>
+
+                    <text x="50%"
+                          y="53%"
+                          text-anchor="middle"
+                          font-family="Arial"
+                          font-size="14"
+                          letter-spacing="3"
+                          fill="#6d6962">
+                        PRODUCT IMAGE
+                    </text>
+
+                </svg>
+            `);
+
+    };
+
+    img.src = src;
+
+}
+
+
+/* =========================================================
+   GET PRODUCT
+========================================================= */
+
+const params = new URLSearchParams(
+    window.location.search
+);
+
+const productId = params.get("id");
+
+const product = products.find(
+    item => item.id === productId
+);
+
+
+/* =========================================================
+   INVALID PRODUCT
+========================================================= */
+
+if (!product) {
+
+    document.getElementById("productName").textContent =
+        "Product not found";
+
+    document.getElementById("productDescription").textContent =
+        "The product you are looking for could not be found.";
+
+}
+
+
+/* =========================================================
+   LOAD PRODUCT
+========================================================= */
+
+if (product) {
+
+    document.title =
+        `${product.name} | TML Illuminated Candles & Home Fragrances`;
+
+
+    document.getElementById("breadcrumbProduct")
+        .textContent = product.name;
+
+
+    document.getElementById("productBadge")
+        .textContent = product.badge;
+
+
+    document.getElementById("productCollection")
+        .textContent = product.collection;
+
+
+    document.getElementById("productName")
+        .textContent = product.name;
+
+
+    document.getElementById("productNotes")
+        .textContent = product.notes;
+
+
+    document.getElementById("productPrice")
+        .textContent = formatPrice(product.price);
+
+
+    document.getElementById("productDescription")
+        .textContent = product.description;
+
+
+    document.getElementById("detailCollection")
+        .textContent = product.collection;
+
+
+    document.getElementById("detailNotes")
+        .textContent = product.notes;
+
+
+    /* =====================================================
+       MAIN IMAGE
+    ===================================================== */
+
+    const mainImage =
+        document.getElementById("mainProductImage");
+
+    setSafeImage(
+        mainImage,
+        product.images[0],
+        product.name
+    );
+
+
+    /* =====================================================
+       THUMBNAILS
+    ===================================================== */
+
+    const thumbnails =
+        document.getElementById("thumbnails");
+
+    thumbnails.innerHTML = "";
+
+
+    product.images.forEach((imagePath, index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.className = "thumbnail";
+
+        if (index === 0) {
+            button.classList.add("active");
+        }
+
+
+        const image =
+            document.createElement("img");
+
+        setSafeImage(
+            image,
+            imagePath,
+            `${product.name} image ${index + 1}`
+        );
+
+
+        button.appendChild(image);
+
+        button.addEventListener("click", () => {
+
+            document
+                .querySelectorAll(".thumbnail")
+                .forEach(item =>
+                    item.classList.remove("active")
+                );
+
+            button.classList.add("active");
+
+            setSafeImage(
+                mainImage,
+                imagePath,
+                product.name
+            );
+
+        });
+
+
+        thumbnails.appendChild(button);
+
+    });
+
+}
+
+
+/* =========================================================
+   QUANTITY
+========================================================= */
+
+const quantityInput =
+    document.getElementById("quantity");
+
+
+document.getElementById("minusBtn")
+    .addEventListener("click", () => {
+
+        let value =
+            parseInt(quantityInput.value) || 1;
+
+        value = Math.max(1, value - 1);
+
+        quantityInput.value = value;
+
+    });
+
+
+document.getElementById("plusBtn")
+    .addEventListener("click", () => {
+
+        let value =
+            parseInt(quantityInput.value) || 1;
+
+        value++;
+
+        quantityInput.value = value;
+
+    });
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+function getCart() {
+
+    try {
+        return JSON.parse(
+            localStorage.getItem("tmlCart")
+        ) || [];
+    }
+
+    catch {
+        return [];
+    }
+
+}
+
+
+function saveCart(cart) {
+
+    localStorage.setItem(
+        "tmlCart",
+        JSON.stringify(cart)
+    );
+
+}
+
+
+function updateBagCount() {
+
+    const cart = getCart();
+
+    const total =
+        cart.reduce(
+            (sum, item) =>
+                sum + Number(item.quantity || 1),
+            0
+        );
+
+    document.getElementById("bagCount")
+        .textContent = total;
+
+}
+
+
+function showMessage(message) {
+
+    const box =
+        document.getElementById("bagMessage");
+
+    box.textContent = message;
+
+    box.classList.add("show");
+
+    setTimeout(() => {
+
+        box.classList.remove("show");
+
+    }, 2200);
+
+}
+
+
+/* =========================================================
+   ADD TO BAG
+========================================================= */
+
+document.getElementById("addToBag")
+    .addEventListener("click", () => {
+
+        if (!product) return;
+
+
+        const quantity =
+            Math.max(
+                1,
+                parseInt(quantityInput.value) || 1
+            );
+
+
+        const cart = getCart();
+
+
+        const existing =
+            cart.find(item =>
+                item.id === product.id
+            );
+
+
+        if (existing) {
+
+            existing.quantity += quantity;
+
+        } else {
+
+            cart.push({
+                id: product.id,
+                quantity: quantity
+            });
+
+        }
+
+
+        saveCart(cart);
+
+        updateBagCount();
+
+        showMessage(
+            `${quantity} × ${product.name} added to your bag`
+        );
+
+    });
+
+
+/* =========================================================
+   RELATED PRODUCTS
+========================================================= */
+
+if (product) {
+
+    const relatedGrid =
+        document.getElementById("relatedGrid");
+
+
+    const relatedProducts =
+        products
+            .filter(item =>
+                item.id !== product.id
+            )
+            .slice(0, 4);
+
+
+    relatedProducts.forEach(item => {
+
+        const card =
+            document.createElement("a");
+
+        card.href =
+            `product.html?id=${item.id}`;
+
+        card.className =
+            "related-card";
+
+
+        card.innerHTML = `
+
+            <div class="related-card-image">
+
+                <img alt="${item.name}">
+
+            </div>
+
+            <div class="related-card-info">
+
+                <small>
+                    ${item.collection}
+                </small>
+
+                <h3>
+                    ${item.name}
+                </h3>
+
+            </div>
+
+        `;
+
+
+        const image =
+            card.querySelector("img");
+
+
+        setSafeImage(
+            image,
+            item.images[0],
+            item.name
+        );
+
+
+        relatedGrid.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================================================
+   BAG BUTTON
+========================================================= */
+document.getElementById("bagBtn").addEventListener(
+    "click",
+    () => {
+        window.location.href = "bag.html";
+    }
+);
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+document.getElementById("mobileMenuBtn")
+    .addEventListener("click", () => {
+
+        window.location.href = "index.html";
+
+    });
+
+
+/* =========================================================
+   INITIALISE
+========================================================= */
+
+updateBagCount();
+
+</script>
+
+</body>
+</html>

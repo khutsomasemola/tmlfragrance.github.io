@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080807">
+
+    <title>Contact | TML Illuminated</title>
+
+    <meta name="description" content="Get in touch with TML Illuminated. Contact us for product enquiries, orders, collaborations and assistance. Luxury for the senses. Beauty for the home.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/style.css">
+
+    <style>
+        :root {
+            --tml-black: #080807;
+            --tml-dark: #11110f;
+            --tml-dark-soft: #181714;
+            --tml-cream: #f4f0e9;
+            --tml-gold: #c9a76a;
+            --tml-gold-light: #e2c58e;
+            --tml-muted: #a49d91;
+            --tml-border: rgba(201,167,106,.22);
+            --tml-white: #ffffff;
+            --tml-font: "DM Sans", sans-serif;
+            --tml-display: "Playfair Display", serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 110px;
+        }
+
+        body {
+            background: var(--tml-black);
+            color: var(--tml-cream);
+            font-family: var(--tml-font);
+            overflow-x: hidden;
+            padding-bottom: 0;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 48px));
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+            background: rgba(8,8,7,.86);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid transparent;
+            transition: .3s ease;
+        }
+
+        .site-header.scrolled {
+            border-bottom-color: var(--tml-border);
+            background: rgba(8,8,7,.97);
+        }
+
+        .header-inner {
+            height: 86px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .brand img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .brand-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .brand-name {
+            font-family: var(--tml-display);
+            font-size: 21px;
+            letter-spacing: 3px;
+            color: var(--tml-cream);
+        }
+
+        .brand-subtitle {
+            font-size: 8px;
+            letter-spacing: 3px;
+            color: var(--tml-gold);
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .main-nav a {
+            position: relative;
+            font-size: 11px;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            color: rgba(244,240,233,.75);
+            transition: .3s ease;
+        }
+
+        .main-nav a::after {
+            content: "";
+            position: absolute;
+            bottom: -9px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--tml-gold);
+            transition: .3s ease;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: var(--tml-gold-light);
+        }
+
+        .main-nav a:hover::after,
+        .main-nav a.active::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-icon {
+            position: relative;
+            color: var(--tml-cream);
+            font-size: 16px;
+            transition: .3s ease;
+        }
+
+        .header-icon:hover {
+            color: var(--tml-gold);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -9px;
+            right: -10px;
+            width: 17px;
+            height: 17px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--tml-gold);
+            color: var(--tml-black);
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: 0;
+            color: var(--tml-cream);
+            font-size: 21px;
+            padding: 8px;
+        }
+
+        /* MOBILE MENU */
+
+        .mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.65);
+            z-index: 9997;
+            opacity: 0;
+            visibility: hidden;
+            transition: .3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: min(390px, 88%);
+            height: 100dvh;
+            background: #10100e;
+            border-left: 1px solid var(--tml-border);
+            z-index: 9998;
+            padding: 100px 32px 120px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            transition: right .4s cubic-bezier(.7,0,.2,1);
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--tml-border);
+            color: var(--tml-cream);
+            font-family: var(--tml-display);
+            font-size: 23px;
+            transition: .3s ease;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            color: var(--tml-gold);
+            padding-left: 8px;
+        }
+
+        .mobile-menu-label {
+            color: var(--tml-gold);
+            font-size: 9px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        /* HERO */
+
+        .contact-hero {
+            min-height: 570px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding-top: 100px;
+            background:
+                linear-gradient(90deg, rgba(8,8,7,.98) 0%, rgba(8,8,7,.84) 50%, rgba(8,8,7,.42) 100%),
+                linear-gradient(0deg, rgba(8,8,7,.55), transparent),
+                url("images/contact-hero.jpg") center/cover no-repeat;
+        }
+
+        .contact-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 75% 50%, rgba(201,167,106,.10), transparent 45%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            padding: 80px 0;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            color: var(--tml-gold);
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 35px;
+            height: 1px;
+            background: var(--tml-gold);
+        }
+
+        .hero-content h1 {
+            font-family: var(--tml-display);
+            font-size: clamp(55px, 8vw, 100px);
+            line-height: 1.04;
+            font-weight: 400;
+            letter-spacing: -2px;
+        }
+
+        .hero-content h1 span {
+            color: var(--tml-gold-light);
+            font-style: italic;
+        }
+
+        .hero-content p {
+            max-width: 480px;
+            color: rgba(244,240,233,.72);
+            font-size: 14px;
+            line-height: 2;
+            margin-top: 25px;
+        }
+
+        .hero-bottom {
+            position: absolute;
+            bottom: 35px;
+            left: 0;
+            right: 0;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-bottom span {
+            color: rgba(244,240,233,.55);
+            font-size: 9px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* INTRO */
+
+        .contact-intro {
+            padding: 100px 0 85px;
+            text-align: center;
+        }
+
+        .section-label {
+            color: var(--tml-gold);
+            text-transform: uppercase;
+            font-size: 9px;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+
+        .contact-intro h2 {
+            font-family: var(--tml-display);
+            font-size: clamp(35px, 5vw, 55px);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .contact-intro h2 span {
+            color: var(--tml-gold-light);
+            font-style: italic;
+        }
+
+        .contact-intro p {
+            max-width: 610px;
+            margin: 22px auto 0;
+            color: var(--tml-muted);
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        /* CONTACT AREA */
+
+        .contact-section {
+            padding: 30px 0 120px;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: .82fr 1.18fr;
+            gap: 75px;
+            align-items: start;
+        }
+
+        .contact-information {
+            padding-top: 20px;
+        }
+
+        .contact-information h2 {
+            font-family: var(--tml-display);
+            font-size: 38px;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .contact-information > p {
+            color: var(--tml-muted);
+            font-size: 13px;
+            line-height: 2;
+            margin-bottom: 40px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 23px 0;
+            border-bottom: 1px solid var(--tml-border);
+        }
+
+        .detail-icon {
+            width: 43px;
+            height: 43px;
+            border: 1px solid var(--tml-border);
+            display: grid;
+            place-items: center;
+            color: var(--tml-gold);
+            flex-shrink: 0;
+        }
+
+        .detail-content small {
+            display: block;
+            color: var(--tml-gold);
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .detail-content p,
+        .detail-content a {
+            color: var(--tml-cream);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .detail-content a:hover {
+            color: var(--tml-gold);
+        }
+
+        .contact-socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 35px;
+        }
+
+        .contact-socials a {
+            width: 43px;
+            height: 43px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--tml-border);
+            color: var(--tml-cream);
+            transition: .3s ease;
+        }
+
+        .contact-socials a:hover {
+            background: var(--tml-gold);
+            color: var(--tml-black);
+            border-color: var(--tml-gold);
+            transform: translateY(-4px);
+        }
+
+        /* FORM */
+
+        .contact-form-wrapper {
+            padding: 45px;
+            background: var(--tml-dark);
+            border: 1px solid var(--tml-border);
+            position: relative;
+        }
+
+        .contact-form-wrapper::before {
+            content: "";
+            position: absolute;
+            top: -1px;
+            left: 45px;
+            width: 75px;
+            height: 2px;
+            background: var(--tml-gold);
+        }
+
+        .form-heading {
+            margin-bottom: 32px;
+        }
+
+        .form-heading span {
+            color: var(--tml-gold);
+            font-size: 9px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .form-heading h2 {
+            font-family: var(--tml-display);
+            font-size: 34px;
+            font-weight: 400;
+            margin-top: 12px;
+        }
+
+        .form-heading p {
+            color: var(--tml-muted);
+            font-size: 12px;
+            line-height: 1.8;
+            margin-top: 10px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            color: rgba(244,240,233,.8);
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            background: #0c0c0a;
+            border: 1px solid rgba(201,167,106,.18);
+            outline: none;
+            color: var(--tml-cream);
+            padding: 16px;
+            font-size: 12px;
+            border-radius: 0;
+            transition: .3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #777168;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--tml-gold);
+            box-shadow: 0 0 0 2px rgba(201,167,106,.08);
+        }
+
+        .form-group select {
+            appearance: none;
+            cursor: pointer;
+            color: var(--tml-muted);
+        }
+
+        .form-group select option {
+            background: var(--tml-dark);
+            color: var(--tml-cream);
+        }
+
+        .form-group textarea {
+            min-height: 155px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            min-height: 55px;
+            margin-top: 26px;
+            border: 1px solid var(--tml-gold);
+            background: var(--tml-gold);
+            color: var(--tml-black);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 10px;
+            font-weight: 700;
+            transition: .3s ease;
+        }
+
+        .form-submit:hover {
+            background: transparent;
+            color: var(--tml-gold);
+        }
+
+        .form-submit i {
+            margin-left: 12px;
+        }
+
+        .form-note {
+            color: #898276;
+            font-size: 10px;
+            line-height: 1.8;
+            text-align: center;
+            margin-top: 17px;
+        }
+
+        .form-status {
+            display: none;
+            margin-top: 18px;
+            padding: 13px;
+            border: 1px solid var(--tml-border);
+            color: var(--tml-gold-light);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        /* WHATSAPP CTA */
+
+        .whatsapp-section {
+            padding: 75px 0;
+            background: #11110f;
+            border-top: 1px solid var(--tml-border);
+            border-bottom: 1px solid var(--tml-border);
+        }
+
+        .whatsapp-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .whatsapp-copy span {
+            color: var(--tml-gold);
+            font-size: 9px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .whatsapp-copy h2 {
+            font-family: var(--tml-display);
+            font-weight: 400;
+            font-size: clamp(28px, 4vw, 42px);
+            margin-top: 12px;
+        }
+
+        .whatsapp-copy p {
+            color: var(--tml-muted);
+            font-size: 12px;
+            margin-top: 12px;
+            line-height: 1.8;
+        }
+
+        .whatsapp-button {
+            min-height: 55px;
+            padding: 0 27px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            border: 1px solid var(--tml-gold);
+            color: var(--tml-gold-light);
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            transition: .3s ease;
+            white-space: nowrap;
+        }
+
+        .whatsapp-button:hover {
+            background: var(--tml-gold);
+            color: var(--tml-black);
+        }
+
+        /* FOOTER */
+
+        .site-footer {
+            padding: 75px 0 30px;
+            background: #070706;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 50px;
+            padding-bottom: 60px;
+        }
+
+        .footer-brand img {
+            width: 58px;
+            height: 58px;
+            object-fit: contain;
+            margin-bottom: 18px;
+        }
+
+        .footer-brand h3 {
+            font-family: var(--tml-display);
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .footer-brand p {
+            max-width: 260px;
+            color: var(--tml-muted);
+            font-size: 11px;
+            line-height: 2;
+            margin-top: 15px;
+        }
+
+        .footer-column h4 {
+            color: var(--tml-gold);
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        .footer-column a {
+            display: block;
+            width: fit-content;
+            color: var(--tml-muted);
+            font-size: 11px;
+            margin-bottom: 15px;
+            transition: .3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--tml-gold-light);
+            padding-left: 4px;
+        }
+
+        .footer-bottom {
+            padding-top: 25px;
+            border-top: 1px solid var(--tml-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            color: #817b70;
+            font-size: 10px;
+            line-height: 1.8;
+        }
+
+        .footer-bottom span {
+            color: var(--tml-gold);
+        }
+
+        /* FLOATING WHATSAPP */
+
+        .whatsapp-float {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 53px;
+            height: 53px;
+            display: grid;
+            place-items: center;
+            background: #25d366;
+            color: white;
+            border-radius: 50%;
+            z-index: 9000;
+            font-size: 24px;
+            box-shadow: 0 8px 25px rgba(0,0,0,.35);
+            transition: .3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-5px);
+        }
+
+        /* FIXED MOBILE NAVIGATION - EXACTLY FIVE BUTTONS */
+
+        .mobile-bottom-nav {
+            display: none;
+        }
+
+        /* REVEAL */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity .8s ease, transform .8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1050px) {
+            .main-nav {
+                gap: 19px;
+            }
+
+            .main-nav a {
+                font-size: 9px;
+            }
+
+            .contact-layout {
+                gap: 40px;
+            }
+
+            .contact-form-wrapper {
+                padding: 35px;
+            }
+
+            .footer-grid {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 850px) {
+            .container {
+                width: min(100% - 38px, 650px);
+            }
+
+            .main-nav,
+            .header-actions .search-action,
+            .header-actions .account-action {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .header-inner {
+                height: 75px;
+            }
+
+            .brand img {
+                width: 42px;
+                height: 42px;
+            }
+
+            .brand-name {
+                font-size: 19px;
+            }
+
+            .contact-hero {
+                min-height: 520px;
+                background-position: 62% center;
+            }
+
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .contact-information {
+                padding-top: 0;
+            }
+
+            .contact-information h2 {
+                font-size: 35px;
+            }
+
+            .whatsapp-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 45px 30px;
+            }
+
+            .mobile-bottom-nav {
+                position: fixed;
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                left: 0;
+                right: 0;
+                bottom: 0;
+                min-height: 68px;
+                padding: 8px 5px calc(8px + env(safe-area-inset-bottom));
+                background: rgba(10,10,9,.97);
+                backdrop-filter: blur(18px);
+                border-top: 1px solid rgba(201,167,106,.25);
+                z-index: 10000;
+            }
+
+            .mobile-bottom-nav a {
+                min-width: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                color: #928b80;
+                font-size: 9px;
+                letter-spacing: .3px;
+                transition: .3s ease;
+            }
+
+            .mobile-bottom-nav a i {
+                font-size: 17px;
+            }
+
+            .mobile-bottom-nav a.active {
+                color: var(--tml-gold-light);
+            }
+
+            .mobile-bottom-nav a.active i {
+                transform: translateY(-2px);
+            }
+
+            body {
+                padding-bottom: calc(76px + env(safe-area-inset-bottom));
+            }
+
+            .whatsapp-float {
+                bottom: calc(88px + env(safe-area-inset-bottom));
+                right: 17px;
+                width: 48px;
+                height: 48px;
+                font-size: 22px;
+            }
+
+            .site-footer {
+                padding-bottom: 35px;
+            }
+
+            .mobile-menu {
+                padding-bottom: calc(120px + env(safe-area-inset-bottom));
+            }
+        }
+
+        @media (max-width: 550px) {
+            .container {
+                width: calc(100% - 36px);
+            }
+
+            .contact-hero {
+                min-height: 490px;
+                padding-top: 75px;
+                background-position: 58% center;
+            }
+
+            .hero-content {
+                padding: 65px 0;
+            }
+
+            .hero-content h1 {
+                font-size: clamp(53px, 14vw, 72px);
+            }
+
+            .hero-content p {
+                font-size: 12px;
+                max-width: 330px;
+            }
+
+            .hero-bottom {
+                bottom: 23px;
+            }
+
+            .hero-bottom span {
+                font-size: 8px;
+                letter-spacing: 1.5px;
+            }
+
+            .contact-intro {
+                padding: 75px 0 55px;
+            }
+
+            .contact-intro h2 {
+                font-size: 36px;
+            }
+
+            .contact-intro p {
+                font-size: 12px;
+            }
+
+            .contact-section {
+                padding: 15px 0 75px;
+            }
+
+            .contact-information h2 {
+                font-size: 33px;
+            }
+
+            .contact-form-wrapper {
+                padding: 27px 20px;
+            }
+
+            .form-heading h2 {
+                font-size: 29px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 19px;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 15px;
+            }
+
+            .whatsapp-section {
+                padding: 55px 0;
+            }
+
+            .whatsapp-copy h2 {
+                font-size: 31px;
+            }
+
+            .whatsapp-button {
+                width: 100%;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 35px 20px;
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+
+            .footer-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .mobile-bottom-nav a {
+                font-size: 8px;
+            }
+
+            .mobile-bottom-nav a i {
+                font-size: 16px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+                animation-duration: .01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="site-header" id="siteHeader">
+        <div class="container header-inner">
+
+            <a href="index.html" class="brand" aria-label="TML Illuminated home">
+                <img src="images/logo.png" alt="TML Illuminated logo">
+
+                <div class="brand-copy">
+                    <span class="brand-name">TML</span>
+                    <span class="brand-subtitle">ILLUMINATED</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="collections.html">Collections</a>
+                <a href="experience.html">Experience</a>
+                <a href="contact.html" class="active" aria-current="page">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <a href="bag.html" class="header-icon" aria-label="Shopping bag">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count" id="headerCartCount">0</span>
+                </a>
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Open navigation menu"
+                    aria-controls="mobileMenu"
+                    aria-expanded="false"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+
+        <span class="mobile-menu-label">Explore TML</span>
+
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="collections.html">Collections</a>
+        <a href="experience.html">The TML Experience</a>
+        <a href="bag.html">Shopping Bag</a>
+        <a href="contact.html" class="active" aria-current="page">Contact Us</a>
+
+    </nav>
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="contact-hero">
+
+            <div class="container">
+                <div class="hero-content reveal">
+
+                    <div class="eyebrow">We would love to hear from you</div>
+
+                    <h1>
+                        Let's Start<br>
+                        A <span>Conversation.</span>
+                    </h1>
+
+                    <p>
+                        Whether you have a question about our collections,
+                        need assistance with an order, or simply want to
+                        connect with TML, we're here to help.
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="container hero-bottom">
+                <span>Timeless Made Luxurious</span>
+                <span>Luxury for the senses</span>
+            </div>
+
+        </section>
+
+        <!-- INTRO -->
+
+        <section class="contact-intro">
+            <div class="container reveal">
+
+                <div class="section-label">The TML Connection</div>
+
+                <h2>
+                    Every great experience<br>
+                    begins with <span>a conversation.</span>
+                </h2>
+
+                <p>
+                    Your experience matters to us. Reach out with your
+                    questions, ideas and enquiries. We look forward to
+                    connecting with you and making your TML experience
+                    exceptional.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- CONTACT CONTENT -->
+
+        <section class="contact-section">
+
+            <div class="container contact-layout">
+
+                <!-- CONTACT INFORMATION -->
+
+                <div class="contact-information reveal">
+
+                    <div class="section-label">Get In Touch</div>
+
+                    <h2>
+                        We're here<br>
+                        to make things<br>
+                        <span style="color:var(--tml-gold-light);font-style:italic;">
+                            effortless.
+                        </span>
+                    </h2>
+
+                    <p>
+                        Choose the most convenient way to reach us.
+                        For product enquiries, orders or general assistance,
+                        send us a message and we'll get back to you.
+                    </p>
+
+                    <div class="contact-detail">
+
+                        <div class="detail-icon">
+                            <i class="fa-regular fa-envelope"></i>
+                        </div>
+
+                        <div class="detail-content">
+                            <small>Email Enquiries</small>
+                            <p>Our contact email will be published here soon.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="contact-detail">
+
+                        <div class="detail-icon">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+
+                        <div class="detail-content">
+                            <small>WhatsApp</small>
+                            <p>Connect with TML directly through WhatsApp.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="contact-detail">
+
+                        <div class="detail-icon">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
+
+                        <div class="detail-content">
+                            <small>Enquiry Support</small>
+                            <p>Send us a message at any time.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="contact-socials">
+
+                        <a href="https://www.instagram.com/TMLILLUMINATED/"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="https://www.facebook.com/"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- CONTACT FORM -->
+
+                <div class="contact-form-wrapper reveal">
+
+                    <div class="form-heading">
+                        <span>Send Us A Message</span>
+                        <h2>How can we help?</h2>
+
+                        <p>
+                            Complete the form below and our team will
+                            get back to you.
+                        </p>
+                    </div>
+
+                    <!--
+                        FORM SUBMIT SETUP:
+                        Replace YOUR-EMAIL@example.com with the confirmed
+                        TML receiving email address.
+
+                        FormSubmit may send a verification email before
+                        the first submission is delivered.
+                    -->
+
+                    <form
+                        id="tmlContactForm"
+                        action="https://formsubmit.co/YOUR-EMAIL@example.com"
+                        method="POST"
+                    >
+
+                        <input type="hidden" name="_subject" value="New TML Website Enquiry">
+
+                        <input type="hidden" name="_template" value="table">
+
+                        <input type="hidden" name="_captcha" value="true">
+
+                        <input type="hidden" name="_next" value="contact.html?submitted=true">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="fullName">Full Name *</label>
+
+                                <input
+                                    type="text"
+                                    id="fullName"
+                                    name="Full Name"
+                                    placeholder="Your full name"
+                                    autocomplete="name"
+                                    required
+                                >
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="email">Email Address *</label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="Email Address"
+                                    placeholder="you@example.com"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                            </div>
+
+                            <div class="form-group full">
+
+                                <label for="enquiryType">Enquiry Type *</label>
+
+                                <select id="enquiryType" name="Enquiry Type" required>
+
+                                    <option value="" disabled selected>
+                                        Select your enquiry
+                                    </option>
+
+                                    <option value="General Enquiry">
+                                        General Enquiry
+                                    </option>
+
+                                    <option value="Product Enquiry">
+                                        Product Enquiry
+                                    </option>
+
+                                    <option value="Order Assistance">
+                                        Order Assistance
+                                    </option>
+
+                                    <option value="Wholesale Enquiry">
+                                        Wholesale Enquiry
+                                    </option>
+
+                                    <option value="Collaborations">
+                                        Collaborations
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="form-group full">
+
+                                <label for="subject">Subject *</label>
+
+                                <input
+                                    type="text"
+                                    id="subject"
+                                    name="Subject"
+                                    placeholder="What is your message about?"
+                                    required
+                                >
+
+                            </div>
+
+                            <div class="form-group full">
+
+                                <label for="message">Your Message *</label>
+
+                                <textarea
+                                    id="message"
+                                    name="Message"
+                                    placeholder="Tell us how we can assist you..."
+                                    required
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="form-submit" id="submitButton">
+
+                            Send Your Enquiry
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+
+                        <p class="form-note">
+                            By submitting this form, you agree that TML
+                            may use your information to respond to your enquiry.
+                        </p>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- WHATSAPP -->
+
+        <section class="whatsapp-section">
+
+            <div class="container whatsapp-inner">
+
+                <div class="whatsapp-copy reveal">
+
+                    <span>A More Personal Connection</span>
+
+                    <h2>Prefer a quick conversation?</h2>
+
+                    <p>
+                        Connect with TML through WhatsApp for direct
+                        assistance with your enquiry.
+                    </p>
+
+                </div>
+
+                <!-- Replace the placeholder with the official TML WhatsApp number.
+                     International format: country code + number, without + or spaces. -->
+
+                <a
+                    href="#"
+                    class="whatsapp-button"
+                    id="whatsappContact"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Chat With TML
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+
+                    <img src="images/logo.png" alt="TML Illuminated">
+
+                    <h3>TML ILLUMINATED</h3>
+
+                    <p>
+                        Luxury for the senses. Beauty for the home.
+                        Discover a world where fragrance, light and
+                        atmosphere come together.
+                    </p>
+
+                </div>
+
+                <div class="footer-column">
+
+                    <h4>Explore</h4>
+
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="collections.html">Collections</a>
+                    <a href="experience.html">The Experience</a>
+
+                </div>
+
+                <div class="footer-column">
+
+                    <h4>Customer Care</h4>
+
+                    <a href="contact.html">Contact Us</a>
+                    <a href="faq.html">FAQs</a>
+                    <a href="shipping.html">Shipping Information</a>
+                    <a href="bag.html">Shopping Bag</a>
+
+                </div>
+
+                <div class="footer-column">
+
+                    <h4>Connect</h4>
+
+                    <a href="https://www.instagram.com/TMLILLUMINATED/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Instagram
+                    </a>
+
+                    <a href="https://www.facebook.com/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Facebook
+                    </a>
+
+                    <a href="contact.html">Get In Touch</a>
+
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+
+                <p>
+                    © <span id="currentYear"></span> TML Illuminated.
+                    All rights reserved.
+                </p>
+
+                <p>
+                    <span>Timeless Made Luxurious.</span>
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- FLOATING WHATSAPP -->
+
+    <a
+        href="#"
+        class="whatsapp-float"
+        id="floatingWhatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with TML on WhatsApp"
+    >
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- EXACTLY FIVE MOBILE NAVIGATION BUTTONS -->
+
+    <nav class="mobile-bottom-nav" aria-label="Mobile bottom navigation">
+
+        <a href="index.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+
+        <a href="shop.html">
+            <i class="fa-solid fa-store"></i>
+            <span>Shop</span>
+        </a>
+
+        <a href="collections.html">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Collections</span>
+        </a>
+
+        <a href="experience.html">
+            <i class="fa-regular fa-star"></i>
+            <span>Experience</span>
+        </a>
+
+        <a href="contact.html" class="active" aria-current="page">
+            <i class="fa-regular fa-envelope"></i>
+            <span>Contact</span>
+        </a>
+
+    </nav>
+
+    <script>
+        /* HEADER SCROLL */
+
+        const siteHeader = document.getElementById("siteHeader");
+
+        function updateHeader() {
+            siteHeader.classList.toggle("scrolled", window.scrollY > 30);
+        }
+
+        window.addEventListener("scroll", updateHeader, { passive: true });
+        updateHeader();
+
+
+        /* MOBILE MENU */
+
+        const menuToggle = document.getElementById("menuToggle");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+        const menuIcon = menuToggle.querySelector("i");
+
+        function openMenu() {
+            mobileMenu.classList.add("active");
+            mobileMenuOverlay.classList.add("active");
+            document.body.classList.add("menu-open");
+
+            menuToggle.setAttribute("aria-expanded", "true");
+            menuToggle.setAttribute("aria-label", "Close navigation menu");
+
+            menuIcon.classList.remove("fa-bars");
+            menuIcon.classList.add("fa-xmark");
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove("active");
+            mobileMenuOverlay.classList.remove("active");
+            document.body.classList.remove("menu-open");
+
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Open navigation menu");
+
+            menuIcon.classList.remove("fa-xmark");
+            menuIcon.classList.add("fa-bars");
+        }
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = mobileMenu.classList.contains("active");
+
+            if (isOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        mobileMenuOverlay.addEventListener("click", closeMenu);
+
+        mobileMenu.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", closeMenu);
+        });
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape") {
+                closeMenu();
+            }
+        });
+
+
+        /* CART COUNT */
+
+        function updateCartCount() {
+            const countElement = document.getElementById("headerCartCount");
+
+            try {
+                const cart = JSON.parse(localStorage.getItem("tmlCart")) || [];
+
+                const total = cart.reduce((sum, item) => {
+                    return sum + (Number(item.quantity) || 0);
+                }, 0);
+
+                countElement.textContent = total;
+                countElement.style.display = total > 0 ? "grid" : "none";
+
+            } catch (error) {
+                countElement.textContent = "0";
+                countElement.style.display = "none";
+            }
+        }
+
+        updateCartCount();
+
+        window.addEventListener("storage", updateCartCount);
+
+
+        /* FORM SUBMIT */
+
+        const contactForm = document.getElementById("tmlContactForm");
+        const submitButton = document.getElementById("submitButton");
+        const formStatus = document.getElementById("formStatus");
+
+        contactForm.addEventListener("submit", function(event) {
+
+            const action = contactForm.getAttribute("action");
+
+            if (action.includes("YOUR-EMAIL@example.com")) {
+                event.preventDefault();
+
+                formStatus.style.display = "block";
+                formStatus.textContent =
+                    "Our contact form is being prepared. Please check back soon.";
+
+                return;
+            }
+
+            if (!contactForm.checkValidity()) {
+                return;
+            }
+
+            submitButton.disabled = true;
+            submitButton.innerHTML =
+                'Sending Your Enquiry <i class="fa-solid fa-spinner fa-spin"></i>';
+        });
+
+
+        /* FORM SUCCESS MESSAGE */
+
+        const urlParams = new URLSearchParams(window.location.search);
+
+        if (urlParams.get("submitted") === "true") {
+
+            formStatus.style.display = "block";
+
+            formStatus.textContent =
+                "Thank you for contacting TML. Your enquiry has been submitted.";
+
+            history.replaceState({}, document.title, window.location.pathname);
+        }
+
+
+        /* WHATSAPP CONFIGURATION */
+
+        // Add the official WhatsApp number once confirmed.
+        // Example format: 27XXXXXXXXX (without + or spaces).
+
+        const TML_WHATSAPP_NUMBER = "";
+
+        const whatsappMessage =
+            encodeURIComponent("Hello TML Illuminated, I would like to make an enquiry.");
+
+        function configureWhatsapp() {
+
+            if (!TML_WHATSAPP_NUMBER) {
+                return;
+            }
+
+            const whatsappURL =
+                `https://wa.me/${TML_WHATSAPP_NUMBER}?text=${whatsappMessage}`;
+
+            document.getElementById("whatsappContact").href = whatsappURL;
+            document.getElementById("floatingWhatsapp").href = whatsappURL;
+        }
+
+        configureWhatsapp();
+
+
+        /* FOOTER YEAR */
+
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+
+        /* SCROLL REVEAL */
+
+        const revealElements = document.querySelectorAll(".reveal");
+
+        if ("IntersectionObserver" in window) {
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
+                    }
+
+                });
+
+            }, {
+                threshold: 0.12
+            });
+
+            revealElements.forEach(element => {
+                revealObserver.observe(element);
+            });
+
+        } else {
+            revealElements.forEach(element => {
+                element.classList.add("visible");
+            });
+        }
+
+    </script>
+
+</body>
+</html>

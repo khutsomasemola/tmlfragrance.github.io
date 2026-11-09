@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080807">
+
+    <title>About TML | Timeless Made Luxurious</title>
+
+    <meta name="description" content="Discover the story, philosophy and vision behind TML Illuminated. Luxury for the senses. Beauty for the home.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/style.css">
+
+    <style>
+        :root {
+            --black: #080807;
+            --dark: #11110f;
+            --dark-soft: #181714;
+            --cream: #f4f0e9;
+            --gold: #c9a76a;
+            --gold-light: #e2c58e;
+            --muted: #a49d91;
+            --border: rgba(201,167,106,.22);
+            --font: "DM Sans", sans-serif;
+            --display: "Playfair Display", serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--cream);
+            font-family: var(--font);
+            overflow-x: hidden;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font: inherit;
+            cursor: pointer;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 48px));
+            margin: auto;
+        }
+
+        /* HEADER */
+
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+            background: rgba(8,8,7,.87);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid transparent;
+            transition: .3s ease;
+        }
+
+        .site-header.scrolled {
+            background: rgba(8,8,7,.97);
+            border-color: var(--border);
+        }
+
+        .header-inner {
+            height: 86px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .brand img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .brand-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .brand-name {
+            font-family: var(--display);
+            font-size: 21px;
+            letter-spacing: 3px;
+        }
+
+        .brand-subtitle {
+            font-size: 8px;
+            letter-spacing: 3px;
+            color: var(--gold);
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .main-nav a {
+            position: relative;
+            color: rgba(244,240,233,.75);
+            font-size: 11px;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            transition: .3s ease;
+        }
+
+        .main-nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -9px;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: .3s ease;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: var(--gold-light);
+        }
+
+        .main-nav a:hover::after,
+        .main-nav a.active::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-icon {
+            position: relative;
+            color: var(--cream);
+            font-size: 16px;
+            transition: .3s ease;
+        }
+
+        .header-icon:hover {
+            color: var(--gold);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -9px;
+            right: -10px;
+            width: 17px;
+            height: 17px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--black);
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 0;
+            background: transparent;
+            color: var(--cream);
+            font-size: 21px;
+            padding: 8px;
+        }
+
+        /* MOBILE MENU */
+
+        .mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.7);
+            z-index: 9997;
+            opacity: 0;
+            visibility: hidden;
+            transition: .3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: min(390px, 88%);
+            height: 100dvh;
+            padding: 100px 32px 120px;
+            background: #10100e;
+            border-left: 1px solid var(--border);
+            z-index: 9998;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            transition: right .4s cubic-bezier(.7,0,.2,1);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-label {
+            color: var(--gold);
+            font-size: 9px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .mobile-menu a {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            font-family: var(--display);
+            font-size: 23px;
+            transition: .3s ease;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            color: var(--gold);
+            padding-left: 8px;
+        }
+
+        /* SHARED */
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            color: var(--gold);
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 23px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 35px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .section-label {
+            color: var(--gold);
+            font-size: 9px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .section-heading {
+            font-family: var(--display);
+            font-size: clamp(36px, 5vw, 58px);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .section-heading span {
+            color: var(--gold-light);
+            font-style: italic;
+        }
+
+        .section-description {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        /* HERO */
+
+        .about-hero {
+            min-height: 680px;
+            padding-top: 100px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(8,8,7,.97) 0%,
+                    rgba(8,8,7,.79) 48%,
+                    rgba(8,8,7,.30) 100%
+                ),
+                linear-gradient(
+                    0deg,
+                    rgba(8,8,7,.7),
+                    transparent 55%
+                ),
+                url("images/about-hero.jpg") center/cover no-repeat;
+        }
+
+        .about-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(
+                circle at 78% 48%,
+                rgba(201,167,106,.13),
+                transparent 42%
+            );
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 760px;
+            padding: 80px 0;
+        }
+
+        .hero-content h1 {
+            font-family: var(--display);
+            font-size: clamp(58px, 8vw, 105px);
+            font-weight: 400;
+            letter-spacing: -2px;
+            line-height: 1.03;
+        }
+
+        .hero-content h1 span {
+            color: var(--gold-light);
+            font-style: italic;
+        }
+
+        .hero-content p {
+            max-width: 500px;
+            color: rgba(244,240,233,.75);
+            font-size: 14px;
+            line-height: 2;
+            margin-top: 28px;
+        }
+
+        .hero-bottom {
+            position: absolute;
+            bottom: 35px;
+            left: 0;
+            right: 0;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .hero-bottom span {
+            color: rgba(244,240,233,.6);
+            font-size: 9px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* INTRODUCTION */
+
+        .about-intro {
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .intro-inner {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .intro-inner h2 {
+            font-family: var(--display);
+            font-size: clamp(37px, 5.5vw, 64px);
+            font-weight: 400;
+            line-height: 1.25;
+        }
+
+        .intro-inner h2 span {
+            color: var(--gold-light);
+            font-style: italic;
+        }
+
+        .intro-inner p {
+            max-width: 660px;
+            margin: 28px auto 0;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 2.1;
+        }
+
+        .intro-divider {
+            width: 70px;
+            height: 1px;
+            background: var(--gold);
+            margin: 40px auto 0;
+        }
+
+        /* STORY */
+
+        .story-section {
+            padding: 40px 0 130px;
+        }
+
+        .story-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 90px;
+        }
+
+        .story-image {
+            position: relative;
+            min-height: 560px;
+            overflow: hidden;
+            background: var(--dark-soft);
+        }
+
+        .story-image img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            inset: 0;
+            object-fit: cover;
+            transition: transform .8s ease;
+        }
+
+        .story-image:hover img {
+            transform: scale(1.04);
+        }
+
+        .story-image::after {
+            content: "";
+            position: absolute;
+            inset: 15px;
+            border: 1px solid rgba(226,197,142,.35);
+            pointer-events: none;
+        }
+
+        .story-content h2 {
+            margin-bottom: 25px;
+        }
+
+        .story-content p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 2.1;
+            margin-bottom: 20px;
+        }
+
+        .story-signature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 35px;
+            color: var(--gold-light);
+            font-family: var(--display);
+            font-style: italic;
+            font-size: 20px;
+        }
+
+        .story-signature::before {
+            content: "";
+            width: 35px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        /* MEANING */
+
+        .meaning-section {
+            position: relative;
+            padding: 120px 0;
+            background: var(--dark);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .meaning-section::before {
+            content: "TML";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            font-family: var(--display);
+            font-size: clamp(180px, 35vw, 450px);
+            color: rgba(201,167,106,.025);
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .meaning-inner {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .meaning-inner h2 {
+            font-family: var(--display);
+            font-size: clamp(43px, 7vw, 82px);
+            font-weight: 400;
+            line-height: 1.15;
+        }
+
+        .meaning-inner h2 span {
+            display: block;
+            color: var(--gold-light);
+            font-style: italic;
+        }
+
+        .meaning-inner p {
+            max-width: 650px;
+            margin: 35px auto 0;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 2.1;
+        }
+
+        /* PHILOSOPHY */
+
+        .philosophy-section {
+            padding: 125px 0;
+        }
+
+        .philosophy-heading {
+            max-width: 750px;
+            margin-bottom: 65px;
+        }
+
+        .philosophy-heading p {
+            margin-top: 20px;
+            max-width: 580px;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .philosophy-card {
+            padding: 45px 35px;
+            border-right: 1px solid var(--border);
+            transition: background .4s ease;
+        }
+
+        .philosophy-card:last-child {
+            border-right: 0;
+        }
+
+        .philosophy-card:hover {
+            background: rgba(201,167,106,.045);
+        }
+
+        .philosophy-number {
+            font-family: var(--display);
+            font-size: 42px;
+            color: rgba(201,167,106,.45);
+            margin-bottom: 35px;
+        }
+
+        .philosophy-icon {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--border);
+            color: var(--gold);
+            margin-bottom: 25px;
+            font-size: 18px;
+        }
+
+        .philosophy-card h3 {
+            font-family: var(--display);
+            font-size: 29px;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        .philosophy-card p {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 2;
+        }
+
+        /* CRAFT */
+
+        .craft-section {
+            padding: 110px 0;
+            background: #10100e;
+        }
+
+        .craft-layout {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .craft-content p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 2.1;
+            margin-top: 22px;
+        }
+
+        .craft-points {
+            margin-top: 35px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .craft-point {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 17px 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--cream);
+            font-size: 12px;
+        }
+
+        .craft-point i {
+            color: var(--gold);
+            font-size: 13px;
+        }
+
+        .craft-image {
+            min-height: 480px;
+            position: relative;
+            overflow: hidden;
+            background: var(--dark-soft);
+        }
+
+        .craft-image img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            inset: 0;
+            transition: transform .8s ease;
+        }
+
+        .craft-image:hover img {
+            transform: scale(1.04);
+        }
+
+        /* PROMISE */
+
+        .promise-section {
+            padding: 125px 0;
+        }
+
+        .promise-inner {
+            max-width: 820px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .promise-inner h2 {
+            font-family: var(--display);
+            font-size: clamp(39px, 6vw, 69px);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .promise-inner h2 span {
+            color: var(--gold-light);
+            font-style: italic;
+        }
+
+        .promise-inner p {
+            max-width: 650px;
+            margin: 25px auto 0;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 2.1;
+        }
+
+        .promise-mark {
+            color: var(--gold);
+            font-size: 25px;
+            margin-bottom: 30px;
+        }
+
+        /* CTA */
+
+        .about-cta {
+            padding: 105px 0;
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(rgba(8,8,7,.88), rgba(8,8,7,.93)),
+                url("images/about-cta.jpg") center/cover no-repeat;
+            border-top: 1px solid var(--border);
+        }
+
+        .cta-inner {
+            text-align: center;
+            max-width: 760px;
+            margin: auto;
+        }
+
+        .cta-inner h2 {
+            font-family: var(--display);
+            font-size: clamp(40px, 6vw, 68px);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .cta-inner h2 span {
+            color: var(--gold-light);
+            font-style: italic;
+        }
+
+        .cta-inner p {
+            max-width: 550px;
+            margin: 22px auto 30px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        .gold-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 13px;
+            min-height: 55px;
+            padding: 0 30px;
+            background: var(--gold);
+            border: 1px solid var(--gold);
+            color: var(--black);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: .3s ease;
+        }
+
+        .gold-button:hover {
+            background: transparent;
+            color: var(--gold-light);
+        }
+
+        /* FOOTER */
+
+        .site-footer {
+            padding: 75px 0 30px;
+            background: #070706;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 50px;
+            padding-bottom: 60px;
+        }
+
+        .footer-brand img {
+            width: 58px;
+            height: 58px;
+            object-fit: contain;
+            margin-bottom: 18px;
+        }
+
+        .footer-brand h3 {
+            font-family: var(--display);
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .footer-brand p {
+            max-width: 260px;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 2;
+            margin-top: 15px;
+        }
+
+        .footer-column h4 {
+            color: var(--gold);
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        .footer-column a {
+            display: block;
+            width: fit-content;
+            color: var(--muted);
+            font-size: 11px;
+            margin-bottom: 15px;
+            transition: .3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--gold-light);
+            padding-left: 4px;
+        }
+
+        .footer-bottom {
+            padding-top: 25px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            color: #817b70;
+            font-size: 10px;
+            line-height: 1.8;
+        }
+
+        .footer-bottom span {
+            color: var(--gold);
+        }
+
+        /* FLOATING WHATSAPP */
+
+        .whatsapp-float {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 53px;
+            height: 53px;
+            display: grid;
+            place-items: center;
+            background: #25d366;
+            color: #fff;
+            border-radius: 50%;
+            z-index: 9000;
+            font-size: 24px;
+            box-shadow: 0 8px 25px rgba(0,0,0,.35);
+            transition: .3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-5px);
+        }
+
+        /* MOBILE NAV - EXACTLY FIVE BUTTONS */
+
+        .mobile-bottom-nav {
+            display: none;
+        }
+
+        /* ANIMATIONS */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity .8s ease, transform .8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1050px) {
+
+            .main-nav {
+                gap: 19px;
+            }
+
+            .main-nav a {
+                font-size: 9px;
+            }
+
+            .story-layout,
+            .craft-layout {
+                gap: 45px;
+            }
+
+            .footer-grid {
+                gap: 30px;
+            }
+
+        }
+
+        @media (max-width: 850px) {
+
+            .container {
+                width: min(100% - 38px, 680px);
+            }
+
+            .main-nav {
+                display: none;
+            }
+
+            .header-inner {
+                height: 75px;
+            }
+
+            .brand img {
+                width: 42px;
+                height: 42px;
+            }
+
+            .brand-name {
+                font-size: 19px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .about-hero {
+                min-height: 590px;
+                background-position: 62% center;
+            }
+
+            .story-layout,
+            .craft-layout {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .story-image {
+                min-height: 470px;
+            }
+
+            .craft-image {
+                min-height: 430px;
+            }
+
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .philosophy-card {
+                border-right: 0;
+                border-bottom: 1px solid var(--border);
+                padding: 35px 25px;
+            }
+
+            .philosophy-card:last-child {
+                border-bottom: 0;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 45px 30px;
+            }
+
+            /* FIVE FIXED MOBILE BUTTONS */
+
+            .mobile-bottom-nav {
+                position: fixed;
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                left: 0;
+                right: 0;
+                bottom: 0;
+                min-height: 68px;
+                padding: 8px 5px calc(8px + env(safe-area-inset-bottom));
+                background: rgba(10,10,9,.97);
+                backdrop-filter: blur(18px);
+                border-top: 1px solid rgba(201,167,106,.25);
+                z-index: 10000;
+            }
+
+            .mobile-bottom-nav a {
+                min-width: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                color: #928b80;
+                font-size: 9px;
+                letter-spacing: .3px;
+                transition: .3s ease;
+            }
+
+            .mobile-bottom-nav a i {
+                font-size: 17px;
+            }
+
+            .mobile-bottom-nav a.active {
+                color: var(--gold-light);
+            }
+
+            .mobile-bottom-nav a.active i {
+                transform: translateY(-2px);
+            }
+
+            body {
+                padding-bottom: calc(76px + env(safe-area-inset-bottom));
+            }
+
+            .whatsapp-float {
+                bottom: calc(88px + env(safe-area-inset-bottom));
+                right: 17px;
+                width: 48px;
+                height: 48px;
+                font-size: 22px;
+            }
+
+            .site-footer {
+                padding-bottom: 35px;
+            }
+
+            .mobile-menu {
+                padding-bottom: calc(120px + env(safe-area-inset-bottom));
+            }
+
+        }
+
+        @media (max-width: 550px) {
+
+            .container {
+                width: calc(100% - 36px);
+            }
+
+            .about-hero {
+                min-height: 520px;
+                padding-top: 75px;
+                background-position: 58% center;
+            }
+
+            .hero-content {
+                padding: 65px 0;
+            }
+
+            .hero-content h1 {
+                font-size: clamp(54px, 14vw, 75px);
+            }
+
+            .hero-content p {
+                font-size: 12px;
+                max-width: 330px;
+            }
+
+            .hero-bottom {
+                bottom: 23px;
+            }
+
+            .hero-bottom span {
+                font-size: 8px;
+                letter-spacing: 1.5px;
+            }
+
+            .about-intro {
+                padding: 80px 0;
+            }
+
+            .intro-inner h2 {
+                font-size: 37px;
+            }
+
+            .intro-inner p {
+                font-size: 12px;
+            }
+
+            .story-section {
+                padding: 15px 0 85px;
+            }
+
+            .story-image {
+                min-height: 390px;
+            }
+
+            .story-content .section-heading {
+                font-size: 39px;
+            }
+
+            .meaning-section {
+                padding: 85px 0;
+            }
+
+            .meaning-inner h2 {
+                font-size: 43px;
+            }
+
+            .meaning-inner p {
+                font-size: 12px;
+            }
+
+            .philosophy-section {
+                padding: 85px 0;
+            }
+
+            .philosophy-heading {
+                margin-bottom: 40px;
+            }
+
+            .philosophy-card {
+                padding: 30px 20px;
+            }
+
+            .philosophy-number {
+                margin-bottom: 20px;
+            }
+
+            .craft-section {
+                padding: 85px 0;
+            }
+
+            .craft-image {
+                min-height: 350px;
+            }
+
+            .promise-section {
+                padding: 90px 0;
+            }
+
+            .about-cta {
+                padding: 85px 0;
+            }
+
+            .cta-inner h2 {
+                font-size: 43px;
+            }
+
+            .gold-button {
+                width: 100%;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 35px 20px;
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .mobile-bottom-nav a {
+                font-size: 8px;
+            }
+
+            .mobile-bottom-nav a i {
+                font-size: 16px;
+            }
+
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+                animation-duration: .01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="site-header" id="siteHeader">
+
+        <div class="container header-inner">
+
+            <a href="index.html" class="brand" aria-label="TML Illuminated home">
+
+                <img src="images/logo.png" alt="TML Illuminated logo">
+
+                <div class="brand-copy">
+                    <span class="brand-name">TML</span>
+                    <span class="brand-subtitle">ILLUMINATED</span>
+                </div>
+
+            </a>
+
+            <nav class="main-nav" id="mainNav">
+
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="collections.html">Collections</a>
+                <a href="experience.html">Experience</a>
+                <a href="about.html" class="active" aria-current="page">About</a>
+
+            </nav>
+
+            <div class="header-actions">
+
+                <a href="bag.html" class="header-icon" aria-label="Shopping bag">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    <span class="cart-count" id="headerCartCount">0</span>
+
+                </a>
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Open navigation menu"
+                    aria-controls="mobileMenu"
+                    aria-expanded="false"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- MOBILE MENU -->
+
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+
+        <span class="mobile-menu-label">Explore TML</span>
+
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="collections.html">Collections</a>
+        <a href="experience.html">The TML Experience</a>
+        <a href="about.html" class="active" aria-current="page">About TML</a>
+        <a href="bag.html">Shopping Bag</a>
+        <a href="contact.html">Contact Us</a>
+
+    </nav>
+
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="about-hero">
+
+            <div class="container">
+
+                <div class="hero-content reveal">
+
+                    <div class="eyebrow">The Story Behind TML</div>
+
+                    <h1>
+                        More Than<br>
+                        A <span>Fragrance.</span>
+                    </h1>
+
+                    <p>
+                        A world shaped by scent, light and atmosphere.
+                        Discover the philosophy behind TML Illuminated
+                        and the meaning of timeless luxury.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="container hero-bottom">
+
+                <span>Timeless Made Luxurious</span>
+
+                <span>Our Story · Our Philosophy</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="about-intro">
+
+            <div class="container intro-inner reveal">
+
+                <div class="section-label">Welcome To TML Illuminated</div>
+
+                <h2>
+                    Luxury is not simply<br>
+                    what you <span>see.</span><br>
+                    It is what you feel.
+                </h2>
+
+                <p>
+                    TML Illuminated is built around the beauty of
+                    everyday moments. We believe that fragrance and
+                    atmosphere can transform the way a space feels,
+                    turning familiar surroundings into meaningful
+                    experiences.
+                </p>
+
+                <p>
+                    Through candles and home fragrances, we celebrate
+                    the connection between scent, light and the spaces
+                    we call our own.
+                </p>
+
+                <div class="intro-divider"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- OUR STORY -->
+
+        <section class="story-section">
+
+            <div class="container story-layout">
+
+                <div class="story-image reveal">
+
+                    <img
+                        src="images/new chapter.jpg"
+                        alt="TML Illuminated brand story"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="story-content reveal">
+
+                    <div class="section-label">Our Story</div>
+
+                    <h2 class="section-heading">
+                        Creating moments<br>
+                        worth <span>remembering.</span>
+                    </h2>
+
+                    <p>
+                        Every space has a feeling. Every moment carries
+                        an atmosphere. Sometimes, it is the smallest
+                        details that make the greatest difference.
+                    </p>
+
+                    <p>
+                        TML Illuminated was shaped by an appreciation
+                        for those details. The warmth of a softly
+                        illuminated room, the character of a beautiful
+                        fragrance and the comfort of a thoughtfully
+                        created environment.
+                    </p>
+
+                    <p>
+                        Our vision is to bring these elements together
+                        through products that make everyday spaces feel
+                        more personal, welcoming and memorable.
+                    </p>
+
+                    <p>
+                        This is more than creating fragrance. It is
+                        about creating an experience that stays with you.
+                    </p>
+
+                    <div class="story-signature">
+                        Timeless Made Luxurious
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MEANING OF TML -->
+
+        <section class="meaning-section">
+
+            <div class="container meaning-inner reveal">
+
+                <div class="section-label">The Meaning Behind Our Name</div>
+
+                <h2>
+                    Timeless Made
+                    <span>Luxurious.</span>
+                </h2>
+
+                <p>
+                    The name TML represents a simple belief:
+                    luxury should feel timeless. It should not depend
+                    on a passing trend, but on the lasting impression
+                    created by quality, atmosphere and thoughtful detail.
+                </p>
+
+                <p>
+                    It is a reminder that the most beautiful experiences
+                    are often the ones that remain with us long after
+                    the moment has passed.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- PHILOSOPHY -->
+
+        <section class="philosophy-section">
+
+            <div class="container">
+
+                <div class="philosophy-heading reveal">
+
+                    <div class="section-label">What Defines Us</div>
+
+                    <h2 class="section-heading">
+                        Three elements.<br>
+                        One <span>experience.</span>
+                    </h2>
+
+                    <p class="section-description">
+                        Our philosophy is centred around three elements
+                        that work together to shape the atmosphere of
+                        a space and the feeling it leaves behind.
+                    </p>
+
+                </div>
+
+
+                <div class="philosophy-grid">
+
+                    <article class="philosophy-card reveal">
+
+                        <div class="philosophy-number">01</div>
+
+                        <div class="philosophy-icon">
+                            <i class="fa-solid fa-wind"></i>
+                        </div>
+
+                        <h3>Fragrance</h3>
+
+                        <p>
+                            Scent has a unique way of shaping an
+                            atmosphere. It can make a space feel
+                            welcoming, peaceful, expressive and personal.
+                        </p>
+
+                    </article>
+
+
+                    <article class="philosophy-card reveal">
+
+                        <div class="philosophy-number">02</div>
+
+                        <div class="philosophy-icon">
+                            <i class="fa-solid fa-fire-flame-curved"></i>
+                        </div>
+
+                        <h3>Light</h3>
+
+                        <p>
+                            Light brings warmth and character to a
+                            space. It creates an inviting atmosphere
+                            and adds a beautiful sense of calm.
+                        </p>
+
+                    </article>
+
+
+                    <article class="philosophy-card reveal">
+
+                        <div class="philosophy-number">03</div>
+
+                        <div class="philosophy-icon">
+                            <i class="fa-solid fa-house"></i>
+                        </div>
+
+                        <h3>Home</h3>
+
+                        <p>
+                            Home is more than a place. It is where
+                            memories are created, comfort is found
+                            and personal expression comes to life.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- OUR APPROACH -->
+
+        <section class="craft-section">
+
+            <div class="container craft-layout">
+
+                <div class="craft-content reveal">
+
+                    <div class="section-label">Our Approach</div>
+
+                    <h2 class="section-heading">
+                        Thoughtful details.<br>
+                        <span>Meaningful experiences.</span>
+                    </h2>
+
+                    <p>
+                        At TML, we believe the experience begins before
+                        a product is used. From the way a product is
+                        presented to the atmosphere it helps create,
+                        every detail contributes to the overall feeling.
+                    </p>
+
+                    <p>
+                        Our approach is guided by an appreciation for
+                        elegance, personal expression and the beauty
+                        of creating an environment that feels like you.
+                    </p>
+
+                    <div class="craft-points">
+
+                        <div class="craft-point">
+                            <i class="fa-solid fa-check"></i>
+                            <span>Thoughtful product presentation</span>
+                        </div>
+
+                        <div class="craft-point">
+                            <i class="fa-solid fa-check"></i>
+                            <span>Fragrance for personal spaces</span>
+                        </div>
+
+                        <div class="craft-point">
+                            <i class="fa-solid fa-check"></i>
+                            <span>Atmosphere through scent and light</span>
+                        </div>
+
+                        <div class="craft-point">
+                            <i class="fa-solid fa-check"></i>
+                            <span>A consistent luxury brand experience</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="craft-image reveal">
+
+                    <img
+                        src="images/products/cranberry-2.jpeg"
+                        alt="TML Illuminated fragrance collection"
+                        loading="lazy"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- OUR PROMISE -->
+
+        <section class="promise-section">
+
+            <div class="container promise-inner reveal">
+
+                <div class="promise-mark">
+                    <i class="fa-solid fa-sparkles"></i>
+                </div>
+
+                <div class="section-label">The TML Promise</div>
+
+                <h2>
+                    To make every space<br>
+                    feel a little more <span>extraordinary.</span>
+                </h2>
+
+                <p>
+                    We want every interaction with TML to reflect
+                    the values behind our brand: thoughtful presentation,
+                    an appreciation for beautiful spaces and a commitment
+                    to making fragrance part of everyday living.
+                </p>
+
+                <p>
+                    Whether it is a moment of relaxation, a welcoming
+                    home or a thoughtful gift, we want TML to be part
+                    of the experiences that matter.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CALL TO ACTION -->
+
+        <section class="about-cta">
+
+            <div class="container cta-inner reveal">
+
+                <div class="section-label">Discover TML</div>
+
+                <h2>
+                    Find your<br>
+                    <span>signature atmosphere.</span>
+                </h2>
+
+                <p>
+                    Explore our world of candles and home fragrances.
+                    Discover the collection and find something that
+                    makes your space feel uniquely yours.
+                </p>
+
+                <a href="shop.html" class="gold-button">
+
+                    Explore The Collection
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+
+                    <img src="images/logo.png" alt="TML Illuminated logo">
+
+                    <h3>TML ILLUMINATED</h3>
+
+                    <p>
+                        Luxury for the senses. Beauty for the home.
+                        Discover a world where fragrance, light and
+                        atmosphere come together.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>Explore</h4>
+
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="collections.html">Collections</a>
+                    <a href="experience.html">The Experience</a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>Our Brand</h4>
+
+                    <a href="about.html">About TML</a>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="faq.html">FAQs</a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>Customer Care</h4>
+
+                    <a href="shipping.html">Shipping Information</a>
+                    <a href="bag.html">Shopping Bag</a>
+                    <a href="contact.html">Get In Touch</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © <span id="currentYear"></span> TML Illuminated.
+                    All rights reserved.
+                </p>
+
+                <p>
+                    <span>Timeless Made Luxurious.</span>
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- FLOATING WHATSAPP -->
+
+    <a
+        href="#"
+        class="whatsapp-float"
+        id="floatingWhatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contact TML on WhatsApp"
+    >
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+
+    <!-- EXACTLY FIVE FIXED MOBILE NAV BUTTONS -->
+
+    <nav class="mobile-bottom-nav" aria-label="Mobile bottom navigation">
+
+        <a href="index.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+
+        <a href="shop.html">
+            <i class="fa-solid fa-store"></i>
+            <span>Shop</span>
+        </a>
+
+        <a href="collections.html">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Collections</span>
+        </a>
+
+        <a href="experience.html">
+            <i class="fa-regular fa-star"></i>
+            <span>Experience</span>
+        </a>
+
+        <a href="about.html" class="active" aria-current="page">
+            <i class="fa-regular fa-circle-user"></i>
+            <span>About</span>
+        </a>
+
+    </nav>
+
+
+    <script>
+
+        /* HEADER SCROLL */
+
+        const siteHeader = document.getElementById("siteHeader");
+
+        function updateHeader() {
+            siteHeader.classList.toggle("scrolled", window.scrollY > 30);
+        }
+
+        window.addEventListener("scroll", updateHeader, { passive: true });
+
+        updateHeader();
+
+
+        /* MOBILE MENU */
+
+        const menuToggle = document.getElementById("menuToggle");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+        const menuIcon = menuToggle.querySelector("i");
+
+        function openMenu() {
+
+            mobileMenu.classList.add("active");
+            mobileMenuOverlay.classList.add("active");
+
+            document.body.classList.add("menu-open");
+
+            menuToggle.setAttribute("aria-expanded", "true");
+            menuToggle.setAttribute("aria-label", "Close navigation menu");
+
+            menuIcon.classList.remove("fa-bars");
+            menuIcon.classList.add("fa-xmark");
+
+        }
+
+        function closeMenu() {
+
+            mobileMenu.classList.remove("active");
+            mobileMenuOverlay.classList.remove("active");
+
+            document.body.classList.remove("menu-open");
+
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Open navigation menu");
+
+            menuIcon.classList.remove("fa-xmark");
+            menuIcon.classList.add("fa-bars");
+
+        }
+
+        menuToggle.addEventListener("click", () => {
+
+            const isOpen = mobileMenu.classList.contains("active");
+
+            if (isOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+
+        });
+
+        mobileMenuOverlay.addEventListener("click", closeMenu);
+
+        mobileMenu.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", closeMenu);
+        });
+
+        document.addEventListener("keydown", event => {
+
+            if (event.key === "Escape") {
+                closeMenu();
+            }
+
+        });
+
+
+        /* CART COUNT */
+
+        function updateCartCount() {
+
+            const countElement =
+                document.getElementById("headerCartCount");
+
+            try {
+
+                const cart =
+                    JSON.parse(localStorage.getItem("tmlCart")) || [];
+
+                const total = cart.reduce((sum, item) => {
+                    return sum + (Number(item.quantity) || 0);
+                }, 0);
+
+                countElement.textContent = total;
+
+                countElement.style.display =
+                    total > 0 ? "grid" : "none";
+
+            } catch (error) {
+
+                countElement.textContent = "0";
+                countElement.style.display = "none";
+
+            }
+
+        }
+
+        updateCartCount();
+
+        window.addEventListener("storage", updateCartCount);
+
+
+        /* FOOTER YEAR */
+
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+
+        /* WHATSAPP */
+
+        // Add the official TML WhatsApp number once confirmed.
+        // International format, without + or spaces.
+
+        const TML_WHATSAPP_NUMBER = "";
+
+        function configureWhatsapp() {
+
+            if (!TML_WHATSAPP_NUMBER) return;
+
+            const message = encodeURIComponent(
+                "Hello TML Illuminated, I would like to know more about your collection."
+            );
+
+            const whatsappURL =
+                `https://wa.me/${TML_WHATSAPP_NUMBER}?text=${message}`;
+
+            document.getElementById("floatingWhatsapp").href =
+                whatsappURL;
+
+        }
+
+        configureWhatsapp();
+
+
+        /* SCROLL REVEAL */
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+        if ("IntersectionObserver" in window) {
+
+            const revealObserver = new IntersectionObserver(
+                (entries, observer) => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("visible");
+
+                            observer.unobserve(entry.target);
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+            revealElements.forEach(element => {
+                revealObserver.observe(element);
+            });
+
+        } else {
+
+            revealElements.forEach(element => {
+                element.classList.add("visible");
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>
